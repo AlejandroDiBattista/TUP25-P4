@@ -1,0 +1,829 @@
+[12/8/25, 00:30:34] P4 C1: ‎Los mensajes y las llamadas están cifrados de extremo a extremo. Solo las personas en este chat pueden leerlos, escucharlos o compartirlos.
+[12/8/25, 00:25:04] ‎Tú: ‎‎Tú creó este grupo.
+[12/8/25, 08:23:37] Lisandro Quiroga Castro: ‎Lisandro Quiroga Castro se unió con el enlace del grupo.
+[12/8/25, 08:23:55] Lucas Ismael Leon: ‎Lucas Ismael Leon se unió con el enlace del grupo.
+[12/8/25, 08:23:56] Julieta Camila Diaz: ‎Julieta Camila Diaz se unió con el enlace del grupo.
+[12/8/25, 08:24:19] Ana Sofía Guerrero: ‎Ana Sofía Guerrero se unió con el enlace del grupo.
+[12/8/25, 08:24:21] Franco Giacobbe: ‎Franco Giacobbe se unió con el enlace del grupo.
+[12/8/25, 08:24:42] Ignacio Díaz Valdez: ‎Ignacio Díaz Valdez se unió con el enlace del grupo.
+[12/8/25, 08:24:42] Paulo Marcelo Ledesma: ‎Paulo Marcelo Ledesma se unió con el enlace del grupo.
+[12/8/25, 08:24:43] Luz Micaela Ponce: ‎Luz Micaela Ponce se unió con el enlace del grupo.
+[12/8/25, 08:24:45] Mauro Carrizo: ‎Mauro Carrizo se unió con el enlace del grupo.
+[12/8/25, 08:24:45] Hector Gabriel Timo: ‎Hector Gabriel Timo se unió con el enlace del grupo.
+[12/8/25, 08:24:49] Franco Eduardo Drachenberg: ‎Franco Eduardo Drachenberg se unió con el enlace del grupo.
+[12/8/25, 08:24:51] Marcela Noemi Quiroga Quiroga: ‎Mauro Carrizo añadió a Marcela Noemi Quiroga Quiroga.
+[12/8/25, 08:25:04] Juan Daniel Morales: ‎Juan Daniel Morales se unió con el enlace del grupo.
+[12/8/25, 08:25:10] Cristian Ballespin: ‎Cristian Ballespin se unió con el enlace del grupo.
+[12/8/25, 08:26:11] Juan Manuel Agostino Colombres: ‎Juan Manuel Agostino Colombres se unió con el enlace del grupo.
+[12/8/25, 08:26:21] ‪+54 9 3815 39‑0011‬: ‎‪+54 9 3815 39‑0011‬ se unió con el enlace del grupo.
+[12/8/25, 08:26:44] Juan Ignacio Medina: ‎Juan Ignacio Medina se unió con el enlace del grupo.
+[12/8/25, 08:26:58] Samaniego Esteban Maximiliano: ‎Samaniego Esteban Maximiliano se unió con el enlace del grupo.
+[12/8/25, 08:28:53] Rodrigo Gonzalez Chavez: ‎Rodrigo Gonzalez Chavez se unió con el enlace del grupo.
+[12/8/25, 08:30:18] Luciano Llanos: ‎Luciano Llanos se unió con el enlace del grupo.
+[12/8/25, 08:30:46] Manuel Figueroa: ‎Manuel Figueroa se unió con el enlace del grupo.
+[12/8/25, 08:30:54] Santiago Esteban Ledesma: ‎Santiago Esteban Ledesma se unió con el enlace del grupo.
+[12/8/25, 08:34:35] ~ .: ‎~ . se unió con el enlace del grupo.
+[12/8/25, 08:34:36] Jorge Sebastián Villagra: ‎Jorge Sebastián Villagra se unió con el enlace del grupo.
+[12/8/25, 08:34:41] Leonardo Ramirez: ‎Leonardo Ramirez se unió con el enlace del grupo.
+[12/8/25, 08:34:42] Jose Maria Quiroga: ‎Jose Maria Quiroga se unió con el enlace del grupo.
+[12/8/25, 08:34:55] Santiago Nicolas Ferreyra Appas: ‎Santiago Nicolas Ferreyra Appas se unió con el enlace del grupo.
+[12/8/25, 08:35:18] Rodrigo Gabriel Jatib: ‎Rodrigo Gabriel Jatib se unió con el enlace del grupo.
+[12/8/25, 08:42:46] ‪+54 9 3815 67‑4692‬: ‎‪+54 9 3815 67‑4692‬ añadió a ‪+54 9 3815 67‑4692‬.
+[12/8/25, 08:42:34] ‪+54 9 3815 67‑4692‬: ‎‪+54 9 3815 67‑4692‬ se unió con el enlace del grupo.
+[12/8/25, 08:42:44] ‪+54 9 3815 67‑4692‬: 61315 Robles,Thiago
+[12/8/25, 08:42:50] Santiago Esteban Ledesma: 61115 Ledesma, Santiago Esteban
+[12/8/25, 08:42:53] Rodrigo Gonzalez Chavez: 61073 - Gonzalez Chavez, Rodrigo
+[12/8/25, 08:43:02] Mauro Carrizo: 61565 Carrizo, Mauro
+[12/8/25, 08:43:03] Paulo Marcelo Ledesma: 61035 Ledesma, Paulo
+[12/8/25, 08:43:07] Franco Giacobbe: 61167 Giacobbe, Franco
+[12/8/25, 08:43:08] Luciano Llanos: 61911 Llanos, Luciano
+[12/8/25, 08:43:09] Rodrigo Gabriel Jatib: 54911 -  Jatib, Rodrigo Gabriel
+[12/8/25, 08:43:09] Juan Ignacio Medina: 61993 Medina, Juan Ignacio
+[12/8/25, 08:43:10] ~ .: 61463 Gonzalez, Vladimir
+[12/8/25, 08:43:12] Lucas Ismael Leon: 61335 Leon, Lucas Ismael
+[12/8/25, 08:43:12] Ana Sofía Guerrero: 61120 Guerrero, Ana Sofia
+[12/8/25, 08:43:12] Jose Maria Quiroga: 61033 Quiroga, Jose Maria
+[12/8/25, 08:43:14] Juan Daniel Morales: 61338 Morales, Juan Daniel
+[12/8/25, 08:43:17] Hector Gabriel Timo: 61240 Timo, Gabriel
+[12/8/25, 08:43:22] Luz Micaela Ponce: 61046 Ponce, Luz Micaela
+[12/8/25, 08:43:23] Juan Manuel Agostino Colombres: 61131 Agostino Colombres, Juan Manuel
+[12/8/25, 08:43:25] Leonardo Ramirez: 61084 Ramirez, Leonardo
+[12/8/25, 08:43:25] Lisandro Quiroga Castro: 62318 , Quiroga Castro, lisandro
+[12/8/25, 08:43:25] Franco Eduardo Drachenberg: 61236 Drachenberg, Franco Eduardo
+[12/8/25, 08:43:26] Julieta Camila Diaz: 61472 Diaz, Julieta Camila
+[12/8/25, 08:43:31] Santiago Nicolas Ferreyra Appas: 61198 Ferreyra Appas, Santiago Nicolas
+[12/8/25, 08:43:46] Marcela Noemi Quiroga Quiroga: 62175 - Quiroga, Marcela Noemi Quiroga.
+[12/8/25, 08:43:55] Jorge Sebastián Villagra: 61725 Villagra, Jorge Sebastián
+[12/8/25, 08:44:06] Ignacio Díaz Valdez: 61551 - Diaz Valdez, Ignacio
+[12/8/25, 09:06:17] Samaniego Esteban Maximiliano: 61468 - Samaniego Esteban Maximiliano
+[12/8/25, 09:28:42] Cesar Branda: ‎Cesar Branda se unió con el enlace del grupo.
+[12/8/25, 09:58:39] Christian Gabriel Díaz: ‎Christian Gabriel Díaz se unió con el enlace del grupo.
+[12/8/25, 13:17:33] Tomás Jerez: ‎Tomás Jerez se unió con el enlace del grupo.
+[13/8/25, 08:17:01] Lisandro Quiroga Castro: ‎Se eliminó este mensaje.
+[13/8/25, 08:17:02] Luciano Llanos: 👍🏻
+[13/8/25, 08:17:03] ‪+54 9 3815 67‑4692‬: 👍
+[13/8/25, 08:17:15] Rodrigo Gonzalez Chavez: 👍🏻
+[13/8/25, 08:17:15] ~ .: 👍
+[13/8/25, 08:17:16] Juan Daniel Morales: 👍🏼
+[13/8/25, 08:17:21] Lucas Ismael Leon: 👍🏻
+[13/8/25, 08:17:23] Franco Giacobbe: 👍
+[13/8/25, 08:17:28] Franco Eduardo Drachenberg: 👍
+[13/8/25, 08:17:33] Jose Maria Quiroga: 👍
+[13/8/25, 08:17:35] Lisandro Quiroga Castro: 👍🏻
+[13/8/25, 08:17:35] Santiago Esteban Ledesma: 👍
+[13/8/25, 08:17:38] Ana Sofía Guerrero: 👍🏻
+[13/8/25, 08:17:43] Hector Gabriel Timo: 👍
+[13/8/25, 08:17:50] Julieta Camila Diaz: ‎Se eliminó este mensaje.
+[13/8/25, 08:17:52] Jorge Sebastián Villagra: 👍🏻
+[13/8/25, 08:17:54] Paulo Marcelo Ledesma: 👍
+[13/8/25, 08:18:17] Juan Manuel Agostino Colombres: 👍🏻
+[13/8/25, 08:18:52] Julieta Camila Diaz: 👍🏻
+[13/8/25, 08:24:28] Ignacio Díaz Valdez: 👍🏻
+[13/8/25, 08:28:54] Mauro Carrizo: 👍🏻
+[13/8/25, 08:31:33] Marcela Noemi Quiroga Quiroga: 👍
+[13/8/25, 08:44:51] Rodrigo Gabriel Jatib: 👍🏻
+[13/8/25, 08:58:36] Juan Ignacio Medina: 👍🏻
+[13/8/25, 10:12:30] Leonardo Ramirez: 👍🏻
+[14/8/25, 08:25:19] Juan Daniel Morales: 3
+[14/8/25, 08:25:26] Luciano Llanos: 3
+[14/8/25, 08:25:26] Franco Giacobbe: 3
+[14/8/25, 08:25:28] Santiago Nicolas Ferreyra Appas: 2
+[14/8/25, 08:25:29] Rodrigo Gonzalez Chavez: 3
+[14/8/25, 08:25:30] Samaniego Esteban Maximiliano: 1
+[14/8/25, 08:25:31] Luz Micaela Ponce: 2
+[14/8/25, 08:25:32] Julieta Camila Diaz: 3
+[14/8/25, 08:25:33] Ana Sofía Guerrero: 3
+[14/8/25, 08:25:33] Lucas Ismael Leon: 3
+[14/8/25, 08:25:35] ‪+54 9 3815 67‑4692‬: 3
+[14/8/25, 08:25:37] Jorge Sebastián Villagra: 3
+[14/8/25, 08:25:38] Hector Gabriel Timo: 3
+[14/8/25, 08:25:38] Lisandro Quiroga Castro: 3
+[14/8/25, 08:25:39] Juan Manuel Agostino Colombres: 3
+[14/8/25, 08:36:49] Franco Eduardo Drachenberg: 3
+[14/8/25, 08:38:11] Rodrigo Gabriel Jatib: 3
+[14/8/25, 08:48:44] Marcela Noemi Quiroga Quiroga: 3
+[14/8/25, 08:49:14] Mauro Carrizo: 3
+[14/8/25, 09:57:19] Alejandro Di Battista: https://chatgpt.com/share/689ddd1e-8270-8003-87d8-3b6d11980f87
+[20/8/25, 10:00:36] Samaniego Esteban Maximiliano: ‎Se eliminó este mensaje.
+[20/8/25, 10:00:46] Lucas Ismael Leon: 👬
+[20/8/25, 10:00:52] Juan Daniel Morales: 👬
+[20/8/25, 10:00:54] Marcela Noemi Quiroga Quiroga: 👍👬
+[20/8/25, 10:00:54] ‪+54 9 3815 67‑4692‬: 👬
+[20/8/25, 10:01:01] Franco Giacobbe: 👬
+[20/8/25, 10:01:02] Juan Ignacio Medina: 👭
+[20/8/25, 10:01:03] Hector Gabriel Timo: 👬
+[20/8/25, 10:01:03] Tomás Jerez: 👬
+[20/8/25, 10:01:06] Ana Sofía Guerrero: 👩🏿‍🤝‍👨🏿
+[20/8/25, 10:01:09] Luciano Llanos: 👨🏼‍🤝‍👨🏾
+[20/8/25, 10:01:09] Santiago Nicolas Ferreyra Appas: 👨🏿‍🤝‍👨🏼
+[20/8/25, 10:01:10] Juan Manuel Agostino Colombres: 👨🏻‍🤝‍👨🏿
+[20/8/25, 10:01:15] Jorge Sebastián Villagra: 👬
+[20/8/25, 10:01:19] Rodrigo Gonzalez Chavez: 👬
+[20/8/25, 10:01:32] Leonardo Ramirez: 👫
+[20/8/25, 10:01:34] Samaniego Esteban Maximiliano: 👨🏿‍🤝‍👨🏿
+[20/8/25, 10:01:38] Ana Sofía Guerrero: ‎Se eliminó este mensaje.
+[20/8/25, 10:01:40] Luz Micaela Ponce: 👫
+[20/8/25, 10:02:09] Lisandro Quiroga Castro: 👬🏿
+[20/8/25, 10:02:16] Rodrigo Gabriel Jatib: 👨🏻‍🤝‍👨🏿
+[20/8/25, 10:02:16] Mauro Carrizo: 👩🏻‍🤝‍👨🏻
+[20/8/25, 10:02:43] Franco Eduardo Drachenberg: 👨🏼‍🤝‍👨🏿
+[20/8/25, 10:04:25] Ignacio Díaz Valdez: 👫
+[21/8/25, 08:19:10] Alejandro Di Battista: Hola... estamos con problemas con las aulas... estoy tratando de conseguir una 🤷🏻
+[21/8/25, 08:19:37] Jorge Sebastián Villagra: profe estamos en la 236
+[21/8/25, 08:19:41] Jorge Sebastián Villagra: ya la arreglaron
+[21/8/25, 08:20:20] Alejandro Di Battista: ya hay luz?
+[21/8/25, 08:20:27] Jorge Sebastián Villagra: sii
+[21/8/25, 08:20:33] Alejandro Di Battista: ok. voy
+[21/8/25, 10:05:13] Franco Eduardo Drachenberg: 🥫
+[21/8/25, 10:05:16] Lucas Ismael Leon: 🏈
+[21/8/25, 10:05:21] Juan Daniel Morales: 🤠
+[21/8/25, 10:05:22] Marcela Noemi Quiroga Quiroga: 📊
+[21/8/25, 10:05:23] ‪+54 9 3815 67‑4692‬: 🧉
+[21/8/25, 10:05:24] Luciano Llanos: ⚽
+[21/8/25, 10:05:25] Luz Micaela Ponce: 👍
+[21/8/25, 10:05:26] Juan Manuel Agostino Colombres: 🔢
+[21/8/25, 10:05:31] Franco Giacobbe: 🥵
+[21/8/25, 10:05:32] Ignacio Díaz Valdez: 👍🏻
+[21/8/25, 10:05:36] Hector Gabriel Timo: ⚽
+[21/8/25, 10:05:49] Rodrigo Gonzalez Chavez: 👍🏻
+[21/8/25, 10:05:52] Mauro Carrizo: 📈
+[21/8/25, 10:05:55] Jorge Sebastián Villagra: 🏉
+[21/8/25, 10:06:08] Juan Ignacio Medina: 👍🏻
+[21/8/25, 10:06:43] Santiago Esteban Ledesma: 👍
+[21/8/25, 10:06:47] Rodrigo Gabriel Jatib: 🤏🏻
+[21/8/25, 10:07:02] Julieta Camila Diaz: 😁
+[21/8/25, 10:07:02] Ana Sofía Guerrero: 🐓
+[21/8/25, 10:08:01] Paulo Marcelo Ledesma: 👍
+[21/8/25, 10:09:14] Lisandro Quiroga Castro: 🐚
+[21/8/25, 10:11:11] Jose Maria Quiroga: 😴
+[21/8/25, 10:11:31] Leonardo Ramirez: 🫂
+[21/8/25, 10:13:23] Samaniego Esteban Maximiliano: 👽
+[22/8/25, 10:07:42] Luciano Llanos: 👍🏻
+[22/8/25, 10:07:43] Rodrigo Gabriel Jatib: 👍🏻
+[22/8/25, 10:07:49] Juan Daniel Morales: 👍🏼
+[22/8/25, 10:07:49] Lucas Ismael Leon: 👍🏻
+[22/8/25, 10:07:51] Samaniego Esteban Maximiliano: 👍🏻
+[22/8/25, 10:07:52] Mauro Carrizo: 👍🏻
+[22/8/25, 10:07:53] Tomás Jerez: 👍🏼
+[22/8/25, 10:07:59] Marcela Noemi Quiroga Quiroga: 👍
+[22/8/25, 10:08:00] Franco Eduardo Drachenberg: 👍
+[22/8/25, 10:08:00] Jose Maria Quiroga: 👍🏽
+[22/8/25, 10:08:00] Santiago Nicolas Ferreyra Appas: 👍
+[22/8/25, 10:08:01] Santiago Esteban Ledesma: 👍
+[22/8/25, 10:08:05] Paulo Marcelo Ledesma: 👍
+[22/8/25, 10:08:05] Juan Manuel Agostino Colombres: 👍🏻
+[22/8/25, 10:08:13] Luz Micaela Ponce: 👍
+[22/8/25, 10:08:26] Lisandro Quiroga Castro: 👍🏻
+[22/8/25, 10:08:29] Rodrigo Gonzalez Chavez: 👍🏻
+[22/8/25, 10:08:37] Hector Gabriel Timo: 👍
+[22/8/25, 10:08:37] ‪+54 9 3815 67‑4692‬: 👍
+[22/8/25, 10:09:22] Franco Giacobbe: 👍🏿
+[22/8/25, 10:10:42] Jorge Sebastián Villagra: 👍🏻
+[24/8/25, 19:26:20] ‪+54 9 3815 39‑0011‬: ‎‪+54 9 3815 39‑0011‬ salió del grupo.
+[25/8/25, 23:36:55] ‪+54 9 3815 67‑4692‬: ‎‎‪+54 9 3815 67‑4692‬ cambió su número de teléfono. ‎Toca para enviar un mensaje al nuevo número.
+[25/8/25, 23:36:55] ‪+54 9 3815 67‑4692‬: ‎‎‪+54 9 3815 67‑4692‬ cambió su número de teléfono. ‎Toca para enviar un mensaje al nuevo número.
+[26/8/25, 10:03:46] Santiago Nicolas Ferreyra Appas: 👍🏿
+[26/8/25, 10:03:50] Santiago Esteban Ledesma: 👍
+[26/8/25, 10:03:51] Juan Manuel Agostino Colombres: 👍🏻
+[26/8/25, 10:03:51] Mauro Carrizo: 👍🏻
+[26/8/25, 10:03:54] Lucas Ismael Leon: 👍🏻
+[26/8/25, 10:03:54] Paulo Marcelo Ledesma: 👍
+[26/8/25, 10:03:54] Juan Ignacio Medina: 👍🏻
+[26/8/25, 10:03:56] Thiago Robles: 👍
+[26/8/25, 10:03:56] Leonardo Ramirez: 👍🏻
+[26/8/25, 10:04:01] Juan Daniel Morales: 👍🏼
+[26/8/25, 10:04:06] Franco Eduardo Drachenberg: 👍
+[26/8/25, 10:04:12] Tomás Jerez: 👍🏼
+[26/8/25, 10:04:13] Luciano Llanos: 👍🏿
+[26/8/25, 10:04:19] Jorge Sebastián Villagra: 👍🏻
+[26/8/25, 10:04:50] Marcela Noemi Quiroga Quiroga: 👍
+[26/8/25, 10:04:52] Hector Gabriel Timo: 👍
+[26/8/25, 10:04:53] Jose Maria Quiroga: 👍
+[26/8/25, 10:16:00] Lisandro Quiroga Castro: 👍🏻
+[26/8/25, 10:18:17] Rodrigo Gonzalez Chavez: 👍🏻
+[26/8/25, 10:20:47] Franco Giacobbe: 👍
+[26/8/25, 10:20:55] Samaniego Esteban Maximiliano: 👍🏻
+[26/8/25, 10:21:25] Luz Micaela Ponce: 👍
+[27/8/25, 09:16:19] Alejandro Di Battista: https://github.com/AlejandroDiBattista/tup25-p4
+[27/8/25, 10:11:52] Juan Daniel Morales: 👍🏼
+[27/8/25, 10:11:54] Ignacio Díaz Valdez: 👍🏻
+[27/8/25, 10:11:55] Rodrigo Gabriel Jatib: 👍🏻
+[27/8/25, 10:11:57] Franco Eduardo Drachenberg: 👍
+[27/8/25, 10:12:03] Christian Gabriel Díaz: 👍🏽
+[27/8/25, 10:12:04] Juan Manuel Agostino Colombres: 👍🏻
+[27/8/25, 10:12:05] Julieta Camila Diaz: 👍🏻
+[27/8/25, 10:12:08] Jorge Sebastián Villagra: 👍🏻
+[27/8/25, 10:12:15] Tomás Jerez: 👍🏼
+[27/8/25, 10:12:22] ~ .: 👍
+[27/8/25, 10:15:04] Rodrigo Gonzalez Chavez: 👍🏻
+[27/8/25, 10:15:06] Marcela Noemi Quiroga Quiroga: 👍
+[27/8/25, 10:15:15] Lisandro Quiroga Castro: 👍🏻
+[27/8/25, 10:15:47] Mauro Carrizo: 👍🏻
+[27/8/25, 10:20:35] Hector Gabriel Timo: 👍🏻
+[27/8/25, 10:21:11] Samaniego Esteban Maximiliano: 👍🏻
+[27/8/25, 10:29:36] Franco Giacobbe: 👍
+[27/8/25, 10:29:45] Lucas Ismael Leon: 👍🏻
+[27/8/25, 10:45:26] Thiago Robles: 👍
+[27/8/25, 10:49:50] Luciano Llanos: 👍🏻
+[28/8/25, 10:16:49] Luciano Llanos: 👍🏻
+[28/8/25, 10:16:59] Santiago Nicolas Ferreyra Appas: 👍
+[28/8/25, 10:17:00] Samaniego Esteban Maximiliano: 👍🏻
+[28/8/25, 10:17:04] Santiago Esteban Ledesma: 👍
+[28/8/25, 10:17:05] Rodrigo Gonzalez Chavez: 👍🏻
+[28/8/25, 10:17:09] Ana Sofía Guerrero: 👍🏻
+[28/8/25, 10:17:31] Jose Maria Quiroga: 👍
+[28/8/25, 10:17:31] Franco Eduardo Drachenberg: 👍
+[28/8/25, 10:18:02] Marcela Noemi Quiroga Quiroga: 👍
+[28/8/25, 10:18:17] Paulo Marcelo Ledesma: 👍
+[28/8/25, 10:19:01] Mauro Carrizo: 👍🏻
+[28/8/25, 10:19:21] Jorge Sebastián Villagra: 👍🏻
+[28/8/25, 10:19:35] Tomás Jerez: 👍🏼
+[28/8/25, 10:20:10] Thiago Robles: 👍
+[28/8/25, 10:20:39] Franco Giacobbe: 👍
+[28/8/25, 10:21:47] Juan Ignacio Medina: 👍🏻
+[28/8/25, 10:21:48] Rodrigo Gabriel Jatib: 👍🏻
+[28/8/25, 10:22:30] Leonardo Ramirez: 👍🏻
+[28/8/25, 10:23:19] ~ .: 👍
+[28/8/25, 10:23:35] Christian Gabriel Díaz: 👍🏽
+[28/8/25, 10:25:16] Juan Daniel Morales: 👍🏼
+[28/8/25, 10:25:41] Luz Micaela Ponce: 👍
+[28/8/25, 10:26:02] Hector Gabriel Timo: 👍
+[28/8/25, 10:37:01] Lucas Ismael Leon: 👍🏻
+[28/8/25, 10:49:48] Ignacio Díaz Valdez: 👍🏻
+[28/8/25, 10:51:51] Juan Manuel Agostino Colombres: 👍🏻
+[29/8/25, 10:04:03] Luciano Llanos: 🐢
+[29/8/25, 10:04:06] Santiago Nicolas Ferreyra Appas: 🐢
+[29/8/25, 10:04:12] ~ .: 🐢
+[29/8/25, 10:04:12] Juan Manuel Agostino Colombres: 🐢
+[29/8/25, 10:04:24] Franco Eduardo Drachenberg: 🐢
+[29/8/25, 10:04:27] Lucas Ismael Leon: 🐢
+[29/8/25, 10:04:29] Santiago Esteban Ledesma: 🐢
+[29/8/25, 10:04:39] Luz Micaela Ponce: 🐢
+[29/8/25, 10:04:42] Jorge Sebastián Villagra: 🐢
+[29/8/25, 10:04:47] Juan Daniel Morales: 🐢
+[29/8/25, 10:04:54] Lisandro Quiroga Castro: 🐢
+[29/8/25, 10:04:57] Leonardo Ramirez: 🐢
+[29/8/25, 10:05:03] Tomás Jerez: 🐢
+[29/8/25, 10:05:14] Paulo Marcelo Ledesma: 🐢
+[29/8/25, 10:05:14] Marcela Noemi Quiroga Quiroga: 🐢
+[29/8/25, 10:06:27] Rodrigo Gonzalez Chavez: 🐢
+[29/8/25, 10:08:29] Julieta Camila Diaz: 🐢
+[29/8/25, 10:08:32] Mauro Carrizo: 🐢
+[29/8/25, 10:12:10] Franco Giacobbe: 🐢
+[29/8/25, 10:12:32] Samaniego Esteban Maximiliano: 🐢
+[29/8/25, 10:12:37] Jose Maria Quiroga: 🐢
+[29/8/25, 10:12:56] Hector Gabriel Timo: 🐢
+[29/8/25, 10:21:55] Ana Sofía Guerrero: 🐢
+[2/9/25, 09:57:54] Luciano Llanos: 🕷️
+[2/9/25, 09:57:58] Tomás Jerez: 🕷️
+[2/9/25, 09:58:10] Christian Gabriel Díaz: 🕷️
+[2/9/25, 09:58:14] Rodrigo Gabriel Jatib: 🕷️
+[2/9/25, 09:58:40] Juan Manuel Agostino Colombres: 🕷️
+[2/9/25, 09:58:52] Jose Maria Quiroga: 🕷️
+[2/9/25, 09:59:00] Thiago Robles: 🕷️
+[2/9/25, 09:59:10] Samaniego Esteban Maximiliano: 🕷️
+[2/9/25, 10:00:10] Rodrigo Gonzalez Chavez: 🕷️
+[2/9/25, 10:00:32] Juan Ignacio Medina: 🕷️
+[2/9/25, 10:01:54] Luz Micaela Ponce: 🕷️
+[2/9/25, 10:02:22] Paulo Marcelo Ledesma: 🕷️
+[2/9/25, 10:02:47] Franco Giacobbe: 🕷️
+[2/9/25, 10:06:16] Marcela Noemi Quiroga Quiroga: 🕷️
+[2/9/25, 10:06:26] Mauro Carrizo: 🕷️
+[2/9/25, 10:06:43] Leonardo Ramirez: 🕷️
+[2/9/25, 10:06:56] Ignacio Díaz Valdez: 🕷️
+[2/9/25, 10:06:57] Franco Eduardo Drachenberg: 🕷
+[2/9/25, 10:07:08] Hector Gabriel Timo: 🕷️
+[2/9/25, 10:19:41] Lucas Ismael Leon: 🕷
+[2/9/25, 10:23:25] Jorge Sebastián Villagra: 🕷️
+[3/9/25, 10:05:53] Samaniego Esteban Maximiliano: 👍🏻
+[3/9/25, 10:05:56] Lisandro Quiroga Castro: 👍🏻
+[3/9/25, 10:05:56] Tomás Jerez: 👍🏼
+[3/9/25, 10:06:05] Juan Ignacio Medina: 👍🏼
+[3/9/25, 10:06:08] Franco Eduardo Drachenberg: 👍
+[3/9/25, 10:06:11] Rodrigo Gabriel Jatib: 👍🏻
+[3/9/25, 10:06:29] Juan Daniel Morales: 👍🏼
+[3/9/25, 10:06:42] Jose Maria Quiroga: 👍
+[3/9/25, 10:07:12] Thiago Robles: 👍
+[3/9/25, 10:07:38] Mauro Carrizo: 👍🏻
+[3/9/25, 10:07:45] Julieta Camila Diaz: 👍🏻
+[3/9/25, 10:08:16] Lucas Ismael Leon: 👍🏻
+[3/9/25, 10:09:22] Jorge Sebastián Villagra: 👍🏻
+[3/9/25, 10:10:20] Christian Gabriel Díaz: 👍🏽
+[3/9/25, 10:16:19] Marcela Noemi Quiroga Quiroga: 👍
+[3/9/25, 10:18:49] Luciano Llanos: 👍🏻
+[3/9/25, 10:44:15] Juan Manuel Agostino Colombres: 👍🏻
+[3/9/25, 10:45:27] Rodrigo Gonzalez Chavez: 👍🏻
+[3/9/25, 10:46:42] Franco Giacobbe: 👍
+[3/9/25, 18:03:09] Luciano Llanos: Hola profe al final será virtual mañana?
+[3/9/25, 20:14:32] Alejandro Di Battista: Hola a todos.
+
+mañana clase virtual!!
+Le paso el link 5 minutos antes  
+
+los espero
+[4/9/25, 08:01:21] Alejandro Di Battista: Hola!!! 
+
+8:10 empezamos en punto empezamos
+
+https://meet.google.com/mas-xuyd-var
+‎[4/9/25, 08:02:15] Thiago Robles: ‎sticker omitido
+[4/9/25, 09:06:26] Alejandro Di Battista: https://meet.google.com/vjf-pqcq-whp
+[4/9/25, 09:52:50] Lucas Ismael Leon: Profe, si puede poner la reunion publica para la proxima 🙏🏻 estuve mucho tiempo intentando entrar pero nunca me aceptó
+[4/9/25, 10:06:36] Juan Manuel Agostino Colombres: 🖥️
+[4/9/25, 10:06:48] Hector Gabriel Timo: 🖥️
+[4/9/25, 10:06:53] Jorge Sebastián Villagra: 🖥️
+[4/9/25, 10:06:53] Ana Sofía Guerrero: 🖥️
+[4/9/25, 10:07:00] Thiago Robles: 💻
+[4/9/25, 10:07:19] Santiago Nicolas Ferreyra Appas: 🖥️
+[4/9/25, 10:07:21] Rodrigo Gabriel Jatib: 🖥️
+[4/9/25, 10:07:26] Samaniego Esteban Maximiliano: 🖥️
+[4/9/25, 10:07:29] Franco Eduardo Drachenberg: 🖥️
+[4/9/25, 10:07:49] Luciano Llanos: 🖥️
+[4/9/25, 10:08:19] Julieta Camila Diaz: 🖥️
+[4/9/25, 10:08:27] Christian Gabriel Díaz: 🖥️
+[4/9/25, 10:09:12] Juan Daniel Morales: 🖥️
+[4/9/25, 10:11:54] Franco Giacobbe: 💻
+[4/9/25, 10:21:30] Marcela Noemi Quiroga Quiroga: 🖥️
+[4/9/25, 10:21:57] Mauro Carrizo: 🖥️
+[4/9/25, 10:24:44] Rodrigo Gonzalez Chavez: 💻
+[4/9/25, 10:31:04] Juan Ignacio Medina: 💻
+[4/9/25, 10:41:21] Ignacio Díaz Valdez: 🖥️
+[5/9/25, 08:04:33] Alejandro Di Battista: Buenos dias a todos…
+
+Le paso el link para la case de hoy
+https://meet.google.com/zuo-nhyp-vtk
+[5/9/25, 08:04:42] Alejandro Di Battista: 8:10 en punto empezamos !!!
+[5/9/25, 09:08:24] Alejandro Di Battista: Nuevo link.
+
+https://meet.google.com/crh-sshj-ddd
+[5/9/25, 10:09:02] Luciano Llanos: Puede ser un monito la asistencia?
+[5/9/25, 10:09:19] Alejandro Di Battista: Jajaja, sin claro…
+[5/9/25, 10:09:34] Rodrigo Gabriel Jatib: 🐒
+[5/9/25, 10:09:38] Santiago Nicolas Ferreyra Appas: 🐒 ‎<Se editó este mensaje.>
+[5/9/25, 10:09:39] Luciano Llanos: 🐒
+[5/9/25, 10:09:54] Julieta Camila Diaz: 🐒
+[5/9/25, 10:09:58] Ignacio Díaz Valdez: 🐒
+[5/9/25, 10:10:03] Luz Micaela Ponce: 🐒
+[5/9/25, 10:10:24] Ana Sofía Guerrero: 🐒
+[5/9/25, 10:10:25] Hector Gabriel Timo: 🐒
+[5/9/25, 10:10:32] Lucas Ismael Leon: 🐒
+[5/9/25, 10:11:23] Thiago Robles: 🦧
+[5/9/25, 10:12:02] Samaniego Esteban Maximiliano: 🦧 ‎<Se editó este mensaje.>
+[5/9/25, 10:14:38] Jorge Sebastián Villagra: 🦧
+[5/9/25, 10:33:45] Juan Daniel Morales: 🦧
+[5/9/25, 10:34:22] Rodrigo Gonzalez Chavez: 🦧
+[5/9/25, 10:39:07] Franco Giacobbe: 🐒
+[5/9/25, 10:43:07] Tomás Jerez: 🦧
+[5/9/25, 10:48:27] Franco Eduardo Drachenberg: 🦧
+[5/9/25, 11:08:06] Juan Manuel Agostino Colombres: 🐒
+[5/9/25, 11:32:38] Mauro Carrizo: 🐒
+[5/9/25, 11:56:24] Marcela Noemi Quiroga Quiroga: 🐒
+[9/9/25, 10:11:26] Luciano Llanos: 🐌
+[9/9/25, 10:11:34] Franco Eduardo Drachenberg: 🐌
+[9/9/25, 10:11:41] Marcela Noemi Quiroga Quiroga: 🐌
+[9/9/25, 10:11:43] Juan Daniel Morales: 🐌
+[9/9/25, 10:11:43] Juan Manuel Agostino Colombres: 🐌
+[9/9/25, 10:11:47] Thiago Robles: 🐌
+[9/9/25, 10:11:47] Christian Gabriel Díaz: 🐌
+[9/9/25, 10:11:51] Mauro Carrizo: 🐌
+[9/9/25, 10:11:52] Luz Micaela Ponce: 🐌
+[9/9/25, 10:12:18] Hector Gabriel Timo: 🐌
+[9/9/25, 10:12:21] Jorge Sebastián Villagra: 🐌
+[9/9/25, 10:12:34] Franco Giacobbe: 🐌
+[9/9/25, 10:13:29] Santiago Nicolas Ferreyra Appas: 🐌
+[9/9/25, 10:13:51] Lisandro Quiroga Castro: 🐌
+[9/9/25, 10:14:12] Leonardo Ramirez: 🐌
+[9/9/25, 10:14:22] Rodrigo Gonzalez Chavez: 🐌
+[9/9/25, 10:14:29] Jose Maria Quiroga: 🐌
+[9/9/25, 10:22:38] Samaniego Esteban Maximiliano: 🐌
+[10/9/25, 10:01:17] Juan Ignacio Medina: 👍🏻
+[10/9/25, 10:02:21] Ana Sofía Guerrero: 👍🏻
+[10/9/25, 10:02:30] Juan Daniel Morales: 👍🏼
+[10/9/25, 10:02:47] Paulo Marcelo Ledesma: 👍
+[10/9/25, 10:03:02] Christian Gabriel Díaz: 👍🏽
+[10/9/25, 10:03:14] Santiago Esteban Ledesma: 👍
+[10/9/25, 10:03:57] Luz Micaela Ponce: 👍🏽
+[10/9/25, 10:04:04] Jorge Sebastián Villagra: 👍🏻
+[10/9/25, 10:04:09] Leonardo Ramirez: 👍🏻
+[10/9/25, 10:04:16] Franco Giacobbe: 👍
+[10/9/25, 10:04:17] Thiago Robles: 👍
+[10/9/25, 10:05:22] Mauro Carrizo: 👍🏻
+[10/9/25, 10:06:56] Rodrigo Gonzalez Chavez: 👍🏻
+[10/9/25, 10:07:23] Samaniego Esteban Maximiliano: 👍🏻
+[10/9/25, 10:09:21] Juan Manuel Agostino Colombres: 👍🏻
+[10/9/25, 10:10:03] Franco Eduardo Drachenberg: 👍
+[10/9/25, 10:13:01] Marcela Noemi Quiroga Quiroga: 👍
+[10/9/25, 10:15:13] Lisandro Quiroga Castro: 👍🏻
+[10/9/25, 10:15:37] Hector Gabriel Timo: 👍🏻
+[10/9/25, 10:17:18] Luciano Llanos: 👍🏻
+[10/9/25, 10:17:28] Lucas Ismael Leon: 👍🏻
+[10/9/25, 10:44:52] Ignacio Díaz Valdez: 👍🏻
+[11/9/25, 10:05:42] Santiago Nicolas Ferreyra Appas: 🐑
+[11/9/25, 10:05:49] Juan Daniel Morales: 🐑
+[11/9/25, 10:05:53] Hector Gabriel Timo: 🐑
+[11/9/25, 10:05:59] Thiago Robles: 🎠
+[11/9/25, 10:05:59] Luciano Llanos: 🐎
+[11/9/25, 10:06:02] Samaniego Esteban Maximiliano: 🐑
+[11/9/25, 10:06:08] Ana Sofía Guerrero: 🐎
+[11/9/25, 10:06:09] Juan Manuel Agostino Colombres: 🐎🏇
+[11/9/25, 10:06:22] Jorge Sebastián Villagra: 🐄 ‎<Se editó este mensaje.>
+[11/9/25, 10:06:52] Franco Eduardo Drachenberg: 🐎
+[11/9/25, 10:07:35] Lisandro Quiroga Castro: 🐑
+[11/9/25, 10:07:40] Rodrigo Gonzalez Chavez: 🐑
+[11/9/25, 10:07:47] Ignacio Díaz Valdez: 🐑
+[11/9/25, 10:07:59] Lucas Ismael Leon: 🐎
+[11/9/25, 10:09:42] Paulo Marcelo Ledesma: 🐎
+[11/9/25, 10:10:19] Jose Maria Quiroga: 🦁
+[11/9/25, 10:10:27] Leonardo Ramirez: 🐎
+[11/9/25, 10:12:07] Santiago Esteban Ledesma: 🐑
+[11/9/25, 10:23:52] Marcela Noemi Quiroga Quiroga: 🐎
+[11/9/25, 10:39:28] Tomás Jerez: 🐎
+[11/9/25, 17:13:50] Lucas Ismael Leon: ‎Se eliminó este mensaje.
+[11/9/25, 22:17:52] Alejandro Di Battista: Hola, chicos 😊
+
+Mañana habrá paro y, lamentablemente, me han pedido que no tengamos clase virtual.
+
+Nos vemos el martes. ¡Que disfruten el día libre y cuídense!
+[11/9/25, 22:30:00] Thiago Robles: Buen finde profe
+‎[11/9/25, 22:30:03] Thiago Robles: ‎sticker omitido
+[11/9/25, 22:43:15] Luciano Llanos: Hola profe OK buen finde
+[11/9/25, 23:00:19] Mauro Carrizo: Muchas gracias e igualmente profe, que tenga un buen Viernes y buen fín de semana ☺️
+[13/9/25, 23:30:37] Alejandro Di Battista: 01000110 01000101 01001100 01001001 01011010 00100000 01000100 01001001 01000001 00100000 01000100 01000101 01001100 00100000 01010000 01010010 01001111 01000111 01010010 01000001 01001101 01000001 01000100 01001111 01010010
+[13/9/25, 23:31:09] Lucas Ismael Leon: Igualmente profesor !
+‎[13/9/25, 23:31:36] Christian Gabriel Díaz: ‎sticker omitido
+[13/9/25, 23:32:30] Thiago Robles: 01001101 01110101 01100011 01101000 01100001 01110011 00100000 01100111 01110010 01100001 01100011 01101001 01100001 01110011 00100000 01110000 01110010 01101111 01100110 01100101
+[13/9/25, 23:32:42] Franco Eduardo Drachenberg: 49 47 55 41 4c 4d 45 4e 54 45 20 50 52 4f 46 45
+[13/9/25, 23:38:27] Ana Sofía Guerrero: 01000111 01010010 01000001 01000011 01001001 01000001 01010011 00100000 01010000 01010010 01001111 01000110 01000101
+‎[13/9/25, 23:38:28] Ana Sofía Guerrero: ‎sticker omitido
+[16/9/25, 10:09:27] Juan Manuel Agostino Colombres: ‎Se eliminó este mensaje.
+[16/9/25, 10:10:04] Luciano Llanos: 🐒
+[16/9/25, 10:10:20] Juan Manuel Agostino Colombres: 🐒
+[16/9/25, 10:10:23] Luz Micaela Ponce: 🐒
+[16/9/25, 10:10:47] Samaniego Esteban Maximiliano: 🐒
+[16/9/25, 10:10:55] Lucas Ismael Leon: 🐒
+[16/9/25, 10:11:20] Thiago Robles: 🦧
+[16/9/25, 10:11:37] Paulo Marcelo Ledesma: 🐒
+[16/9/25, 10:12:45] Franco Eduardo Drachenberg: 🐒
+[16/9/25, 10:13:29] Rodrigo Gabriel Jatib: 🐒
+[16/9/25, 10:13:30] Santiago Esteban Ledesma: 🐒
+[16/9/25, 10:17:16] Lisandro Quiroga Castro: 🐒
+[16/9/25, 10:17:46] Rodrigo Gonzalez Chavez: 🐒
+[16/9/25, 10:17:46] Jorge Sebastián Villagra: 🐒
+[16/9/25, 10:17:53] Julieta Camila Diaz: 🐵
+[16/9/25, 10:19:49] Ignacio Díaz Valdez: 🐒
+[16/9/25, 10:33:41] Franco Giacobbe: 🦧
+[17/9/25, 10:04:47] Juan Manuel Agostino Colombres: 🐛
+[17/9/25, 10:05:00] Jose Maria Quiroga: 🐌
+[17/9/25, 10:05:00] Thiago Robles: 🦥
+[17/9/25, 10:05:03] Franco Eduardo Drachenberg: 🐍
+[17/9/25, 10:05:15] Mauro Carrizo: 🐢
+‎[17/9/25, 10:05:16] Santiago Nicolas Ferreyra Appas: ‎sticker omitido
+[17/9/25, 10:05:23] Christian Gabriel Díaz: 🐢
+‎[17/9/25, 10:05:32] Samaniego Esteban Maximiliano: ‎sticker omitido
+[17/9/25, 10:05:32] Luciano Llanos: 🐛
+[17/9/25, 10:05:38] Luz Micaela Ponce: 🐢
+[17/9/25, 10:06:28] Franco Giacobbe: 🐢
+‎[17/9/25, 10:06:35] Jorge Sebastián Villagra: ‎sticker omitido
+[17/9/25, 10:06:57] Rodrigo Gabriel Jatib: 🐢
+[17/9/25, 10:07:01] Ignacio Díaz Valdez: 🐢
+[17/9/25, 10:07:05] Marcela Noemi Quiroga Quiroga: 🐢
+[17/9/25, 10:09:13] Juan Ignacio Medina: 🐢
+[17/9/25, 10:26:41] Rodrigo Gonzalez Chavez: 🐢
+[18/9/25, 10:06:37] Tomás Jerez: 🐬
+[18/9/25, 10:07:00] Luz Micaela Ponce: 🐬
+[18/9/25, 10:07:04] Juan Daniel Morales: 🐬
+[18/9/25, 10:07:30] Mauro Carrizo: 🦈
+[18/9/25, 10:08:09] Ana Sofía Guerrero: 🐬
+[18/9/25, 10:09:48] Rodrigo Gonzalez Chavez: 🐬
+‎[18/9/25, 10:10:31] Thiago Robles: ‎sticker omitido
+[18/9/25, 10:10:35] Christian Gabriel Díaz: 🐬
+[18/9/25, 10:10:35] Leonardo Ramirez: 🐬
+‎[18/9/25, 10:13:05] Jorge Sebastián Villagra: ‎sticker omitido
+[18/9/25, 10:18:37] Juan Manuel Agostino Colombres: 🐬
+[18/9/25, 10:19:11] Luciano Llanos: 🐬
+[18/9/25, 10:19:12] Lucas Ismael Leon: 🐬
+[18/9/25, 10:19:52] Franco Eduardo Drachenberg: 🐬
+[18/9/25, 10:26:02] Franco Giacobbe: 🐬
+‎[18/9/25, 10:35:57] Samaniego Esteban Maximiliano: ‎sticker omitido
+[18/9/25, 10:44:22] Marcela Noemi Quiroga Quiroga: 🐬
+[18/9/25, 11:05:15] Hector Gabriel Timo: 🐬
+[18/9/25, 13:00:15] Alejandro Di Battista: Hola Chicos
+
+Me dicen sus compañeros de la otra comision que mañana solo tendrían clases conmigo, que profe está de licencia 
+
+La comisión c1 y c3 compartimos horarios los jueves y viernes 
+
+Ellos me preguntan si podria ser clase virtual mañana...
+
+Me podrían confirmar si la profe esta de licencia mañana?
+[18/9/25, 13:00:55] Luciano Llanos: Hola profe dijo que tenía licencia
+[18/9/25, 13:01:00] Luciano Llanos: No se hasta cuando
+‎[18/9/25, 15:44:25] Marcela Noemi Quiroga Quiroga: ‎imagen omitida
+[18/9/25, 15:46:06] Mauro Carrizo: Tendrán que ser clases virtuales entonces 👨🏻‍💻
+[18/9/25, 20:15:56] Lucas Ismael Leon: Hola profe buenas noches, tendremos virtual mañana ? ‎<Se editó este mensaje.>
+[18/9/25, 20:43:03] Thiago Robles: @⁨Alejandro Di Battista⁩ profe mañana no tenemos metodologia ‎<Se editó este mensaje.>
+[18/9/25, 20:43:07] Thiago Robles: Esta de licencia la profe
+[18/9/25, 21:09:07] Alejandro Di Battista: Hola chicos.
+
+Me acaban de confirmar que la profe de metodología sigue de licencia.
+La otra comisión en la que enseño me pidió si la clase podria ser virtual.
+
+Pero para poder darle clase virtual ambas comisiones deben estar de acuerdo…
+
+Que prefieren… clase virtual o presencial…
+[18/9/25, 21:09:47] Lucas Ismael Leon: Virtual profe
+[18/9/25, 21:09:49] Alejandro Di Battista: ‎ENCUESTA:
+Que prefieren...
+‎OPCIÓN: Clase Virtual (19 votos)
+‎OPCIÓN: Clase Presencia… (0 votos)
+[18/9/25, 21:09:52] Samaniego Esteban Maximiliano: Virtual profe
+[18/9/25, 21:16:43] Alejandro Di Battista: Bueno… dado que la votación fue unánime en las dos comisiones… 
+
+> Mañana clase virtual en el horario habitual.
+
+Avisen a sus compañeros.
+[19/9/25, 08:00:10] Alejandro Di Battista: Hola !!!
+
+Le paso el link a la clase….
+https://meet.google.com/nqs-nrxx-yxs
+
+Comenzamos a 8:05 ‎<Se editó este mensaje.>
+[19/9/25, 09:06:59] Jorge Sebastián Villagra: profe se corto
+[19/9/25, 09:07:45] Alejandro Di Battista: https://meet.google.com/zjm-bcvy-sam
+[22/9/25, 11:23:15] Santiago Nicolas Ferreyra Appas: ‎Cambió tu código de seguridad con Santiago Nicolas.
+[23/9/25, 10:03:19] Juan Manuel Agostino Colombres: 👍🏻
+[23/9/25, 10:03:28] Ignacio Díaz Valdez: 👍🏻
+[23/9/25, 10:03:43] Lucas Ismael Leon: 👍🏻
+[23/9/25, 10:04:33] Luz Micaela Ponce: 👍🏻
+[23/9/25, 10:05:15] Ana Sofía Guerrero: 👍🏻
+[23/9/25, 10:07:32] Franco Eduardo Drachenberg: 🪣
+[23/9/25, 10:07:38] Lisandro Quiroga Castro: 👍🏻
+[23/9/25, 10:07:50] Rodrigo Gonzalez Chavez: 👍🏻
+[23/9/25, 10:08:39] Jose Maria Quiroga: 👍
+[23/9/25, 10:08:49] Mauro Carrizo: 👍🏻
+[23/9/25, 10:10:25] Leonardo Ramirez: 👍🏻
+[23/9/25, 10:10:59] Jorge Sebastián Villagra: 👍🏻
+[23/9/25, 10:12:02] Thiago Robles: 🧉
+[23/9/25, 10:21:24] Marcela Noemi Quiroga Quiroga: 👍🏻
+[23/9/25, 10:27:33] Juan Ignacio Medina: 👍🏻
+[23/9/25, 10:38:18] Luciano Llanos: 👍🏻
+[23/9/25, 22:17:37] Alejandro Di Battista: Hola !! Disculpen la hora...
+
+Mañana NO hay clase virtual!!
+
+Nos vemos el Jueves
+[23/9/25, 22:18:54] Alejandro Di Battista: Le paso el video de la clase del Viernes
+
+https://youtu.be/WGZmJ6BZbi4?si=CGpHVwlVl7uodM8m
+[25/9/25, 04:53:30] Alejandro Di Battista: Hola... 
+
+https://examen-p1.netlify.app/
+‎[25/9/25, 04:54:07] Alejandro Di Battista: preguntas.pdf • ‎156 páginas ‎documento omitido
+[25/9/25, 04:55:25] Alejandro Di Battista: Esta es la página para realizar los mini exámenes para conseguir los créditos.
+[25/9/25, 10:05:26] Rodrigo Gabriel Jatib: 😔
+[25/9/25, 10:05:49] Ana Sofía Guerrero: 😔
+[25/9/25, 10:05:51] Tomás Jerez: 😔
+[25/9/25, 10:05:53] Santiago Esteban Ledesma: 😔
+[25/9/25, 10:05:55] Juan Manuel Agostino Colombres: ☹️
+[25/9/25, 10:05:57] Franco Giacobbe: 🥺
+[25/9/25, 10:06:00] Samaniego Esteban Maximiliano: 😟
+[25/9/25, 10:06:01] Jorge Sebastián Villagra: ☹️
+[25/9/25, 10:06:02] Mauro Carrizo: 😁
+[25/9/25, 10:06:12] Luciano Llanos: 😞
+[25/9/25, 10:06:18] Lisandro Quiroga Castro: 😢
+[25/9/25, 10:06:28] Mauro Carrizo: ☹️
+[25/9/25, 10:06:43] Luz Micaela Ponce: 😞
+[25/9/25, 10:06:51] Thiago Robles: 😭
+[25/9/25, 10:06:57] Julieta Camila Diaz: 😞
+[25/9/25, 10:07:05] Paulo Marcelo Ledesma: 😔
+[25/9/25, 10:07:06] Juan Daniel Morales: 😔
+[25/9/25, 10:08:10] Leonardo Ramirez: 😔
+[25/9/25, 10:08:36] Jose Maria Quiroga: 😔
+[25/9/25, 10:08:42] Ignacio Díaz Valdez: 😔
+[25/9/25, 10:09:45] Rodrigo Gonzalez Chavez: 😔
+[25/9/25, 10:12:53] Juan Ignacio Medina: 😔
+[25/9/25, 10:13:31] Franco Eduardo Drachenberg: 😔
+[25/9/25, 10:18:44] Marcela Noemi Quiroga Quiroga: 😔
+[25/9/25, 10:18:53] Lucas Ismael Leon: 😔
+[25/9/25, 10:40:08] Hector Gabriel Timo: 😔
+[26/9/25, 10:06:41] Juan Manuel Agostino Colombres: 👍🏻
+[26/9/25, 10:06:46] Juan Daniel Morales: 👍🏼
+[26/9/25, 10:06:46] Franco Eduardo Drachenberg: 👇
+[26/9/25, 10:06:51] Ignacio Díaz Valdez: 👍🏻
+[26/9/25, 10:07:02] Jose Maria Quiroga: 👍🏼
+[26/9/25, 10:07:43] Jorge Sebastián Villagra: 👍🏻
+[26/9/25, 10:08:05] Hector Gabriel Timo: 👍🏼
+[26/9/25, 10:08:44] Rodrigo Gonzalez Chavez: 👍🏻
+‎[26/9/25, 10:09:28] Thiago Robles: ‎sticker omitido
+[26/9/25, 10:09:48] Juan Ignacio Medina: 👍🏻
+[26/9/25, 10:13:54] Christian Gabriel Díaz: 👍🏽
+[26/9/25, 10:14:36] Samaniego Esteban Maximiliano: 👍🏻
+[26/9/25, 10:14:51] Luz Micaela Ponce: 👍
+[26/9/25, 10:16:47] Julieta Camila Diaz: 👍🏻
+[26/9/25, 10:16:49] Lucas Ismael Leon: 👍🏻
+[26/9/25, 10:17:11] Ana Sofía Guerrero: 👍🏻
+[26/9/25, 10:17:43] Luciano Llanos: 👍🏻
+[26/9/25, 10:18:52] Santiago Nicolas Ferreyra Appas: 👍
+[26/9/25, 10:19:20] Leonardo Ramirez: 👍
+‎[30/9/25, 10:52:48] Franco Eduardo Drachenberg: ‎imagen omitida
+[30/9/25, 10:54:21] Thiago Robles: Eso
+[30/9/25, 10:54:21] Thiago Robles: Le decia yo
+‎[30/9/25, 11:26:59] Franco Eduardo Drachenberg: ‎imagen omitida
+[2/10/25, 08:35:17] Alejandro Di Battista: El parcial es en https://examen-p1.netlify.app/
+[3/10/25, 08:13:21] Alejandro Di Battista: empezamos en 2"
+[3/10/25, 10:04:11] Mauro Carrizo: 🐍
+[3/10/25, 10:04:12] Franco Eduardo Drachenberg: 🐍
+[3/10/25, 10:04:14] Ignacio Díaz Valdez: 🐍
+[3/10/25, 10:04:26] Juan Manuel Agostino Colombres: 🐍
+‎[3/10/25, 10:04:54] Mauro Carrizo: ‎GIF omitido
+[3/10/25, 10:05:17] Marcela Noemi Quiroga Quiroga: 🪱
+‎[3/10/25, 10:06:15] Thiago Robles: ‎sticker omitido
+[3/10/25, 10:09:02] Samaniego Esteban Maximiliano: 🐍
+[3/10/25, 10:09:02] Ana Sofía Guerrero: 🐍
+[3/10/25, 10:09:52] Luz Micaela Ponce: 🐍
+[3/10/25, 10:10:01] Franco Giacobbe: 🐍
+[3/10/25, 10:10:38] Hector Gabriel Timo: 🐍
+[3/10/25, 10:11:25] Rodrigo Gonzalez Chavez: 🐍
+[3/10/25, 10:11:50] Juan Ignacio Medina: 🐍
+[3/10/25, 10:29:32] Jorge Sebastián Villagra: 🐍
+[3/10/25, 21:13:54] ~ .: ‎‎~ . cambió su número de teléfono. ‎Toca para enviar un mensaje al nuevo número.
+[9/10/25, 01:14:22] Cristian Ballespin: ‎Cambió tu código de seguridad con Cristian.
+[14/10/25, 10:00:28] Alejandro Di Battista: https://asistencia-p4.netlify.app/
+[17/10/25, 09:55:27] Lisandro Quiroga Castro: 📊
+[17/10/25, 09:55:37] Juan Ignacio Medina: 📈
+[17/10/25, 09:55:38] Franco Eduardo Drachenberg: 📉
+[17/10/25, 09:55:40] Thiago Robles: 📈
+[17/10/25, 09:55:42] Luciano Llanos: 📉
+[17/10/25, 09:55:42] Juan Manuel Agostino Colombres: 📊
+[17/10/25, 09:55:46] Rodrigo Gonzalez Chavez: 📊
+[17/10/25, 09:56:24] Franco Giacobbe: 📊
+[17/10/25, 09:56:30] Juan Daniel Morales: 📈
+[17/10/25, 09:56:31] Christian Gabriel Díaz: 📊
+[17/10/25, 09:59:05] Julieta Camila Diaz: 📊
+[17/10/25, 09:59:41] Lucas Ismael Leon: 📈
+[17/10/25, 10:01:44] Ana Sofía Guerrero: 📊
+[17/10/25, 10:02:43] Hector Gabriel Timo: 📊
+[20/10/25, 21:04:36] Lucas Ismael Leon: Hola profe, hay clases mañana ?
+[20/10/25, 21:04:42] Lucas Ismael Leon: Porque lei algo de que un paro
+[20/10/25, 22:43:53] Alejandro Di Battista: Hola Chicos…
+
+mañana hay clase virtual. 
+Le paso el link un rato antes.
+[21/10/25, 08:03:21] Alejandro Di Battista: Buenos Dias a todos!!!
+[21/10/25, 08:03:32] Alejandro Di Battista: Este es el enlace para la clase de hoy
+[21/10/25, 08:03:36] Alejandro Di Battista: https://meet.jit.si/programacion3
+[21/10/25, 08:03:48] Alejandro Di Battista: Empezamos a as 8:10
+[21/10/25, 08:12:59] Alejandro Di Battista: Hola!! Esta pudiendose conectar?
+
+Veo que algunos entraron y luego salieron….
+[21/10/25, 10:02:35] Juan Manuel Agostino Colombres: 📋
+[21/10/25, 10:02:46] Thiago Robles: 🆔
+[21/10/25, 10:02:46] Lucas Ismael Leon: 📋
+[21/10/25, 10:03:06] Santiago Nicolas Ferreyra Appas: 🧮
+[21/10/25, 10:03:07] Luz Micaela Ponce: 📋
+[21/10/25, 10:03:11] Juan Ignacio Medina: 📋
+[21/10/25, 10:03:13] Jorge Sebastián Villagra: 📅
+[21/10/25, 10:03:23] Rodrigo Gonzalez Chavez: 📋
+[21/10/25, 10:03:26] Luciano Llanos: 🗃️
+[21/10/25, 10:03:31] Rodrigo Gabriel Jatib: 📋
+[21/10/25, 10:03:35] Mauro Carrizo: 🗃️
+[21/10/25, 10:04:25] Franco Eduardo Drachenberg: 🪪
+[21/10/25, 10:04:37] Marcela Noemi Quiroga Quiroga: 📜
+[21/10/25, 10:04:52] Ana Sofía Guerrero: 📋
+[21/10/25, 10:06:57] Hector Gabriel Timo: 📋
+[21/10/25, 10:07:24] Julieta Camila Diaz: 📋
+[21/10/25, 10:14:06] Ignacio Díaz Valdez: 📋
+[21/10/25, 10:41:06] Juan Daniel Morales: 📋
+[21/10/25, 21:20:52] Alejandro Di Battista: *Hola chicos*! 👋
+
+El profe Politi me pidió si podíamos *unificar mañana las clases de las dos comisiones*. Tanto él como yo tenemos *C1 y C3 los martes*, en horarios alternados, y ambos grupos están viendo los mismos temas.
+
+Así que *mañana martes, la clase de 8 a 10* la van a tener *con él* (también se los va a avisar), y *conmigo* tendremos la clase a partir de *las 10*.
+
+El *enlace será el mismo de hoy*, pero igual se los voy a volver a enviar unos minutos antes de la clase.
+
+¡Los espero! 👋
+[21/10/25, 21:21:43] Thiago Robles: Perfecto profe
+[21/10/25, 21:25:21] Luciano Llanos: ok profe gracias
+[22/10/25, 10:03:04] Alejandro Di Battista: Estamos por empezar la clase
+
+https://meet.jit.si/programacion3
+
+10:10 comenzamos
+[22/10/25, 10:04:06] Alejandro Di Battista: Mientras tanto y para que no se aburran conteste el examen de ayer
+
+https://asistencia-p4.netlify.app/
+[22/10/25, 11:56:35] Rodrigo Gabriel Jatib: Se trancó, profe.
+[22/10/25, 11:57:17] Mauro Carrizo: @⁨Alejandro Di Battista⁩ quedó la pantalla congelada profe.
+[22/10/25, 12:09:04] Alejandro Di Battista: Envien la asistencia please!! 👍🏻
+[22/10/25, 12:09:20] Lucas Ismael Leon: 👍🏻
+[22/10/25, 12:09:20] Rodrigo Gabriel Jatib: 👍🏻
+[22/10/25, 12:09:21] Mauro Carrizo: 👍🏻
+[22/10/25, 12:09:21] Luciano Llanos: 👍🏻
+[22/10/25, 12:09:28] Lisandro Quiroga Castro: 👍🏻
+[22/10/25, 12:09:33] Santiago Nicolas Ferreyra Appas: 👍
+[22/10/25, 12:09:34] Jose Maria Quiroga: 👍🏼
+[22/10/25, 12:09:39] Hector Gabriel Timo: 👍🏻
+[22/10/25, 12:09:50] Julieta Camila Diaz: 👍🏻
+[22/10/25, 12:09:58] Christian Gabriel Díaz: 👍🏻
+[22/10/25, 12:10:00] Leonardo Ramirez: 👍🏻
+[22/10/25, 12:10:16] Luz Micaela Ponce: 👍🏼
+[22/10/25, 12:10:37] Juan Manuel Agostino Colombres: 👍🏻
+[22/10/25, 12:11:28] Rodrigo Gonzalez Chavez: 👍🏻
+[22/10/25, 12:12:00] Juan Daniel Morales: 👍🏻
+[22/10/25, 12:14:58] Thiago Robles: 👍
+[22/10/25, 12:15:15] Paulo Marcelo Ledesma: 👍
+[22/10/25, 12:15:55] Santiago Esteban Ledesma: 👍
+[22/10/25, 12:20:19] Ignacio Díaz Valdez: 👍🏻
+[22/10/25, 12:20:52] Ana Sofía Guerrero: 👍🏼
+[22/10/25, 13:09:48] Marcela Noemi Quiroga Quiroga: 👍
+[22/10/25, 13:41:09] Franco Giacobbe: 👍
+[22/10/25, 15:31:35] Jorge Sebastián Villagra: 👍🏻
+[23/10/25, 10:05:18] Rodrigo Gabriel Jatib: 📉
+[23/10/25, 10:05:21] Jose Maria Quiroga: 🪫
+[23/10/25, 10:05:24] Juan Manuel Agostino Colombres: 🤹🏻‍♂️
+[23/10/25, 10:05:36] Hector Gabriel Timo: 🤯
+[23/10/25, 10:05:44] Luciano Llanos: 🐒
+[23/10/25, 10:05:46] Luz Micaela Ponce: 🤯
+[23/10/25, 10:05:51] Ignacio Díaz Valdez: 🐒
+[23/10/25, 10:06:10] Julieta Camila Diaz: 🐒
+[23/10/25, 10:06:18] Jorge Sebastián Villagra: 😲
+[23/10/25, 10:06:42] Thiago Robles: 💪🦾
+[23/10/25, 10:06:47] Ana Sofía Guerrero: 🎃
+[23/10/25, 10:08:30] Lucas Ismael Leon: 🐒
+[23/10/25, 10:08:33] Lisandro Quiroga Castro: 🥸
+[23/10/25, 10:09:14] Rodrigo Gonzalez Chavez: 😶‍🌫️
+[23/10/25, 10:12:36] Santiago Nicolas Ferreyra Appas: 🥴
+[23/10/25, 10:16:28] Mauro Carrizo: 💀
+[23/10/25, 10:16:43] Marcela Noemi Quiroga Quiroga: 💞🌸💕
+[23/10/25, 10:21:12] Franco Eduardo Drachenberg: 🇮🇹
+[23/10/25, 10:45:38] Franco Giacobbe: 🤯
+[28/10/25, 10:10:24] Juan Manuel Agostino Colombres: 🤖
+[28/10/25, 10:10:40] Jorge Sebastián Villagra: 🤖
+[28/10/25, 10:10:48] Thiago Robles: 🤖
+[28/10/25, 10:11:24] Franco Eduardo Drachenberg: 🤖
+[28/10/25, 10:12:37] ~ Nico Gonzalez: 🤖
+[28/10/25, 10:12:51] Julieta Camila Diaz: 🤖
+[28/10/25, 10:13:19] Juan Daniel Morales: 🤖
+[28/10/25, 10:16:18] Mauro Carrizo: 🤖
+[28/10/25, 10:17:56] Rodrigo Gonzalez Chavez: 🤖
+[28/10/25, 10:27:41] Marcela Noemi Quiroga Quiroga: 🤖
+[28/10/25, 10:36:05] Franco Giacobbe: 🤖
+[28/10/25, 10:43:47] Santiago Nicolas Ferreyra Appas: 🤖
+[28/10/25, 11:38:42] Lucas Ismael Leon: 🤖
+[29/10/25, 10:28:51] Marcela Noemi Quiroga Quiroga: 🐹
+[29/10/25, 10:29:34] Mauro Carrizo: 🐧
+[29/10/25, 10:29:37] Lisandro Quiroga Castro: 🫥
+[29/10/25, 10:29:40] Rodrigo Gonzalez Chavez: 🦉
+[29/10/25, 10:29:45] Juan Ignacio Medina: 🗣️
+[29/10/25, 10:30:03] Juan Daniel Morales: 🥵
+[29/10/25, 10:30:17] Luciano Llanos: 🐛
+[29/10/25, 10:30:23] Jose Maria Quiroga: 🙈
+[29/10/25, 10:30:28] Leonardo Ramirez: 🦧
+[29/10/25, 10:30:28] Juan Manuel Agostino Colombres: ⚓
+[29/10/25, 10:30:29] Thiago Robles: 🧻
+[29/10/25, 10:30:30] Luz Micaela Ponce: 🤌🏻
+[29/10/25, 10:30:36] ~ Nico Gonzalez: 🐳
+[29/10/25, 10:30:39] Ana Sofía Guerrero: 🫂
+[29/10/25, 10:30:46] Ignacio Díaz Valdez: 🐌
+[29/10/25, 10:30:46] Julieta Camila Diaz: 🐒
+[29/10/25, 10:31:04] Christian Gabriel Díaz: 👻
+[29/10/25, 10:32:56] Rodrigo Gabriel Jatib: 🏎️
+[29/10/25, 10:33:54] Franco Eduardo Drachenberg: 🍔
+[29/10/25, 23:41:23] Jorge Sebastián Villagra: 🤓
+[30/10/25, 09:59:04] Franco Eduardo Drachenberg: 11
+[30/10/25, 09:59:06] Luciano Llanos: 12
+[30/10/25, 09:59:08] Thiago Robles: 10
+[30/10/25, 09:59:09] Santiago Esteban Ledesma: 2
+[30/10/25, 09:59:09] Paulo Marcelo Ledesma: 1
+[30/10/25, 09:59:10] Ana Sofía Guerrero: 13
+[30/10/25, 09:59:12] Juan Daniel Morales: 7
+[30/10/25, 09:59:13] Luz Micaela Ponce: 6
+[30/10/25, 09:59:16] Ignacio Díaz Valdez: 8
+[30/10/25, 09:59:22] Jorge Sebastián Villagra: 9
+[30/10/25, 09:59:34] Hector Gabriel Timo: 3
+[30/10/25, 09:59:44] Franco Giacobbe: 4
+[30/10/25, 09:59:54] Lisandro Quiroga Castro: 5
+[30/10/25, 10:01:42] Juan Ignacio Medina: 14
+[30/10/25, 10:06:11] Marcela Noemi Quiroga Quiroga: 15
+[30/10/25, 10:07:39] Mauro Carrizo: π
+[30/10/25, 10:10:31] ~ Nico Gonzalez: 7
+[30/10/25, 15:19:26] Paulo Marcelo Ledesma: ‎Cambió tu código de seguridad con Paulo Marcelo.
+[30/10/25, 20:47:00] Mauro Carrizo: Buenas noches @⁨Alejandro Di Battista⁩, mañana la profesora de Metodología impartirá clases virtuales ¿Podemos tener clases virtuales con usted también, por favor? 🤔
+[30/10/25, 21:21:47] Alejandro Di Battista: *Hola, Viernes Clase Virtual 8hs👋* 
+
+La profe de *Metodología* mañana da clase virtual, sus compañeros me pidieron que *programación 3* también sea virtual.
+
+Así que la clase de mañana viernes los espero en linea a las 8hs.
+
+El enlace es el mismo de la clase anterior: 
+https://meet.jit.si/programacion3
+
+sds
+[30/10/25, 23:59:52] Alejandro Di Battista: 🤦🏻‍♂️Escribir “Programacion 3” en lugar de “Programacion 4”, mala mía…
+
+El enlace es *https://meet.jit.si/programacion4*
+[31/10/25, 08:05:39] Alejandro Di Battista: Hola a todos…
+
+Empezamos la clase 8:10 en punto…
+[3/11/25, 18:19:57] Lucas Ismael Leon: ‎Cambió tu código de seguridad con Lucas Ismael.

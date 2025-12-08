@@ -1,6 +1,0 @@
-FastAPI
-SQLModel
-sqlite
-uvicorn
-pydantic
-httpx

@@ -102,8 +102,8 @@ def main():
 		df_prod = df_ano[df_ano['producto'] == prod]
 
 		total_cantidad = int(df_prod['cantidad'].sum())
-		total_ingreso = float(df_prod['ingreso'].sum())
-		total_costo = float(df_prod['costo'].sum())
+		total_ingreso  = float(df_prod['ingreso'].sum())
+		total_costo    = float(df_prod['costo'].sum())
 		precio_promedio = total_ingreso / total_cantidad if total_cantidad else 0
 		costo_promedio = total_costo / total_cantidad if total_cantidad else 0
 

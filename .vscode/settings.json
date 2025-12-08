@@ -8,11 +8,4 @@
     "workbench.preferredDarkColorTheme": "One Dark Pro Flat",
     "editor.fontSize": 14,
     "dataWrangler.startInEditModeForNotebookEntrypoints": true,
-    "marimo.marimoPath": "uv run marimo",
-    "marimo.debug": true,
-    "marimo.marimoPath": "uv run marimo",
-    "marimo.debug": true,
-    "marimo.sandbox": true,
-    "marimo.autoStart": false,
-    "jupyter.notebook.defaultKernel": "tup25-env"
 }

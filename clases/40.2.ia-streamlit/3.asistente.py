@@ -50,18 +50,18 @@ if prompt := st.chat_input("Escribe tu mensaje..."):
             text={ "format": { "type": "text" }, "verbosity": "medium" },
             tools=[
                 {
-                "type": "web_search",
-                "user_location": {
-                    "type": "approximate"
-                },
-                "search_context_size": "medium"
+                    "type": "web_search",
+                    "user_location": {
+                        "type": "approximate"
+                    },
+                    "search_context_size": "medium"
                 },
                 {
-                "type": "code_interpreter",
-                "container": {
-                    "type": "auto",
-                    "file_ids": []
-                }
+                    "type": "code_interpreter",
+                    "container": {
+                     "type": "auto",
+                        "file_ids": []
+                    }
                 }
             ],            
         )

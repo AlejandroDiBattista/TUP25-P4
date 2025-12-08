@@ -1,0 +1,31 @@
+# Python-generated files
+_pycache_/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.pytest_cache/
+
+# Virtual environments
+.venv/
+.env
+.env.*
+.python-version
+
+# Tooling
+.vscode/
+.eslintcache
+
+# Database files
+app.db
+
+# Node/Next.js artifacts
+frontend/node_modules/
+frontend/.next/
+frontend/.turbo/
+frontend/.swc/
+frontend/out/
+
+# macOS
+.DS_Store

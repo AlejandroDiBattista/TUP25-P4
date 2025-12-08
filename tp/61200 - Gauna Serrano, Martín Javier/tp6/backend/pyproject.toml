@@ -1,7 +1,5 @@
 [project]
 name = "backend"
-[tool.poetry]
-name = "tp6-backend"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -10,9 +8,13 @@ dependencies = [
     "fastapi>=0.115.5",
     "sqlmodel>=0.0.27",
     "uvicorn[standard]>=0.32.1",
+    "python-jose[cryptography]>=3.3.0",
+    "passlib[bcrypt]>=1.7.4",
+    "python-multipart>=0.0.18",
+    "bcrypt>=4.0.1",
+    "email-validator>=2.0.0",
+    "requests>=2.31.0",
 ]
-description = "API TP6 - FastAPI + SQLModel + SQLite"
-authors = ["Tu Nombre <tu@correo>"]
 
 [dependency-groups]
 dev = [
@@ -20,17 +22,3 @@ dev = [
     "pytest>=8.4.2",
     "pytest-asyncio>=1.2.0",
 ]
-[tool.poetry.dependencies]
-python = "^3.12"
-fastapi = "^0.105.0"
-uvicorn = {extras = ["standard"], version = "^0.23.2"}
-sqlalchemy = "^2.0.22"
-passlib = {extras=["bcrypt"], version="^1.7.4"}
-python-jose = "^3.3.0"
-pydantic = "^2.2.1"
-python-multipart = "^0.0.6"
-
-[tool.poetry.dev-dependencies]
-pytest = "^7.4.0"
-httpx = "^0.24.1"
-pytest-asyncio = "^0.21.0"

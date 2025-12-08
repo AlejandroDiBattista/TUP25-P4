@@ -1,0 +1,5 @@
+rich>=13.0.0
+python-box[all]~=7.0
+pillow>=10.0.0
+rembg>=2.0.56
+onnxruntime>=1.20.1

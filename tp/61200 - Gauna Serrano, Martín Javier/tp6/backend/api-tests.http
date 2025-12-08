@@ -76,16 +76,10 @@ Content-Type: {{contentType}}
 # @name login
 POST {{baseUrl}}/iniciar-sesion
 Content-Type: {{contentType}}
-### Registrar usuario
-POST http://localhost:8000/registrar
-Content-Type: application/json
 
 {
   "email": "juan.perez@example.com",
   "password": "miPassword123"
-  "nombre": "Martin",
-  "email": "martin@example.com",
-  "password": "password123"
 }
 
 ### Guardar el token de la respuesta anterior
@@ -94,16 +88,11 @@ Content-Type: application/json
 ### 3.3 - Intentar registrar usuario duplicado (debe devolver 400)
 POST {{baseUrl}}/registrar
 Content-Type: {{contentType}}
-### Iniciar sesión
-POST http://localhost:8000/iniciar-sesion
-Content-Type: application/json
 
 {
   "nombre": "Juan Pérez",
   "email": "juan.perez@example.com",
   "password": "miPassword123"
-  "email": "martin@example.com",
-  "password": "password123"
 }
 
 ### 3.4 - Cerrar sesión (requiere autenticación)
@@ -130,20 +119,14 @@ Authorization: Bearer {{token}}
   "producto_id": 1,
   "cantidad": 2
 }
-### Listar productos (sin auth)
-GET http://localhost:8000/productos
 
 ### 4.3 - Agregar otro producto al carrito
 POST {{baseUrl}}/carrito
 Content-Type: {{contentType}}
-### Agregar al carrito (usa token recibido en login)
-POST http://localhost:8000/carrito
 Authorization: Bearer {{token}}
-Content-Type: application/json
 
 {
   "producto_id": 5,
-  "product_id": 1,
   "cantidad": 1
 }
 
@@ -174,8 +157,6 @@ Authorization: Bearer {{token}}
 ### 5.1 - Agregar productos para la compra
 POST {{baseUrl}}/carrito
 Content-Type: {{contentType}}
-### Ver carrito
-GET http://localhost:8000/carrito
 Authorization: Bearer {{token}}
 
 {
@@ -187,16 +168,11 @@ Authorization: Bearer {{token}}
 # @name checkout
 POST {{baseUrl}}/carrito/finalizar
 Content-Type: {{contentType}}
-### Finalizar compra
-POST http://localhost:8000/carrito/finalizar
 Authorization: Bearer {{token}}
-Content-Type: application/json
 
 {
   "direccion": "Av. Corrientes 1234, CABA",
   "tarjeta": "4111111111111111"
-  "direccion": "Av Falsa 123",
-  "tarjeta": "**** **** **** 4242"
 }
 
 ### Guardar el ID de la compra

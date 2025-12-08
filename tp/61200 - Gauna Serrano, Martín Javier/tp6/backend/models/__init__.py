@@ -1,18 +1,19 @@
 # Este archivo permite que Python trate a 'models' como un paquete
-# package initializer for models
+
 from .productos import (
-    User,
-    Product,
-    Cart,
-    CartItem,
-    Purchase,
-    PurchaseItem,
+    Usuario,
+    Producto,
+    Carrito,
+    ItemCarrito,
+    Compra,
+    ItemCompra
 )
-__all__ = [
-    "User",
-    "Product",
-    "Cart",
-    "CartItem",
-    "Purchase",
-    "PurchaseItem",
+
+_all_ = [
+    "Usuario",
+    "Producto",
+    "Carrito",
+    "ItemCarrito",
+    "Compra",
+    "ItemCompra"
 ]

@@ -1,838 +1,627 @@
-from fastapi import FastAPI
-from fastapi import FastAPI, HTTPException, Depends, status, Request
+from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.security import OAuth2PasswordBearer
-from passlib.context import CryptContext
-from jose import jwt, JWTError
-from typing import Optional, List
+from pydantic import BaseModel, EmailStr, Field, ConfigDict
 from pathlib import Path
 import json
-import os
-from datetime import datetime, timedelta
+from typing import Optional, List
 
-# Ensure backend path is importable when main.py is loaded dynamically (tests may import by filepath)
-BASE_DIR = Path(__file__).parent
-import sys
-if str(BASE_DIR) not in sys.path:
-    sys.path.insert(0, str(BASE_DIR))
+from sqlmodel import Session, select
 
-from db import engine, Base, get_session
-import models_orm as models
-import schemas
-
-from sqlalchemy.orm import Session
-
-app = FastAPI(title="API Comercio - TP6 (SQLAlchemy)")
-
-# Static images
-imagenes_dir = BASE_DIR / "imagenes"
-if imagenes_dir.exists():
-    app.mount("/imagenes", StaticFiles(directory=str(imagenes_dir)), name="imagenes")
-
-# CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:3001", "*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+from models.productos import (
+    Producto,
+    Usuario,
+    Carrito,
+    ItemCarrito,
+    Compra,
+    ItemCompra,
 )
 
-# Auth
-SECRET_KEY = os.environ.get("SECRET_KEY", "cambiar-esto-por-uno-secreto")
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7
-
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/iniciar-sesion")
-
-# In-memory token blacklist
-token_blacklist = set()
-
-
-def create_db_and_tables():
-    Base.metadata.create_all(bind=engine)
-
-
-def hash_password(password: str) -> str:
-    return pwd_context.hash(password)
-
-
-def verify_password(plain: str, hashed: str) -> bool:
-    return pwd_context.verify(plain, hashed)
-
-
-def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
-    to_encode = data.copy()
-    if expires_delta:
-        expire = datetime.utcnow() + expires_delta
-    else:
-        expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_jwt
-
-
-def calculate_tax_and_subtotal(items: List[models.CartItem], session: Session):
-    subtotal = 0.0
-    iva = 0.0
-    for item in items:
-        product = session.get(models.Product, item.product_id)
-        if not product:
-            continue
-        line = product.precio * item.cantidad
-        subtotal += line
-        tax_rate = 0.10 if (product.categoria or "").lower() == "electronica" else 0.21
-        iva += line * tax_rate
-    return round(subtotal, 2), round(iva, 2)
-
-
-async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_session)):
-    if token in token_blacklist:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token invalidado")
-    try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        sub = payload.get("sub")
-        if sub is None:
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token inválido")
-        user_id = int(sub)
-        user = db.get(models.User, user_id)
-        if not user:
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Usuario no encontrado")
-        return user
-    except JWTError:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token inválido")
-
-
-@app.on_event("startup")
-def on_startup():
-    create_db_and_tables()
-    # load initial products if empty
-    with next(get_session()) as db:
-        any_prod = db.query(models.Product).first()
-        if any_prod is None:
-            ruta = BASE_DIR / "productos.json"
-            if ruta.exists():
-                with open(ruta, "r", encoding="utf-8") as f:
-                    data = json.load(f)
-                    for p in data:
-                        prod = models.Product(
-                            nombre=p.get("nombre"),
-                            descripcion=p.get("descripcion"),
-                            precio=float(p.get("precio", 0)),
-                            categoria=p.get("categoria"),
-                            existencia=int(p.get("existencia", 0)),
-                            imagen=p.get("imagen"),
-                        )
-                        db.add(prod)
-                    db.commit()
-
-
-@app.get("/", tags=["salud"])
-def root():
-    return {"mensaje": "API Comercio - FastAPI + SQLAlchemy"}
-
-
-from pydantic import BaseModel
-
-
-class RegisterSchema(BaseModel):
-    nombre: str
-    email: str
-    password: str
-
-
-class LoginSchema(BaseModel):
-    email: str
-    password: str
-
-
-class AddToCartSchema(BaseModel):
-    product_id: int
-    cantidad: int = 1
-
-
-class FinalizeSchema(BaseModel):
-    direccion: str
-    tarjeta: str
-
-
-@app.post("/registrar", status_code=201)
-def registrar(payload: RegisterSchema, db: Session = Depends(get_session)):
-    existing = db.query(models.User).filter(models.User.email == payload.email).first()
-    if existing:
-        raise HTTPException(status_code=400, detail="Email ya registrado")
-    user = models.User(nombre=payload.nombre, email=payload.email, hashed_password=hash_password(payload.password))
-    db.add(user)
-    db.commit()
-    db.refresh(user)
-    return {"id": user.id, "email": user.email, "nombre": user.nombre}
-
-
-@app.post("/iniciar-sesion")
-def iniciar_sesion(payload: LoginSchema, db: Session = Depends(get_session)):
-    user = db.query(models.User).filter(models.User.email == payload.email).first()
-    if not user or not verify_password(payload.password, user.hashed_password):
-        raise HTTPException(status_code=401, detail="Credenciales inválidas")
-    access_token = create_access_token({"sub": str(user.id)})
-    return {"access_token": access_token, "token_type": "bearer"}
-
-
-@app.post("/cerrar-sesion")
-def cerrar_sesion(request: Request, token: str = Depends(oauth2_scheme)):
-    # Simplemente invalidar token en memoria
-    token_blacklist.add(token)
-    return {"ok": True}
-
-
-@app.get("/productos")
-def listar_productos(q: Optional[str] = None, categoria: Optional[str] = None, db: Session = Depends(get_session)):
-    productos = db.query(models.Product).all()
-    results = []
-    for p in productos:
-        if categoria and categoria.lower() not in (p.categoria or "").lower():
-            continue
-        if q and q.lower() not in ((p.nombre or "") + " " + (p.descripcion or "")).lower():
-            continue
-        results.append({
-            "id": p.id,
-            "nombre": p.nombre,
-            "descripcion": p.descripcion,
-            "precio": p.precio,
-            "categoria": p.categoria,
-            "existencia": p.existencia,
-            "imagen": p.imagen,
-            "agotado": p.existencia <= 0,
-        })
-    return results
-
-
-@app.get("/productos/{producto_id}")
-def producto_detalle(producto_id: int, db: Session = Depends(get_session)):
-    p = db.get(models.Product, producto_id)
-    if not p:
-        raise HTTPException(status_code=404, detail="Producto no encontrado")
-    return p
-
-
-@app.post("/carrito", status_code=201)
-def add_to_cart(payload: AddToCartSchema, user: models.User = Depends(get_current_user), db: Session = Depends(get_session)):
-    product = db.get(models.Product, payload.product_id)
-    if not product:
-        raise HTTPException(status_code=404, detail="Producto no encontrado")
-    if product.existencia < payload.cantidad:
-        raise HTTPException(status_code=400, detail="No hay suficiente stock")
-    # obtener o crear carrito abierto
-    cart = db.query(models.Cart).filter(models.Cart.usuario_id == user.id, models.Cart.estado == "open").first()
-    if not cart:
-        cart = models.Cart(usuario_id=user.id)
-        db.add(cart)
-        db.commit()
-        db.refresh(cart)
-    # buscar item
-    item = db.query(models.CartItem).filter(models.CartItem.cart_id == cart.id, models.CartItem.product_id == product.id).first()
-    if item:
-        item.cantidad += payload.cantidad
-    else:
-        item = models.CartItem(cart_id=cart.id, product_id=product.id, cantidad=payload.cantidad)
-        db.add(item)
-    db.commit()
-    return {"ok": True}
-
-
-@app.delete("/carrito/{product_id}")
-def quitar_del_carrito(product_id: int, user: models.User = Depends(get_current_user), db: Session = Depends(get_session)):
-    cart = db.query(models.Cart).filter(models.Cart.usuario_id == user.id, models.Cart.estado == "open").first()
-    if not cart:
-        raise HTTPException(status_code=404, detail="Carrito no encontrado")
-    item = db.query(models.CartItem).filter(models.CartItem.cart_id == cart.id, models.CartItem.product_id == product_id).first()
-    if not item:
-        raise HTTPException(status_code=404, detail="Producto no en el carrito")
-    db.delete(item)
-    db.commit()
-    return {"ok": True}
-
-
-@app.get("/carrito")
-def ver_carrito(user: models.User = Depends(get_current_user), db: Session = Depends(get_session)):
-    cart = db.query(models.Cart).filter(models.Cart.usuario_id == user.id, models.Cart.estado == "open").first()
-    if not cart:
-        return {"items": [], "subtotal": 0.0, "iva": 0.0, "envio": 0.0, "total": 0.0}
-    items = db.query(models.CartItem).filter(models.CartItem.cart_id == cart.id).all()
-    details = []
-    for it in items:
-        prod = db.get(models.Product, it.product_id)
-        details.append({
-            "product_id": it.product_id,
-            "nombre": prod.nombre if prod else "",
-            "precio": prod.precio if prod else 0.0,
-            "cantidad": it.cantidad,
-        })
-    subtotal, iva = calculate_tax_and_subtotal(items, db)
-    envio = 0.0 if subtotal > 1000 else 50.0
-    total = round(subtotal + iva + envio, 2)
-    return {"items": details, "subtotal": subtotal, "iva": iva, "envio": envio, "total": total}
-
-
-@app.post("/carrito/finalizar")
-def finalizar_compra(payload: FinalizeSchema, user: models.User = Depends(get_current_user), db: Session = Depends(get_session)):
-    cart = db.query(models.Cart).filter(models.Cart.usuario_id == user.id, models.Cart.estado == "open").first()
-    if not cart:
-        raise HTTPException(status_code=400, detail="Carrito vacío")
-    items = db.query(models.CartItem).filter(models.CartItem.cart_id == cart.id).all()
-    if not items:
-        raise HTTPException(status_code=400, detail="No hay items en el carrito")
-    # Verificar stock nuevamente
-    for it in items:
-        prod = db.get(models.Product, it.product_id)
-        if not prod or prod.existencia < it.cantidad:
-            raise HTTPException(status_code=400, detail=f"Producto {prod.nombre if prod else it.product_id} sin stock suficiente")
-    subtotal, iva = calculate_tax_and_subtotal(items, db)
-    envio = 0.0 if subtotal > 1000 else 50.0
-    total = round(subtotal + iva + envio, 2)
-    # crear compra
-    purchase = models.Purchase(usuario_id=user.id, direccion=payload.direccion, tarjeta=payload.tarjeta, total=total, envio=envio)
-    db.add(purchase)
-    db.commit()
-    db.refresh(purchase)
-    # crear items y decrementar stock
-    for it in items:
-        prod = db.get(models.Product, it.product_id)
-        pi = models.PurchaseItem(purchase_id=purchase.id, producto_id=prod.id, cantidad=it.cantidad, nombre=prod.nombre, precio_unitario=prod.precio)
-        db.add(pi)
-        prod.existencia -= it.cantidad
-        db.delete(it)
-    cart.estado = "finalized"
-    db.add(cart)
-    db.commit()
-    return {"ok": True, "purchase_id": purchase.id}
-
-
-@app.post("/carrito/cancelar")
-def cancelar_compra(user: models.User = Depends(get_current_user), db: Session = Depends(get_session)):
-    cart = db.query(models.Cart).filter(models.Cart.usuario_id == user.id, models.Cart.estado == "open").first()
-    if not cart:
-        return {"ok": True}
-    items = db.query(models.CartItem).filter(models.CartItem.cart_id == cart.id).all()
-    for it in items:
-        db.delete(it)
-    db.commit()
-    return {"ok": True}
-
-
-@app.get("/compras")
-def listar_compras(user: models.User = Depends(get_current_user), db: Session = Depends(get_session)):
-    purchases = db.query(models.Purchase).filter(models.Purchase.usuario_id == user.id).all()
-    return purchases
-
-
-@app.get("/compras/{purchase_id}")
-def detalle_compra(purchase_id: int, user: models.User = Depends(get_current_user), db: Session = Depends(get_session)):
-    purchase = db.get(models.Purchase, purchase_id)
-    if not purchase or purchase.usuario_id != user.id:
-        raise HTTPException(status_code=404, detail="Compra no encontrada")
-    return purchase
-
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
-from fastapi import FastAPI, HTTPException, Depends, status, Request
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
-from fastapi.security import OAuth2PasswordBearer
-from passlib.context import CryptContext
-from jose import jwt, JWTError
-from typing import Optional, List
-from pathlib import Path
-import json
-import os
-from datetime import datetime, timedelta
-
-# Ensure backend path is importable when main.py is loaded dynamically
-BASE_DIR = Path(__file__).parent
-import sys
-if str(BASE_DIR) not in sys.path:
-    sys.path.insert(0, str(BASE_DIR))
-
-from db import engine, Base, get_session
-import models_orm as models
-import schemas
-
-from sqlalchemy.orm import Session
-
-app = FastAPI(title="API Comercio - TP6 (SQLAlchemy)")
-
-# Static images
-imagenes_dir = BASE_DIR / "imagenes"
-if imagenes_dir.exists():
-    app.mount("/imagenes", StaticFiles(directory=str(imagenes_dir)), name="imagenes")
-
-# CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:3001", "*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-# Auth
-SECRET_KEY = os.environ.get("SECRET_KEY", "cambiar-esto-por-uno-secreto")
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7
-
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/iniciar-sesion")
-
-# In-memory token blacklist
-token_blacklist = set()
-
-
-def create_db_and_tables():
-    Base.metadata.create_all(bind=engine)
-
-
-def hash_password(password: str) -> str:
-    return pwd_context.hash(password)
-
-
-def verify_password(plain: str, hashed: str) -> bool:
-    return pwd_context.verify(plain, hashed)
-
-
-def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
-    to_encode = data.copy()
-    if expires_delta:
-        expire = datetime.utcnow() + expires_delta
-    else:
-        expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_jwt
-
-
-def calculate_tax_and_subtotal(items: List[models.CartItem], session: Session):
-    subtotal = 0.0
-    iva = 0.0
-    for item in items:
-        product = session.get(models.Product, item.product_id)
-        if not product:
-            continue
-        line = product.precio * item.cantidad
-        subtotal += line
-        tax_rate = 0.10 if product.categoria.lower() == "electronica" else 0.21
-        iva += line * tax_rate
-    return round(subtotal, 2), round(iva, 2)
-
-
-async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_session)):
-    if token in token_blacklist:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token invalidado")
-    try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        user_id = int(payload.get("sub"))
-        if user_id is None:
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token inválido")
-        user = db.get(models.User, user_id)
-        if not user:
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Usuario no encontrado")
-        return user
-    except JWTError:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token inválido")
-
-
-@app.on_event("startup")
-def on_startup():
-    create_db_and_tables()
-    # load initial products if empty
-    with next(get_session()) as db:
-        any_prod = db.query(models.Product).first()
-        if any_prod is None:
-            ruta = BASE_DIR / "productos.json"
-            if ruta.exists():
-                with open(ruta, "r", encoding="utf-8") as f:
-                    data = json.load(f)
-                    for p in data:
-                        prod = models.Product(
-                            nombre=p.get("nombre"),
-                            descripcion=p.get("descripcion"),
-                            precio=float(p.get("precio", 0)),
-                            categoria=p.get("categoria"),
-                            existencia=int(p.get("existencia", 0)),
-                            imagen=p.get("imagen"),
-                        )
-                        db.add(prod)
-                    db.commit()
-
-
-@app.get("/", tags=["salud"])
-def root():
-    return {"mensaje": "API Comercio - FastAPI + SQLAlchemy"}
-
-from fastapi import FastAPI, HTTPException, Depends, status, Body, Request
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
-from fastapi.security import OAuth2PasswordBearer
-from pydantic import BaseModel
-from sqlmodel import SQLModel, create_engine, Session, select
-from passlib.context import CryptContext
-from jose import jwt, JWTError
-from typing import Optional, List
-from pathlib import Path
-import json
-import os
-from datetime import datetime, timedelta
+from database import create_db_and_tables, engine
+from auth import obtener_hash_contraseña, verificar_contraseña, crear_access_token
+from dependencies import get_current_user
+
+# =========================================================
+# APP
+# =========================================================
 
 app = FastAPI(title="API Productos")
-from models import (
-    User,
-    Product,
-    Cart,
-    CartItem,
-    Purchase,
-    PurchaseItem,
-)
 
-BASE_DIR = Path(__file__).parent
-DB_PATH = BASE_DIR / "database.db"
-
-DATABASE_URL = f"sqlite:///{DB_PATH}"
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
-
-# Montar directorio de imágenes como archivos estáticos
+# Servir imágenes estáticas
 app.mount("/imagenes", StaticFiles(directory="imagenes"), name="imagenes")
-app = FastAPI(title="API Comercio - TP6")
-
-# Configurar CORS
-# Static images
-imagenes_dir = BASE_DIR / "imagenes"
-if imagenes_dir.exists():
-    app.mount("/imagenes", StaticFiles(directory=str(imagenes_dir)), name="imagenes")
 
 # CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_origins=["http://localhost:3000", "http://localhost:3001", "*"] ,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Cargar productos desde el archivo JSON
-def cargar_productos():
-    ruta_productos = Path(__file__).parent / "productos.json"
-    with open(ruta_productos, "r", encoding="utf-8") as archivo:
-        return json.load(archivo)
-# Auth
-SECRET_KEY = os.environ.get("SECRET_KEY", "cambiar-esto-por-uno-secreto")
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7
+# =========================================================
+# MODELOS REQUEST / RESPONSE
+# =========================================================
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/iniciar-sesion")
-
-# In-memory token blacklist (simple logout). For production persist this.
-token_blacklist = set()
+class RegistroRequest(BaseModel):
+    model_config = ConfigDict(str_strip_whitespace=True)
+    nombre: str = Field(min_length=3)
+    email: EmailStr
+    password: str = Field(min_length=6)
 
 
-def create_db_and_tables():
-    SQLModel.metadata.create_all(engine)
+class LoginRequest(BaseModel):
+    model_config = ConfigDict(str_strip_whitespace=True)
+    email: EmailStr
+    password: str
 
 
-def get_session():
+class TokenResponse(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+    nombre: str
+    email: EmailStr
+
+
+class MensajeResponse(BaseModel):
+    mensaje: str
+
+
+class AgregarCarritoRequest(BaseModel):
+    producto_id: int
+    cantidad: int = Field(gt=0)
+
+
+class ActualizarCarritoRequest(BaseModel):
+    cantidad: int = Field(ge=0)
+
+
+class ItemCarritoResponse(BaseModel):
+    producto_id: int
+    nombre: str
+    categoria: str
+    precio: float
+    cantidad: int
+    subtotal: float
+    stock_disponible: int
+    imagen: str
+
+
+class CarritoResponse(BaseModel):
+    items: List[ItemCarritoResponse]
+    subtotal: float
+    iva: float
+    envio: float
+    total: float
+
+
+class FinalizarCompraRequest(BaseModel):
+    model_config = ConfigDict(str_strip_whitespace=True)
+    direccion: str = Field(min_length=8)
+    tarjeta: str = Field(pattern=r"^\d{16}$")
+
+
+class CompraResponse(BaseModel):
+    compra_id: int
+    subtotal: float
+    iva: float
+    envio: float
+    total: float
+
+
+class ItemCompraResponse(BaseModel):
+    producto_id: int
+    nombre: str
+    precio_unitario: float
+    cantidad: int
+    subtotal: float
+
+
+class CompraResumenResponse(BaseModel):
+    id: int
+    fecha: str
+    total: float
+    envio: float
+    cantidad_items: int
+
+
+class CompraDetalleResponse(BaseModel):
+    id: int
+    fecha: str
+    direccion: str
+    tarjeta: str
+    items: List[ItemCompraResponse]
+    subtotal: float
+    envio: float
+    total: float
+
+
+class UsuarioActualResponse(BaseModel):
+    nombre: str
+    email: EmailStr
+
+
+# =========================================================
+# STARTUP
+# =========================================================
+
+@app.on_event("startup")
+def startup_event() -> None:
+    """Crear tablas y cargar productos iniciales si la tabla está vacía."""
+    create_db_and_tables()
+
     with Session(engine) as session:
-        yield session
+        existe = session.exec(select(Producto)).first()
+        if existe:
+            return
 
+        ruta = Path(__file__).parent / "productos.json"
+        with open(ruta, "r", encoding="utf-8") as f:
+            productos_json = json.load(f)
 
-def hash_password(password: str) -> str:
-    return pwd_context.hash(password)
+        for p in productos_json:
+            prod = Producto(
+                id=p["id"],
+                nombre=p["titulo"],
+                descripcion=p["descripcion"],
+                precio=p["precio"],
+                categoria=p["categoria"],
+                existencia=p["existencia"],
+                imagen=p["imagen"],
+            )
+            session.add(prod)
 
-
-def verify_password(plain: str, hashed: str) -> bool:
-    return pwd_context.verify(plain, hashed)
+        session.commit()
+        print(f"Productos cargados: {len(productos_json)}")
 
 
 @app.get("/")
-def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
-    to_encode = data.copy()
-    if expires_delta:
-        expire = datetime.utcnow() + expires_delta
-    else:
-        expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_jwt
-
-
-def calculate_tax_and_subtotal(items: List[CartItem], session: Session):
-    subtotal = 0.0
-    iva = 0.0
-    for item in items:
-        product = session.get(Product, item.product_id)
-        if not product:
-            continue
-        line = product.precio * item.cantidad
-        subtotal += line
-        tax_rate = 0.10 if product.categoria.lower() == "electronica" else 0.21
-        iva += line * tax_rate
-    return round(subtotal, 2), round(iva, 2)
-
-
-class TokenData(BaseModel):
-    user_id: Optional[int] = None
-
-
-async def get_current_user(token: str = Depends(oauth2_scheme), session: Session = Depends(get_session)):
-    if token in token_blacklist:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token invalidado")
-    try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        user_id: int = int(payload.get("sub"))
-        if user_id is None:
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token inválido")
-        user = session.get(User, user_id)
-        if not user:
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Usuario no encontrado")
-        return user
-    except JWTError:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token inválido")
-
-
-@app.on_event("startup")
-def on_startup():
-    create_db_and_tables()
-    # Cargar productos desde productos.json si la tabla está vacía
-    with Session(engine) as session:
-        count = session.exec(select(Product)).first()
-        if count is None:
-            ruta = BASE_DIR / "productos.json"
-            if ruta.exists():
-                with open(ruta, "r", encoding="utf-8") as f:
-                    data = json.load(f)
-                    for p in data:
-                        prod = Product(
-                            nombre=p.get("nombre"),
-                            descripcion=p.get("descripcion"),
-                            precio=float(p.get("precio", 0)),
-                            categoria=p.get("categoria"),
-                            existencia=int(p.get("existencia", 0)),
-                            imagen=p.get("imagen"),
-                        )
-                        session.add(prod)
-                    session.commit()
-
-
-### Schemas mínimos para requests
-class RegisterSchema(BaseModel):
-    nombre: str
-    email: str
-    password: str
-
-
-class LoginSchema(BaseModel):
-    email: str
-    password: str
-
-
-class AddToCartSchema(BaseModel):
-    product_id: int
-    cantidad: int = 1
-
-
-class FinalizeSchema(BaseModel):
-    direccion: str
-    tarjeta: str
-
-
-@app.get("/", tags=["salud"])
 def root():
-    return {"mensaje": "API de Productos - use /productos para obtener el listado"}
-    return {"mensaje": "API Comercio - FastAPI + SQLModel"}
+    return {"mensaje": "API funcionando. Endpoints principales: /productos, /carrito, /compras"}
 
 
-@app.post("/registrar", status_code=201)
-def registrar(payload: RegisterSchema, session: Session = Depends(get_session)):
-    existing = session.exec(select(User).where(User.email == payload.email)).first()
-    if existing:
-        raise HTTPException(status_code=400, detail="Email ya registrado")
-    user = User(nombre=payload.nombre, email=payload.email, hashed_password=hash_password(payload.password))
-    session.add(user)
-    session.commit()
-    session.refresh(user)
-    return {"id": user.id, "email": user.email, "nombre": user.nombre}
-
-
-@app.post("/iniciar-sesion")
-def iniciar_sesion(payload: LoginSchema, session: Session = Depends(get_session)):
-    user = session.exec(select(User).where(User.email == payload.email)).first()
-    if not user or not verify_password(payload.password, user.hashed_password):
-        raise HTTPException(status_code=401, detail="Credenciales inválidas")
-    access_token = create_access_token({"sub": str(user.id)})
-    return {"access_token": access_token, "token_type": "bearer"}
-
-
-@app.post("/cerrar-sesion")
-def cerrar_sesion(request: Request, token: str = Depends(oauth2_scheme)):
-    # Simplemente invalidar token en memoria
-    token_blacklist.add(token)
-    return {"ok": True}
-
+# =========================================================
+# PRODUCTOS
+# =========================================================
 
 @app.get("/productos")
-def obtener_productos():
-    productos = cargar_productos()
-    return productos
-def listar_productos(q: Optional[str] = None, categoria: Optional[str] = None, session: Session = Depends(get_session)):
-    stmt = select(Product)
-    productos = session.exec(stmt).all()
-    results = []
-    for p in productos:
-        if categoria and categoria.lower() not in (p.categoria or "").lower():
-            continue
-        if q and q.lower() not in (p.nombre + " " + (p.descripcion or "")).lower():
-            continue
-        results.append({
-            "id": p.id,
-            "nombre": p.nombre,
-            "descripcion": p.descripcion,
-            "precio": p.precio,
-            "categoria": p.categoria,
-            "existencia": p.existencia,
-            "imagen": p.imagen,
-            "agotado": p.existencia <= 0,
-        })
-    return results
+def obtener_productos(categoria: Optional[str] = None, buscar: Optional[str] = None):
+    with Session(engine) as session:
+        query = select(Producto)
+
+        if categoria:
+            query = query.where(Producto.categoria.ilike(f"%{categoria}%"))
+
+        if buscar:
+            query = query.where(
+                Producto.nombre.ilike(f"%{buscar}%")
+                | Producto.descripcion.ilike(f"%{buscar}%")
+            )
+
+        return session.exec(query).all()
 
 
 @app.get("/productos/{producto_id}")
-def producto_detalle(producto_id: int, session: Session = Depends(get_session)):
-    p = session.get(Product, producto_id)
-    if not p:
-        raise HTTPException(status_code=404, detail="Producto no encontrado")
-    return p
+def obtener_producto(producto_id: int):
+    with Session(engine) as session:
+        producto = session.get(Producto, producto_id)
+        if not producto:
+            raise HTTPException(404, "Producto no encontrado")
+        return producto
 
 
-@app.post("/carrito", status_code=201)
-def add_to_cart(payload: AddToCartSchema, user: User = Depends(get_current_user), session: Session = Depends(get_session)):
-    product = session.get(Product, payload.product_id)
-    if not product:
-        raise HTTPException(status_code=404, detail="Producto no encontrado")
-    if product.existencia < payload.cantidad:
-        raise HTTPException(status_code=400, detail="No hay suficiente stock")
-    # obtener o crear carrito abierto
-    cart = session.exec(select(Cart).where(Cart.usuario_id == user.id, Cart.estado == "open")).first()
-    if not cart:
-        cart = Cart(usuario_id=user.id)
-        session.add(cart)
+# =========================================================
+# AUTENTICACIÓN
+# =========================================================
+
+@app.post("/registrar", response_model=MensajeResponse, status_code=201)
+def registrar(datos: RegistroRequest):
+    with Session(engine) as session:
+        existe = session.exec(
+            select(Usuario).where(Usuario.email == datos.email)
+        ).first()
+        if existe:
+            raise HTTPException(400, "El email ya existe")
+
+        usuario = Usuario(
+            nombre=datos.nombre,
+            email=datos.email,
+            contraseña=obtener_hash_contraseña(datos.password),
+        )
+        session.add(usuario)
         session.commit()
-        session.refresh(cart)
-    # buscar item
-    item = session.exec(select(CartItem).where(CartItem.cart_id == cart.id, CartItem.product_id == product.id)).first()
-    if item:
-        item.cantidad += payload.cantidad
-    else:
-        item = CartItem(cart_id=cart.id, product_id=product.id, cantidad=payload.cantidad)
-        session.add(item)
-    session.commit()
-    return {"ok": True}
+        session.refresh(usuario)
+
+        # Crear carrito activo inicial
+        carrito = Carrito(usuario_id=usuario.id, estado="activo")
+        session.add(carrito)
+        session.commit()
+
+        return MensajeResponse(mensaje="Usuario registrado correctamente")
 
 
-@app.delete("/carrito/{product_id}")
-def quitar_del_carrito(product_id: int, user: User = Depends(get_current_user), session: Session = Depends(get_session)):
-    cart = session.exec(select(Cart).where(Cart.usuario_id == user.id, Cart.estado == "open")).first()
-    if not cart:
-        raise HTTPException(status_code=404, detail="Carrito no encontrado")
-    item = session.exec(select(CartItem).where(CartItem.cart_id == cart.id, CartItem.product_id == product_id)).first()
-    if not item:
-        raise HTTPException(status_code=404, detail="Producto no en el carrito")
-    session.delete(item)
-    session.commit()
-    return {"ok": True}
+@app.post("/iniciar-sesion", response_model=TokenResponse)
+def login(datos: LoginRequest):
+    with Session(engine) as session:
+        user = session.exec(
+            select(Usuario).where(Usuario.email == datos.email)
+        ).first()
+
+        if not user or not verificar_contraseña(datos.password, user.contraseña):
+            raise HTTPException(401, "Credenciales inválidas")
+
+        token = crear_access_token({"sub": user.email})
+
+        return TokenResponse(
+            access_token=token,
+            nombre=user.nombre,
+            email=user.email,
+        )
 
 
-@app.get("/carrito")
-def ver_carrito(user: User = Depends(get_current_user), session: Session = Depends(get_session)):
-    cart = session.exec(select(Cart).where(Cart.usuario_id == user.id, Cart.estado == "open")).first()
-    if not cart:
-        return {"items": [], "subtotal": 0.0, "iva": 0.0, "envio": 0.0, "total": 0.0}
-    items = session.exec(select(CartItem).where(CartItem.cart_id == cart.id)).all()
-    details = []
-    for it in items:
-        prod = session.get(Product, it.product_id)
-        details.append({
-            "product_id": it.product_id,
-            "nombre": prod.nombre if prod else "",
-            "precio": prod.precio if prod else 0.0,
-            "cantidad": it.cantidad,
-        })
-    subtotal, iva = calculate_tax_and_subtotal(items, session)
-    envio = 0.0 if subtotal > 1000 else 50.0
-    total = round(subtotal + iva + envio, 2)
-    return {"items": details, "subtotal": subtotal, "iva": iva, "envio": envio, "total": total}
+@app.get("/usuarios/me", response_model=UsuarioActualResponse)
+def usuario_actual(usuario=Depends(get_current_user)):
+    return UsuarioActualResponse(nombre=usuario.nombre, email=usuario.email)
 
 
-@app.post("/carrito/finalizar")
-def finalizar_compra(payload: FinalizeSchema, user: User = Depends(get_current_user), session: Session = Depends(get_session)):
-    cart = session.exec(select(Cart).where(Cart.usuario_id == user.id, Cart.estado == "open")).first()
-    if not cart:
-        raise HTTPException(status_code=400, detail="Carrito vacío")
-    items = session.exec(select(CartItem).where(CartItem.cart_id == cart.id)).all()
-    if not items:
-        raise HTTPException(status_code=400, detail="No hay items en el carrito")
-    # Verificar stock nuevamente
-    for it in items:
-        prod = session.get(Product, it.product_id)
-        if not prod or prod.existencia < it.cantidad:
-            raise HTTPException(status_code=400, detail=f"Producto {prod.nombre if prod else it.product_id} sin stock suficiente")
-    subtotal, iva = calculate_tax_and_subtotal(items, session)
-    envio = 0.0 if subtotal > 1000 else 50.0
-    total = round(subtotal + iva + envio, 2)
-    # crear compra
-    purchase = Purchase(usuario_id=user.id, direccion=payload.direccion, tarjeta=payload.tarjeta, total=total, envio=envio)
-    session.add(purchase)
-    session.commit()
-    session.refresh(purchase)
-    # crear items y decrementar stock
-    for it in items:
-        prod = session.get(Product, it.product_id)
-        pi = PurchaseItem(purchase_id=purchase.id, producto_id=prod.id, cantidad=it.cantidad, nombre=prod.nombre, precio_unitario=prod.precio)
-        session.add(pi)
-        prod.existencia -= it.cantidad
-        session.delete(it)
-    cart.estado = "finalized"
-    session.add(cart)
-    session.commit()
-    return {"ok": True, "purchase_id": purchase.id}
+# =========================================================
+# CARRITO
+# =========================================================
+
+@app.get("/carrito", response_model=CarritoResponse)
+def ver_carrito(usuario=Depends(get_current_user)):
+    with Session(engine) as session:
+        carrito = session.exec(
+            select(Carrito).where(
+                Carrito.usuario_id == usuario.id,
+                Carrito.estado == "activo",
+            )
+        ).first()
+
+        if not carrito:
+            return CarritoResponse(items=[], subtotal=0, iva=0, envio=0, total=0)
+
+        items = session.exec(
+            select(ItemCarrito).where(ItemCarrito.carrito_id == carrito.id)
+        ).all()
+
+        items_resp: List[ItemCarritoResponse] = []
+        subtotal = 0.0
+        iva_total = 0.0
+
+        for item in items:
+            producto = session.get(Producto, item.producto_id)
+            if not producto:
+                continue
+
+            st = producto.precio * item.cantidad
+            subtotal += st
+
+            iva = st * (0.10 if producto.categoria == "Electrónica" else 0.21)
+            iva_total += iva
+
+            items_resp.append(
+                ItemCarritoResponse(
+                    producto_id=producto.id,
+                    nombre=producto.nombre,
+                    categoria=producto.categoria,
+                    precio=producto.precio,
+                    cantidad=item.cantidad,
+                    subtotal=st,
+                    stock_disponible=producto.existencia,
+                    imagen=producto.imagen,
+                )
+            )
+
+        envio = 0 if subtotal > 1000 else (50 if subtotal > 0 else 0)
+        total = subtotal + iva_total + envio
+
+        return CarritoResponse(
+            items=items_resp,
+            subtotal=subtotal,
+            iva=iva_total,
+            envio=envio,
+            total=total,
+        )
 
 
-@app.post("/carrito/cancelar")
-def cancelar_compra(user: User = Depends(get_current_user), session: Session = Depends(get_session)):
-    cart = session.exec(select(Cart).where(Cart.usuario_id == user.id, Cart.estado == "open")).first()
-    if not cart:
-        return {"ok": True}
-    items = session.exec(select(CartItem).where(CartItem.cart_id == cart.id)).all()
-    for it in items:
-        session.delete(it)
-    session.commit()
-    return {"ok": True}
+@app.post("/carrito/agregar", response_model=MensajeResponse)
+def agregar_carrito(data: AgregarCarritoRequest, usuario=Depends(get_current_user)):
+    with Session(engine) as session:
+        carrito = session.exec(
+            select(Carrito).where(
+                Carrito.usuario_id == usuario.id,
+                Carrito.estado == "activo",
+            )
+        ).first()
+
+        if not carrito:
+            carrito = Carrito(usuario_id=usuario.id, estado="activo")
+            session.add(carrito)
+            session.commit()
+            session.refresh(carrito)
+
+        producto = session.get(Producto, data.producto_id)
+        if not producto:
+            raise HTTPException(404, "Producto no encontrado")
+
+        if producto.existencia < data.cantidad:
+            raise HTTPException(400, "No hay stock suficiente")
+
+        item = session.exec(
+            select(ItemCarrito).where(
+                ItemCarrito.carrito_id == carrito.id,
+                ItemCarrito.producto_id == data.producto_id,
+            )
+        ).first()
+
+        if item:
+            nueva_cantidad = item.cantidad + data.cantidad
+            if nueva_cantidad > producto.existencia:
+                raise HTTPException(400, "Stock insuficiente")
+            item.cantidad = nueva_cantidad
+        else:
+            item = ItemCarrito(
+                carrito_id=carrito.id,
+                producto_id=data.producto_id,
+                cantidad=data.cantidad,
+            )
+            session.add(item)
+
+        session.commit()
+
+        return MensajeResponse(mensaje="Producto agregado al carrito correctamente")
 
 
-@app.get("/compras")
-def listar_compras(user: User = Depends(get_current_user), session: Session = Depends(get_session)):
-    purchases = session.exec(select(Purchase).where(Purchase.usuario_id == user.id)).all()
-    return purchases
+@app.put("/carrito/{producto_id}", response_model=MensajeResponse)
+def actualizar_cantidad(
+    producto_id: int,
+    data: ActualizarCarritoRequest,
+    usuario=Depends(get_current_user),
+):
+    with Session(engine) as session:
+        carrito = session.exec(
+            select(Carrito).where(
+                Carrito.usuario_id == usuario.id,
+                Carrito.estado == "activo",
+            )
+        ).first()
+
+        if not carrito:
+            raise HTTPException(404, "Carrito no encontrado")
+
+        item = session.exec(
+            select(ItemCarrito).where(
+                ItemCarrito.carrito_id == carrito.id,
+                ItemCarrito.producto_id == producto_id,
+            )
+        ).first()
+
+        if not item:
+            raise HTTPException(404, "Producto no está en el carrito")
+
+        if data.cantidad == 0:
+            session.delete(item)
+            session.commit()
+            return MensajeResponse(mensaje="Producto eliminado")
+
+        producto = session.get(Producto, producto_id)
+        if not producto:
+            raise HTTPException(404, "Producto no encontrado")
+
+        if data.cantidad > producto.existencia:
+            raise HTTPException(400, "Stock insuficiente")
+
+        item.cantidad = data.cantidad
+        session.commit()
+
+        return MensajeResponse(mensaje="Cantidad actualizada correctamente")
 
 
-@app.get("/compras/{purchase_id}")
-def detalle_compra(purchase_id: int, user: User = Depends(get_current_user), session: Session = Depends(get_session)):
-    purchase = session.get(Purchase, purchase_id)
-    if not purchase or purchase.usuario_id != user.id:
-        raise HTTPException(status_code=404, detail="Compra no encontrada")
-    return purchase
+@app.delete("/carrito/quitar/{producto_id}", response_model=MensajeResponse)
+def quitar_item_carrito(producto_id: int, usuario=Depends(get_current_user)):
+    with Session(engine) as session:
+        carrito = session.exec(
+            select(Carrito).where(
+                Carrito.usuario_id == usuario.id,
+                Carrito.estado == "activo",
+            )
+        ).first()
 
+        if not carrito:
+            raise HTTPException(404, "No tienes un carrito activo")
+
+        item = session.exec(
+            select(ItemCarrito).where(
+                ItemCarrito.carrito_id == carrito.id,
+                ItemCarrito.producto_id == producto_id,
+            )
+        ).first()
+
+        if not item:
+            raise HTTPException(404, "El producto no está en el carrito")
+
+        session.delete(item)
+        session.commit()
+
+        return MensajeResponse(mensaje="Producto eliminado del carrito")
+
+
+@app.post("/carrito/cancelar", response_model=MensajeResponse)
+def cancelar_carrito(usuario=Depends(get_current_user)):
+    """Vacía el carrito activo sin borrarlo (para 'Vaciar carrito')."""
+    with Session(engine) as session:
+        carrito = session.exec(
+            select(Carrito).where(
+                Carrito.usuario_id == usuario.id,
+                Carrito.estado == "activo",
+            )
+        ).first()
+
+        if not carrito:
+            return MensajeResponse(mensaje="No hay carrito para cancelar")
+
+        for item in list(carrito.items):
+            session.delete(item)
+
+        session.commit()
+
+        return MensajeResponse(mensaje="Carrito vaciado correctamente")
+
+
+# =========================================================
+# FINALIZAR COMPRA
+# =========================================================
+
+@app.post("/carrito/finalizar", response_model=CompraResponse)
+def finalizar_compra(data: FinalizarCompraRequest, usuario=Depends(get_current_user)):
+    """
+    Finaliza la compra:
+    - Calcula subtotal, IVA y envío
+    - Descuenta stock
+    - Crea la Compra e Items de compra
+    - Vacía el carrito activo
+    """
+    with Session(engine) as session:
+        carrito = session.exec(
+            select(Carrito).where(
+                Carrito.usuario_id == usuario.id,
+                Carrito.estado == "activo",
+            )
+        ).first()
+
+        if not carrito or len(carrito.items) == 0:
+            raise HTTPException(400, "El carrito está vacío")
+
+        subtotal = 0.0
+        iva_total = 0.0
+
+        # Verificamos stock y calculamos montos
+        for item in carrito.items:
+            producto = session.get(Producto, item.producto_id)
+            if not producto:
+                raise HTTPException(400, "Producto del carrito ya no existe")
+
+            if producto.existencia < item.cantidad:
+                raise HTTPException(400, "Stock insuficiente al finalizar compra")
+
+            st = producto.precio * item.cantidad
+            subtotal += st
+            iva_total += st * (0.10 if producto.categoria == "Electrónica" else 0.21)
+
+        envio = 0 if subtotal > 1000 else (50 if subtotal > 0 else 0)
+        total = subtotal + iva_total + envio
+
+        # Crear compra
+        compra = Compra(
+            usuario_id=usuario.id,
+            direccion=data.direccion,
+            tarjeta=data.tarjeta,
+            total=total,
+            envio=envio,
+        )
+        session.add(compra)
+        session.commit()
+        session.refresh(compra)
+
+        # Crear items de compra y descontar stock
+        for item in list(carrito.items):
+            producto = session.get(Producto, item.producto_id)
+            if not producto:
+                continue
+
+            producto.existencia -= item.cantidad
+
+            item_compra = ItemCompra(
+                compra_id=compra.id,
+                producto_id=producto.id,
+                cantidad=item.cantidad,
+                nombre=producto.nombre,
+                precio_unitario=producto.precio,
+            )
+            session.add(item_compra)
+            session.delete(item)
+
+        session.commit()
+
+        return CompraResponse(
+            compra_id=compra.id,
+            subtotal=subtotal,
+            iva=iva_total,
+            envio=envio,
+            total=total,
+        )
+
+
+# =========================================================
+# HISTORIAL DE COMPRAS
+# =========================================================
+
+@app.get("/compras", response_model=List[CompraResumenResponse])
+def compras(usuario=Depends(get_current_user)):
+    with Session(engine) as session:
+        datos = session.exec(
+            select(Compra).where(Compra.usuario_id == usuario.id)
+        ).all()
+
+        respuesta = [
+            CompraResumenResponse(
+                id=c.id,
+                fecha=c.fecha.isoformat(),
+                total=c.total,
+                envio=c.envio,
+                cantidad_items=len(c.items),
+            )
+            for c in datos
+        ]
+
+        respuesta.sort(key=lambda x: x.fecha, reverse=True)
+        return respuesta
+
+
+@app.get("/compras/{compra_id}", response_model=CompraDetalleResponse)
+def detalle(compra_id: int, usuario=Depends(get_current_user)):
+    with Session(engine) as session:
+        compra = session.get(Compra, compra_id)
+
+        if not compra:
+            raise HTTPException(404, "Compra no encontrada")
+
+        if compra.usuario_id != usuario.id:
+            raise HTTPException(403, "No autorizado")
+
+        items_resp: List[ItemCompraResponse] = []
+        subtotal = 0.0
+
+        for item in compra.items:
+            st = item.precio_unitario * item.cantidad
+            subtotal += st
+
+            items_resp.append(
+                ItemCompraResponse(
+                    producto_id=item.producto_id,
+                    nombre=item.nombre,
+                    precio_unitario=item.precio_unitario,
+                    cantidad=item.cantidad,
+                    subtotal=st,
+                )
+            )
+
+        return CompraDetalleResponse(
+            id=compra.id,
+            fecha=compra.fecha.isoformat(),
+            direccion=compra.direccion,
+            tarjeta=compra.tarjeta,
+            items=items_resp,
+            subtotal=subtotal,
+            envio=compra.envio,
+            total=compra.total,
+        )
+
+
+# =========================================================
+# EJECUCIÓN LOCAL
+# =========================================================
 
 if __name__ == "__main__":
     import uvicorn

@@ -103,7 +103,7 @@ cython_debug/
 *.sqlite3
 database.db
 
-/interno
+# /interno
 
 # ============================================
 # NODE.JS FRONTEND (Next.js + React)

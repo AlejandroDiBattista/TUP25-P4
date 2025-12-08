@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo con Códigos de Barra</title>
+  <style>
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 16px;
+    }
+    .card {
+      background: #111827;
+      border: 1px solid #1f2937;
+      padding: 20px;
+      border-radius: 14px;
+      max-width: 520px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+    button {
+      border: none;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-weight: 700;
+      background: #06b6d4;
+      color: #0b1221;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(6, 182, 212, 0.35);
+    }
+    small { color: #cbd5e1; display: block; margin-top: 10px; }
+  </style>
+  <script src="https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://unpkg.com/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+</head>
+<body>
+  <div class="card">
+    <h1>Catálogo de productos</h1>
+    <p>Haz clic para descargar un PDF con cada producto y su código de barras.</p>
+    <button id="btn">Generar PDF</button>
+    <small>Usa Chrome/Firefox. No requiere servidor.</small>
+    <div id="status"></div>
+  </div>
+
+  <script>
+    const formatMoney = (n) => new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS" }).format(n);
+    const PRODUCT_DATA = [
+      {
+        "productId": "22668",
+        "productName": "Gaseosa Dual Pack Coca Cola+Sprite 2.25L",
+        "productTitle": "Gaseosa Dual Pack Coca Cola+Sprite 2.25L",
+        "ean": "7790895006890",
+        "price": 6136.0,
+        "imageUrl": "https://alberdisa.vteximg.com.br/arquivos/ids/181362/Foto-Producto.png.png?v=638818741668970000"
+      },
+      {
+        "productId": "22799",
+        "productName": "Gaseosa Coca Cola Lata 354Cc",
+        "productTitle": "Gaseosa Coca Cola Lata 354Cc",
+        "ean": "7790895000232",
+        "price": 1560.0,
+        "imageUrl": "https://alberdisa.vteximg.com.br/arquivos/ids/181168/Foto-Producto.png.png?v=638785268822970000"
+      },
+      {
+        "productId": "7043",
+        "productName": "Gaseosa Pepsi   x 3000 Cc",
+        "productTitle": "Gaseosa Pepsi   x 3000 Cc",
+        "ean": "7791813555063",
+        "price": 3387.29,
+        "imageUrl": "https://alberdisa.vteximg.com.br/arquivos/ids/174012/Gaseosa-Pepsi---x-3000-Cc.png?v=638146553631130000"
+      },
+      {
+        "productId": "13991",
+        "productName": "Gaseosa Coca Cola Promo 6x5 375 Cc",
+        "productTitle": "Gaseosa Coca Cola Promo 6x5 375 Cc",
+        "ean": "7790895008085",
+        "price": 6749.6,
+        "imageUrl": "https://alberdisa.vteximg.com.br/arquivos/ids/182083/coca-cola_six_pack_375cc.png?v=638937950276700000"
+      },
+      {
+        "productId": "6015",
+        "productName": "Gaseosa Coca Cola Sin Azucar 1500 Cc",
+        "productTitle": "Gaseosa Coca Cola Sin Azucar 1500 Cc",
+        "ean": "7790895067556",
+        "price": 3120.0,
+        "imageUrl": "https://alberdisa.vteximg.com.br/arquivos/ids/177188/45388.png?v=638453604730300000"
+      },
+      {
+        "productId": "1955",
+        "productName": "Gaseosa Coca Cola Sin Azucar 500 Cc",
+        "productTitle": "Gaseosa Coca Cola Sin Azucar 500 Cc",
+        "ean": "7790895067532",
+        "price": 1560.0,
+        "imageUrl": "https://alberdisa.vteximg.com.br/arquivos/ids/181842/COCA_cola_sin_azucar_500ml.png?v=638908657543970000"
+      },
+      {
+        "productId": "644",
+        "productName": "Gaseosa Coca Cola  x 2250 Cc",
+        "productTitle": "Gaseosa Coca Cola  x 2250 Cc",
+        "ean": "7790895000997",
+        "price": 4368.0,
+        "imageUrl": "https://alberdisa.vteximg.com.br/arquivos/ids/177182/4593.png?v=638453544458630000"
+      },
+      {
+        "productId": "21697",
+        "productName": "Gaseosa Fanta Limon Dulce 2500 Cc",
+        "productTitle": "Gaseosa Fanta Limon Dulce 2500 Cc",
+        "ean": "7790895648366",
+        "price": 2600.0,
+        "imageUrl": "https://alberdisa.vteximg.com.br/arquivos/ids/179722/fan.png?v=638618383883700000"
+      },
+      {
+        "productId": "6230",
+        "productName": "Gaseosa Coca Cola Sin Azucar 2250 Cc",
+        "productTitle": "Gaseosa Coca Cola Sin Azucar 2250 Cc",
+        "ean": "7790895067570",
+        "price": 4368.0,
+        "imageUrl": "https://alberdisa.vteximg.com.br/arquivos/ids/177189/51935.png?v=638453615670300000"
+      },
+      {
+        "productId": "3840",
+        "productName": "Gaseosa Pepsi x 354 Cc",
+        "productTitle": "Gaseosa Pepsi x 354 Cc",
+        "ean": "7791813555025",
+        "price": 1245.99,
+        "imageUrl": "https://alberdisa.vteximg.com.br/arquivos/ids/174050/Gaseosa-Pepsi-x-354-Cc.png?v=638146568606170000"
+      }
+    ];
+
+    const btn = document.getElementById("btn");
+    const statusEl = document.getElementById("status");
+
+    function setStatus(msg) {
+      statusEl.textContent = msg;
+    }
+
+    async function fetchImageData(url) {
+      try {
+        const res = await fetch(url);
+        const blob = await res.blob();
+        return await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(blob);
+        });
+      } catch (e) {
+        return null;
+      }
+    }
+
+    async function generate() {
+      if (!window.jspdf || !window.JsBarcode) {
+        setStatus("No se pudo cargar jsPDF o JsBarcode.");
+        return;
+      }
+      setStatus("Generando PDF…");
+      const doc = new window.jspdf.jsPDF();
+      const colX = [14, 110];
+      const rowHeight = 55;
+      const maxPerPage = 10;
+      const startY = 18;
+
+      for (let i = 0; i < PRODUCT_DATA.length; i++) {
+        const p = PRODUCT_DATA[i];
+        const pageIndex = Math.floor(i / maxPerPage);
+        const col = i % 2;
+        const rowInPage = Math.floor((i % maxPerPage) / 2);
+        if (i % maxPerPage === 0 && i !== 0) {
+          doc.addPage();
+        }
+        const x = colX[col];
+        const y = startY + rowHeight * rowInPage;
+
+        const imgData = await fetchImageData(p.imageUrl);
+        if (imgData) {
+          doc.addImage(imgData, "PNG", x, y - 2, 26, 26);
+        } else {
+          doc.setDrawColor(180);
+          doc.rect(x, y - 2, 26, 26);
+          doc.text("IMG", x + 6, y + 12);
+        }
+
+        doc.setFontSize(12);
+        doc.text(p.productTitle || p.productName, x + 30, y + 6);
+        doc.setFontSize(10);
+        doc.text("EAN: " + p.ean, x + 30, y + 12);
+        doc.text("Precio: " + formatMoney(p.price || 0), x + 30, y + 18);
+
+        const canvas = document.createElement("canvas");
+        try {
+          window.JsBarcode(canvas, p.ean, { format: "EAN13", width: 1, height: 16, displayValue: false, margin: 0 });
+        } catch (e) {
+          window.JsBarcode(canvas, p.ean, { format: "CODE128", width: 1, height: 16, displayValue: false, margin: 0 });
+        }
+        const hiRes = document.createElement("canvas");
+        hiRes.width = canvas.width * 2;
+        hiRes.height = canvas.height * 2;
+        const hiCtx = hiRes.getContext("2d");
+        hiCtx.drawImage(canvas, 0, 0, hiRes.width, hiRes.height);
+        const img = hiRes.toDataURL("image/png");
+        const naturalW = hiRes.width || 1;
+        const naturalH = hiRes.height || 1;
+        const targetW = 35;
+        const targetH = targetW * (naturalH / naturalW);
+        doc.addImage(img, "PNG", x + 8, y + 24, targetW, targetH);
+      }
+      doc.save("catalogo-productos.pdf");
+      setStatus("Listo. Revisa tus descargas.");
+    }
+
+    btn.addEventListener("click", generate);
+  </script>
+</body>
+</html>

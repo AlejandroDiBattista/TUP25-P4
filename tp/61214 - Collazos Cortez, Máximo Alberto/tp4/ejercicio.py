@@ -80,9 +80,9 @@ def main():
 
 
 	print('\n=== Resultados ===')
-	print(f"Cuota fija (mensual)    : ${cuota:,.2f}")
-	print(f"Tasa periódica (TNA/12):    {i*100:,.2f}%")
-	print(f"TEA (efectiva anual)   :   {TEA*100:,.2f}%")
+	print(f"Cuota fija (mensual)   : ${cuota:,.2f}")
+	print(f"Tasa periódica (TNA/12):  {i*100:,.2f}%")
+	print(f"TEA (efectiva anual)   :{TEA*100:,.2f}%")
 
 	print('\nCronograma de pagos:')
 

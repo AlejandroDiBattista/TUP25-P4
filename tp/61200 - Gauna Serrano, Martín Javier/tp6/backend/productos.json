@@ -1,4 +1,171 @@
 [
+    {
+        "id": 1,
+        "titulo": "Mochila Fjallraven Foldsack",
+        "precio": 109.95,
+        "descripcion": "Mochila resistente para uso diario con funda acolchada para laptop de 15 pulgadas.",
+        "categoria": "Ropa de hombre",
+        "valoracion": 3.9,
+        "existencia": 5,
+        "imagen": "imagenes/0001.png"
+    },
+    {
+        "id": 2,
+        "titulo": "Camiseta ajustada premium",
+        "precio": 22.3,
+        "descripcion": "Camiseta entallada de mangas raglán, tejido ligero y cómodo para estilo casual.",
+        "categoria": "Ropa de hombre",
+        "valoracion": 4.1,
+        "existencia": 5,
+        "imagen": "imagenes/0002.png"
+    },
+    {
+        "id": 3,
+        "titulo": "Chaqueta algodon hombre",
+        "precio": 55.99,
+        "descripcion": "Chaqueta ligera de algodón para hombre, ideal para actividades al aire libre en clima frío.",
+        "categoria": "Ropa de hombre",
+        "valoracion": 4.7,
+        "existencia": 5,
+        "imagen": "imagenes/0003.png"
+    },
+    {
+        "id": 4,
+        "titulo": "Prenda casual entallada",
+        "precio": 15.99,
+        "descripcion": "Prenda casual entallada para hombre con ajuste cómodo; verifica talles antes de comprar.",
+        "categoria": "Ropa de hombre",
+        "valoracion": 2.1,
+        "existencia": 5,
+        "imagen": "imagenes/0004.png"
+    },
+    {
+        "id": 5,
+        "titulo": "Pulsera Legends Naga",
+        "precio": 695,
+        "descripcion": "Pulsera Legends Naga inspirada en dragón acuático, brinda protección o atrae abundancia.",
+        "categoria": "Joyería",
+        "valoracion": 4.6,
+        "existencia": 5,
+        "imagen": "imagenes/0005.png"
+    },
+    {
+        "id": 6,
+        "titulo": "Anillo oro micropave",
+        "precio": 168,
+        "descripcion": "Anillo de oro micropavé con garantía de satisfacción y cambios dentro de 30 días.",
+        "categoria": "Joyería",
+        "valoracion": 3.9,
+        "existencia": 5,
+        "imagen": "imagenes/0006.png"
+    },
+    {
+        "id": 7,
+        "titulo": "Anillo princesa plata",
+        "precio": 9.99,
+        "descripcion": "Anillo princesa chapado en plata, regalo ideal para compromisos, bodas o aniversarios.",
+        "categoria": "Joyería",
+        "valoracion": 3,
+        "existencia": 5,
+        "imagen": "imagenes/0007.png"
+    },
+    {
+        "id": 8,
+        "titulo": "Aros Pierced Owl rosa",
+        "precio": 10.99,
+        "descripcion": "Aros Pierced Owl túnel doble en acero inoxidable chapado en oro rosa.",
+        "categoria": "Joyería",
+        "valoracion": 1.9,
+        "existencia": 5,
+        "imagen": "imagenes/0008.png"
+    },
+    {
+        "id": 9,
+        "titulo": "Disco duro WD 2TB",
+        "precio": 64,
+        "descripcion": "Disco duro portátil WD 2TB USB 3.0, rápido y compatible con múltiples sistemas.",
+        "categoria": "Electrónica",
+        "valoracion": 3.3,
+        "existencia": 5,
+        "imagen": "imagenes/0009.png"
+    },
+    {
+        "id": 10,
+        "titulo": "SanDisk SSD Plus 1TB",
+        "precio": 109,
+        "descripcion": "SanDisk SSD Plus 1TB mejora arranque y carga de aplicaciones con velocidades de 535 MB/s.",
+        "categoria": "Electrónica",
+        "valoracion": 2.9,
+        "existencia": 5,
+        "imagen": "imagenes/0010.png"
+    },
+    {
+        "id": 11,
+        "titulo": "Silicon Power SSD 256GB",
+        "precio": 109,
+        "descripcion": "Silicon Power SSD 256GB con caché SLC, arranque veloz y soporte TRIM, RAID y ECC.",
+        "categoria": "Electrónica",
+        "valoracion": 4.8,
+        "existencia": 5,
+        "imagen": "imagenes/0011.png"
+    },
+    {
+        "id": 12,
+        "titulo": "WD Disco PS4 4TB",
+        "precio": 114,
+        "descripcion": "Disco externo WD 4TB para PS4, configuración rápida y diseño portátil para llevar juegos.",
+        "categoria": "Electrónica",
+        "valoracion": 4.8,
+        "existencia": 5,
+        "imagen": "imagenes/0012.png"
+    },
+    {
+        "id": 13,
+        "titulo": "Monitor Acer SB220Q",
+        "precio": 599,
+        "descripcion": "Monitor Acer SB220Q Full HD 21.5 pulgadas, panel IPS delgado con FreeSync 75 Hz.",
+        "categoria": "Electrónica",
+        "valoracion": 2.9,
+        "existencia": 5,
+        "imagen": "imagenes/0013.png"
+    },
+    {
+        "id": 14,
+        "titulo": "Monitor curvo Samsung 49",
+        "precio": 999.99,
+        "descripcion": "Monitor curvo Samsung 49 pulgadas QLED, 144 Hz y 1 ms para gaming inmersivo.",
+        "categoria": "Electrónica",
+        "valoracion": 2.2,
+        "existencia": 5,
+        "imagen": "imagenes/0014.png"
+    },
+    {
+        "id": 15,
+        "titulo": "Chaqueta snowboard mujer",
+        "precio": 56.99,
+        "descripcion": "Chaqueta snowboard mujer 3 en 1, forro polar desmontable y múltiples bolsillos seguros.",
+        "categoria": "Ropa de mujer",
+        "valoracion": 2.6,
+        "existencia": 5,
+        "imagen": "imagenes/0015.png"
+    },
+    {
+        "id": 16,
+        "titulo": "Chaqueta biker sintetica",
+        "precio": 29.95,
+        "descripcion": "Chaqueta biker sintética con capucha removible, bolsillos frontales y cuidados fáciles.",
+        "categoria": "Ropa de mujer",
+        "valoracion": 2.9,
+        "existencia": 5,
+        "imagen": "imagenes/0016.png"
+    },
+    {
+        "id": 17,
+        "titulo": "Chaqueta impermeable rayas",
+        "precio": 39.99,
+        "descripcion": "Chaqueta impermeable con capucha y cordón ajustable, ligera y ideal para viajes.",
+        "categoria": "Ropa de mujer",
+        "valoracion": 3.8,
         "existencia": 5,
         "imagen": "imagenes/0017.png"
     },
@@ -32,12 +199,4 @@
         "existencia": 5,
         "imagen": "imagenes/0020.png"
     }
-  {"nombre":"Auriculares X1","descripcion":"In-ear, con micrófono","precio":120.0,"categoria":"Electronica","existencia":10,"imagen":"auriculares-x1.jpg"},
-  {"nombre":"Libro: Aprender C#","descripcion":"Manual práctico","precio":450.0,"categoria":"Libros","existencia":5,"imagen":"libro-csharp.jpg"},
-  {"nombre":"Mouse Gamer","descripcion":"RGB, 8000 DPI","precio":250.0,"categoria":"Electronica","existencia":3,"imagen":"mouse-gamer.jpg"},
-  {"nombre":"Taza Cerámica","descripcion":"350ml, estampada","precio":800.0,"categoria":"Hogar","existencia":12,"imagen":"taza.jpg"},
-  {"nombre":"Camiseta Algodón","descripcion":"Talle M, color negro","precio":650.0,"categoria":"Ropa","existencia":0,"imagen":"camiseta.jpg"},
-  {"nombre":"Cargador USB-C","descripcion":"45W, carga rápida","precio":180.0,"categoria":"Electronica","existencia":7,"imagen":"cargador.jpg"},
-  {"nombre":"Cuaderno A4","descripcion":"100 hojas, rayado","precio":90.0,"categoria":"Papeleria","existencia":20,"imagen":"cuaderno.jpg"},
-  {"nombre":"Silla Oficina","descripcion":"Ergonómica, con ruedas","precio":1500.0,"categoria":"Muebles","existencia":2,"imagen":"silla.jpg"}
 ]

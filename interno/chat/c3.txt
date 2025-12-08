@@ -1,0 +1,982 @@
+[12/8/25, 00:30:34] P4 C3: ‎Los mensajes y las llamadas están cifrados de extremo a extremo. Solo las personas en este chat pueden leerlos, escucharlos o compartirlos.
+[12/8/25, 00:25:25] ‎Tú: ‎‎Tú creó este grupo.
+[12/8/25, 00:27:23] ‎Tú: ‎‎Tú cambió el nombre del grupo a "P4C3".
+[12/8/25, 10:18:24] ‎Tú: ‎‎Tú se unió con el enlace del grupo.
+[12/8/25, 10:18:53] Gerardo Exequiel Donelli: ‎Gerardo Exequiel Donelli se unió con el enlace del grupo.
+[12/8/25, 10:20:05] Nahuel Palma Collado: 61248 Palma Collado, Nahuel
+[12/8/25, 10:19:29] Rodrigo Federico Paz: ‎Rodrigo Federico Paz se unió con el enlace del grupo.
+[12/8/25, 10:19:32] María Antonela Di Clemente: ‎María Antonela Di Clemente se unió con el enlace del grupo.
+[12/8/25, 10:19:36] Leandro Andres Suarez Vece: ‎Leandro Andres Suarez Vece se unió con el enlace del grupo.
+[12/8/25, 10:20:14] Tomás Gustavo Lagoria Garcia: 61473 Lagoria Garcia, Tomás Gustavo ‎<Se editó este mensaje.>
+[12/8/25, 10:20:21] Mariano Moya: 61032 Moya, Mariano
+[12/8/25, 10:20:21] Marcelo Ezequiel Duclós: 61221 Duclós, Marcelo Ezequiel
+[12/8/25, 10:20:21] Rodrigo Exequiel Ponce: 61028 Ponce,Rodrigo
+[12/8/25, 10:20:22] Martín Gonzalo: 61579 Marti, Gonzalo
+[12/8/25, 10:20:24] Santiago Martínez Campero: 61445 - Martinez Campero, Santiago
+[12/8/25, 10:20:25] Alex Daniel Parrado Navarrete: 61572 Parrado Navarrete, Alex Daniel
+[12/8/25, 10:20:29] Lucas David Paz Berrondo: 61312 Paz Berrondo, Lucas David ‎<Se editó este mensaje.>
+[12/8/25, 10:20:31] Martín Javier Gauna Serrano: 61200, Gauna Serrano, Martin Javier
+[12/8/25, 10:20:31] Juan Segundo Frías Silva: 62093 Frias Silva ,Juan Segundo
+[12/8/25, 10:20:42] Matias Gabriel Verón: 62555 Verón, Matias Gabriel
+[12/8/25, 10:20:43] Gerardo Exequiel Donelli: 61271 - Donelli Gerardo Exequiel
+[12/8/25, 10:20:43] Alfredo Nicolás Romano: 61197 Romano, Alfredo Nicolás
+[12/8/25, 10:20:45] Máximo Alberto Collazos Cortez: 61214 Collazos Cortez, Maximo Alberto
+[12/8/25, 10:20:47] José Augusto Orellana: 62263 Orellana, José Augusto
+[12/8/25, 10:20:52] Leandro Andres Suarez Vece: 61096, Suárez Vece, Leandro André
+[12/8/25, 10:20:53] Maximiliano Massey: 61676 Massey Maximiliano
+[12/8/25, 10:20:55] María Antonela Di Clemente: 61141 Di Clemente, Maria Antonella
+[12/8/25, 10:21:04] Oscar Ignacio Sosa: 61136- Oscar Ignacio sosa
+[12/8/25, 10:21:04] Sergio Gonzalo Diaz Londero: 61626, Diaz Londero, Sergio Gonzalo
+[12/8/25, 10:21:22] Rodrigo Federico Paz: 61037 Paz, Rodrigo Federico
+[12/8/25, 10:22:26] Juan José Oriz Caballero: 61113 Oríz Caballero, Juan José
+[12/8/25, 10:23:24] Lourdes Abril Juárez Fernández: 61627-Juarez Fernandez, Lourdes Abril
+[12/8/25, 10:23:59] Maira Acosta: 61667-Acosta, Maira
+[12/8/25, 10:24:00] Tisera Gaston Lopez: ‎Tisera Gaston Lopez se unió con el enlace del grupo.
+[12/8/25, 10:24:01] Abril María Agostina Tello: 61129 Tello, Abril María Agostina
+[12/8/25, 10:24:02] Mariana Aylen Salcedo: 62172 Salcedo, Mariana Aylen ‎<Se editó este mensaje.>
+[12/8/25, 10:24:46] Facundo Nahuel Trujillo: 61793 Trujillo, Facundo Nahuel
+[12/8/25, 10:24:55] Ivam Agustín Herrera Palomino: 62053 Herrera Palomino,Iván Agustín
+[12/8/25, 10:25:03] Hernán Ignacio Lobo Campero: ‎Hernán Ignacio Lobo Campero se unió con el enlace del grupo.
+[12/8/25, 10:25:28] Ahumada Aiquen: 62055 Ahumada, Aiquen Osvaldo
+[12/8/25, 10:29:12] Juan Martín Molina Navarro: ‎Juan Martín Molina Navarro se unió con el enlace del grupo.
+[12/8/25, 10:33:48] Juan Martín Molina Navarro: 61150 Molina Navarro Juan Martin
+[12/8/25, 10:34:40] Antonella Soto: ‎Lourdes Abril Juárez Fernández añadió a Antonella Soto.
+[12/8/25, 10:34:54] Tisera Gaston Lopez: 61818 López Tisera, Gaston
+[12/8/25, 10:41:53] Patricio Agustín Jiménez Paz: ‎Patricio Agustín Jiménez Paz se unió con el enlace del grupo.
+[12/8/25, 10:42:26] Pablo Isaias Amoedo: 61719 Amoedo Pablo Isaias
+[12/8/25, 10:42:55] Patricio Agustín Jiménez Paz: 61450 Jimenez Paz, Patricio Agustín
+[12/8/25, 11:15:51] Hernán Ignacio Lobo Campero: 61794 Lobo Campero, Hernán Ignacio
+[12/8/25, 11:27:55] Gonzalo Alejandro Zamora: ‎Gonzalo Alejandro Zamora se unió con el enlace del grupo.
+[12/8/25, 12:57:18] María Matilde Gallo: ‎María Matilde Gallo añadió a María Matilde Gallo.
+[12/8/25, 12:54:15] María Matilde Gallo: ‎María Matilde Gallo se unió con el enlace del grupo.
+[12/8/25, 12:57:16] María Matilde Gallo: Gallo, María Matilde. 61139
+[12/8/25, 13:07:38] Antonella Soto: 61478 - Soto, Antonella
+[13/8/25, 10:16:01] Martín Gonzalo: 👎🏻
+[13/8/25, 10:16:06] Máximo Alberto Collazos Cortez: 👎🏻
+[13/8/25, 10:16:10] Tisera Gaston Lopez: 👍🏻
+[13/8/25, 10:16:11] Rodrigo Federico Paz: 👎
+[13/8/25, 10:16:11] Mariano Moya: 👎🏻
+[13/8/25, 10:16:12] Juan José Oriz Caballero: 👎
+[13/8/25, 10:16:13] Alfredo Nicolás Romano: 👎🏼
+[13/8/25, 10:16:14] Hernán Ignacio Lobo Campero: 👎🏻
+[13/8/25, 10:16:14] Pablo Isaias Amoedo: 👎🏻
+[13/8/25, 10:16:15] Rodrigo Exequiel Ponce: 👎🏾
+[13/8/25, 10:16:17] Sergio Gonzalo Diaz Londero: 👎
+[13/8/25, 10:16:17] Marcelo Ezequiel Duclós: 👎🏻
+[13/8/25, 10:16:20] Juan Martín Molina Navarro: .
+[13/8/25, 10:16:26] Santiago Martínez Campero: 👎🏻
+[13/8/25, 10:16:28] Gabriel Carabajal: ‎Gabriel Carabajal se unió con el enlace del grupo.
+[13/8/25, 10:16:28] Ahumada Aiquen: 👎
+[13/8/25, 10:16:31] Maximiliano Massey: 👎
+[13/8/25, 10:16:36] Juan Martín Molina Navarro: 👎🏻
+[13/8/25, 10:16:42] María Antonela Di Clemente: 👎🏻
+[13/8/25, 10:16:42] Gabriel Carabajal: 👎🏻
+[13/8/25, 10:16:47] Leandro Andres Suarez Vece: 👎🏻
+[13/8/25, 10:16:47] Lucas David Paz Berrondo: 👎🏻
+[13/8/25, 10:16:50] Nahuel Palma Collado: 👎🏻
+[13/8/25, 10:16:57] Abril María Agostina Tello: 👎🏼
+[13/8/25, 10:16:59] Patricio Agustín Jiménez Paz: 👍🏽
+[13/8/25, 10:17:06] Oscar Ignacio Sosa: 👍
+[13/8/25, 10:17:11] José Augusto Orellana: 👎🏼
+[13/8/25, 10:17:11] Lourdes Abril Juárez Fernández: 👎🏽
+[13/8/25, 10:17:30] Facundo Nahuel Trujillo: 👎🏻
+[13/8/25, 10:17:32] Tomás Gustavo Lagoria Garcia: 👎🏻
+[13/8/25, 10:17:33] Maira Acosta: 👎
+[13/8/25, 10:17:58] Ivam Agustín Herrera Palomino: 👎🏽
+[13/8/25, 10:18:44] Gerardo Exequiel Donelli: 👎🏼
+[14/8/25, 10:26:06] Oscar Ignacio Sosa: 3
+[14/8/25, 10:26:08] Abril María Agostina Tello: 3
+[14/8/25, 10:26:08] Lucas David Paz Berrondo: 3
+[14/8/25, 10:26:09] Ahumada Aiquen: 3
+[14/8/25, 10:26:09] Santiago Martínez Campero: 3
+[14/8/25, 10:26:10] Maximiliano Massey: 3
+[14/8/25, 10:26:11] Patricio Agustín Jiménez Paz: 2
+[14/8/25, 10:26:11] Mariano Moya: 3
+[14/8/25, 10:26:13] Hernán Ignacio Lobo Campero: 2
+[14/8/25, 10:26:13] Nahuel Palma Collado: 3
+[14/8/25, 10:26:14] Tomás Gustavo Lagoria Garcia: 3
+[14/8/25, 10:26:14] José Augusto Orellana: 3
+[14/8/25, 10:26:17] Juan Segundo Frías Silva: 2
+[14/8/25, 10:26:22] Juan Martín Molina Navarro: 3
+[14/8/25, 10:26:27] Martín Javier Gauna Serrano: 2
+[14/8/25, 10:26:32] Tisera Gaston Lopez: 2
+[14/8/25, 10:27:19] Rodrigo Exequiel Ponce: 3
+[14/8/25, 10:27:37] Alfredo Nicolás Romano: 2
+[21/8/25, 12:04:52] Maira Acosta: 🫲
+[21/8/25, 12:04:54] Lourdes Abril Juárez Fernández: 👋🏽
+[21/8/25, 12:05:04] Hernán Ignacio Lobo Campero: 👍🏼
+[21/8/25, 12:05:04] Nahuel Palma Collado: 👍🏻
+[21/8/25, 12:05:08] José Augusto Orellana: 👍🏼
+[21/8/25, 12:05:08] Rodrigo Federico Paz: 👍
+[21/8/25, 12:05:12] Leandro Andres Suarez Vece: 👍🏻
+[21/8/25, 12:05:15] Santiago Martínez Campero: 👊🏽
+[21/8/25, 12:05:17] Alfredo Nicolás Romano: 👍🏼
+[21/8/25, 12:05:18] Lucas David Paz Berrondo: 👍🏻
+[21/8/25, 12:05:19] Tomás Gustavo Lagoria Garcia: 👍🏻
+[21/8/25, 12:05:19] Juan Martín Molina Navarro: 👍
+[21/8/25, 12:05:21] Juan Segundo Frías Silva: 👍
+[21/8/25, 12:05:21] Juan José Oriz Caballero: 👍
+[21/8/25, 12:05:22] Matias Gabriel Verón: 👍🏻
+[21/8/25, 12:05:25] Martín Javier Gauna Serrano: 👍🏽
+[21/8/25, 12:05:25] Oscar Ignacio Sosa: 👍
+[21/8/25, 12:05:25] Tisera Gaston Lopez: 👍🏻
+[21/8/25, 12:05:27] Ivam Agustín Herrera Palomino: 🫲
+[21/8/25, 12:05:27] Mariano Moya: ✌🏻
+[21/8/25, 12:05:28] Abril María Agostina Tello: 🤏🏼
+[21/8/25, 12:05:39] Facundo Nahuel Trujillo: 👋🏻
+[21/8/25, 12:05:41] Antonella Soto: 👋🏻
+[21/8/25, 12:05:53] Ahumada Aiquen: 🤏🏼
+[21/8/25, 12:07:22] Sergio Gonzalo Diaz Londero: 👍🏻
+[21/8/25, 12:09:35] Maximiliano Massey: 👍
+[21/8/25, 12:17:13] Martín Gonzalo: 👍🏻
+[21/8/25, 12:17:42] Pablo Isaias Amoedo: 👍🏻
+[21/8/25, 12:21:21] Patricio Agustín Jiménez Paz: 👍🏽
+[21/8/25, 12:24:12] Máximo Alberto Collazos Cortez: 👍🏻
+[21/8/25, 12:24:19] Juan Ignacio Acevedo Costello: ‎Gabriel Carabajal añadió a Juan Ignacio Acevedo Costello.
+[22/8/25, 12:05:35] Santiago Martínez Campero: ➡️ ‎<Se editó este mensaje.>
+[22/8/25, 12:05:37] Rodrigo Federico Paz: ➡️ ‎<Se editó este mensaje.>
+[22/8/25, 12:05:43] Maximiliano Massey: 👍🏻
+[22/8/25, 12:05:44] Marcelo Ezequiel Duclós: ➡️
+[22/8/25, 12:05:48] Alfredo Nicolás Romano: 🔁
+[22/8/25, 12:05:51] Nahuel Palma Collado: 💘
+[22/8/25, 12:05:54] Tisera Gaston Lopez: =>
+[22/8/25, 12:05:55] María Matilde Gallo: 👍🏻
+[22/8/25, 12:06:00] Patricio Agustín Jiménez Paz: 👀
+[22/8/25, 12:06:04] María Antonela Di Clemente: 👍🏻
+[22/8/25, 12:06:06] Oscar Ignacio Sosa: 👍
+[22/8/25, 12:06:12] José Augusto Orellana: 👍🏼
+[22/8/25, 12:06:22] Martín Gonzalo: 👍🏻
+[22/8/25, 12:14:12] Juan José Oriz Caballero: ➡️
+[22/8/25, 13:15:53] Tomás Gustavo Lagoria Garcia: 👍🏻
+[22/8/25, 13:16:28] Rodrigo Exequiel Ponce: 👍🏽
+[26/8/25, 11:59:12] Maira Acosta: 👍
+[26/8/25, 11:59:14] Tisera Gaston Lopez: 👍🏻
+[26/8/25, 11:59:15] Patricio Agustín Jiménez Paz: 👍🏽
+[26/8/25, 11:59:17] Nahuel Palma Collado: 👍🏻
+[26/8/25, 11:59:19] Mariano Moya: 👍🏻
+[26/8/25, 11:59:20] José Augusto Orellana: 👍🏼
+[26/8/25, 11:59:20] Maximiliano Massey: 👍
+[26/8/25, 11:59:20] Ivam Agustín Herrera Palomino: 👍🏽
+[26/8/25, 11:59:21] María Matilde Gallo: 👍🏻
+[26/8/25, 11:59:21] Lourdes Abril Juárez Fernández: 👍🏽
+[26/8/25, 11:59:22] Juan José Oriz Caballero: 👍
+[26/8/25, 11:59:24] Martín Gonzalo: 👍🏻
+[26/8/25, 11:59:25] María Antonela Di Clemente: 👍🏻
+[26/8/25, 11:59:26] Gabriel Carabajal: 👍🏻
+[26/8/25, 11:59:27] Facundo Nahuel Trujillo: 👍🏻
+[26/8/25, 11:59:28] Juan Ignacio Acevedo Costello: 👍🏻
+[26/8/25, 11:59:28] Juan Martín Molina Navarro: 👍
+[26/8/25, 11:59:28] Máximo Alberto Collazos Cortez: 👍🏻
+[26/8/25, 11:59:30] Tomás Gustavo Lagoria Garcia: 👍🏻
+[26/8/25, 11:59:30] Abril María Agostina Tello: 👍🏼
+[26/8/25, 11:59:30] Marcelo Ezequiel Duclós: 👍🏻
+[26/8/25, 11:59:30] Ahumada Aiquen: 👍🏼
+[26/8/25, 11:59:33] Antonella Soto: 👍🏻
+[26/8/25, 11:59:33] Sergio Gonzalo Diaz Londero: 👍🏻
+[26/8/25, 11:59:34] Santiago Martínez Campero: 👍🏻
+[26/8/25, 11:59:35] Leandro Andres Suarez Vece: 👍🏻
+[26/8/25, 11:59:43] Pablo Isaias Amoedo: 👍🏻
+[26/8/25, 11:59:47] Rodrigo Exequiel Ponce: 👍🏽
+[26/8/25, 12:00:35] Lucas David Paz Berrondo: 👍🏻
+[26/8/25, 12:01:02] Oscar Ignacio Sosa: 👍
+[26/8/25, 12:04:59] Martín Javier Gauna Serrano: 👍🏽
+[26/8/25, 12:05:27] Matias Gabriel Verón: 👍🏻
+[26/8/25, 12:34:19] Gerardo Exequiel Donelli: 👍
+[27/8/25, 00:07:52] ‎Tú: ‎‎Tú cambió el nombre del grupo a "P4 C3".
+[27/8/25, 10:34:41] Mariana Aylen Salcedo: 👍
+[27/8/25, 10:48:04] Alejandro Di Battista: https://github.com/AlejandroDiBattista/tup25-p4
+[27/8/25, 12:07:03] Abril María Agostina Tello: 👍🏼
+[27/8/25, 12:07:09] Tisera Gaston Lopez: 👍🏻
+[27/8/25, 12:07:10] Leandro Andres Suarez Vece: 👍🏻
+[27/8/25, 12:07:11] Juan Segundo Frías Silva: 👍
+[27/8/25, 12:07:12] María Antonela Di Clemente: 👍🏻
+[27/8/25, 12:07:13] José Augusto Orellana: 👍🏼
+[27/8/25, 12:07:15] Santiago Martínez Campero: 👍🏻
+[27/8/25, 12:07:16] Lourdes Abril Juárez Fernández: 👍🏽
+[27/8/25, 12:07:18] Rodrigo Federico Paz: 👍
+[27/8/25, 12:07:19] Juan Ignacio Acevedo Costello: 👍🏻
+[27/8/25, 12:07:20] Alex Daniel Parrado Navarrete: 👍🏻
+[27/8/25, 12:07:21] Juan Martín Molina Navarro: 👍
+[27/8/25, 12:07:21] Lucas David Paz Berrondo: 👍🏻
+[27/8/25, 12:07:23] Maira Acosta: 👍
+[27/8/25, 12:07:25] Mariano Moya: 👍🏻
+[27/8/25, 12:07:26] Patricio Agustín Jiménez Paz: 👍🏽
+‎[27/8/25, 12:07:26] Juan Martín Molina Navarro: ‎sticker omitido
+[27/8/25, 12:07:28] Oscar Ignacio Sosa: 👍
+[27/8/25, 12:07:28] Ahumada Aiquen: 👋🏼
+[27/8/25, 12:07:29] Antonella Soto: 👍🏻
+[27/8/25, 12:07:29] Máximo Alberto Collazos Cortez: 👍🏻
+[27/8/25, 12:07:33] Alfredo Nicolás Romano: 🤏🏼
+[27/8/25, 12:07:35] Tomás Gustavo Lagoria Garcia: 👍🏻
+[27/8/25, 12:07:36] Maximiliano Massey: 👍
+[27/8/25, 12:07:39] Facundo Nahuel Trujillo: 👍🏻
+[27/8/25, 12:07:40] Nahuel Palma Collado: 👍🏻
+[27/8/25, 12:07:48] Ivam Agustín Herrera Palomino: 👍🏽
+[27/8/25, 12:08:12] María Matilde Gallo: 👍🏻
+[27/8/25, 12:10:23] Juan José Oriz Caballero: 👍
+[27/8/25, 12:11:24] Martín Gonzalo: 👍🏻
+[27/8/25, 12:15:16] Sergio Gonzalo Diaz Londero: 👍🏻
+[27/8/25, 12:16:58] Rodrigo Exequiel Ponce: 👍🏽
+[28/8/25, 12:00:53] Máximo Alberto Collazos Cortez: 💲
+[28/8/25, 12:00:59] Santiago Martínez Campero: 💲
+[28/8/25, 12:01:02] Rodrigo Federico Paz: 💲
+[28/8/25, 12:01:04] Mariana Aylen Salcedo: 💲
+[28/8/25, 12:01:04] Marcelo Ezequiel Duclós: 💲
+[28/8/25, 12:01:05] Hernán Ignacio Lobo Campero: 💲
+[28/8/25, 12:01:05] Juan Segundo Frías Silva: 💲
+[28/8/25, 12:01:06] Juan Ignacio Acevedo Costello: 💲
+[28/8/25, 12:01:07] Abril María Agostina Tello: 💲
+[28/8/25, 12:01:08] Nahuel Palma Collado: 💵
+[28/8/25, 12:01:09] Gabriel Carabajal: 💲
+[28/8/25, 12:01:10] Tomás Gustavo Lagoria Garcia: 💲
+[28/8/25, 12:01:13] Alfredo Nicolás Romano: 💲
+[28/8/25, 12:01:13] Maximiliano Massey: 💲
+[28/8/25, 12:01:16] Mia de los Angeles Lobo Barrera: ‎Abril María Agostina Tello añadió a Mia de los Angeles Lobo Barrera.
+[28/8/25, 12:01:26] Oscar Ignacio Sosa: 💲
+[28/8/25, 12:01:29] Alex Daniel Parrado Navarrete: 💲
+[28/8/25, 12:01:31] Mia de los Angeles Lobo Barrera: 💲
+[28/8/25, 12:01:34] Tisera Gaston Lopez: 💲
+[28/8/25, 12:01:37] Ivam Agustín Herrera Palomino: 💲
+[28/8/25, 12:01:39] Facundo Nahuel Trujillo: 💲
+[28/8/25, 12:01:41] Lourdes Abril Juárez Fernández: 💲
+[28/8/25, 12:02:05] José Augusto Orellana: 💲
+[28/8/25, 12:02:12] Maira Acosta: 💲
+[28/8/25, 12:02:13] Lucas David Paz Berrondo: 💲
+[28/8/25, 12:02:54] Patricio Agustín Jiménez Paz: 💲
+[28/8/25, 12:03:11] Martín Javier Gauna Serrano: 💲
+[28/8/25, 12:03:18] Matias Gabriel Verón: 💲
+[28/8/25, 12:03:43] Sergio Gonzalo Diaz Londero: 💲
+[28/8/25, 12:03:54] Juan José Oriz Caballero: 💲
+[28/8/25, 12:05:26] Ahumada Aiquen: 💲
+[28/8/25, 12:05:56] Martín Gonzalo: 💲
+[28/8/25, 12:07:33] Antonella Soto: 💲
+[28/8/25, 12:08:36] Pablo Isaias Amoedo: 💲
+[28/8/25, 12:24:56] Rodrigo Exequiel Ponce: 💲 ‎<Se editó este mensaje.>
+[28/8/25, 12:46:42] Juan Martín Molina Navarro: 💲
+[29/8/25, 11:58:33] María Matilde Gallo: 👍🏻
+[29/8/25, 11:58:49] Abril María Agostina Tello: 👍🏼
+[29/8/25, 11:58:56] Tomás Gustavo Lagoria Garcia: 👍🏻
+[29/8/25, 11:58:57] Santiago Martínez Campero: 👍🏻
+[29/8/25, 11:58:57] María Antonela Di Clemente: 👍🏻
+[29/8/25, 11:58:58] Máximo Alberto Collazos Cortez: 👍🏻
+[29/8/25, 11:58:59] Gerardo Exequiel Donelli: 👍
+[29/8/25, 11:59:02] Leandro Andres Suarez Vece: 👍🏻
+[29/8/25, 11:59:08] Ahumada Aiquen: 👍🏼
+[29/8/25, 11:59:33] Juan José Oriz Caballero: 👍
+[29/8/25, 12:00:42] Maximiliano Massey: 👍🏻
+[29/8/25, 12:01:06] Juan Ignacio Acevedo Costello: 👍🏻
+[29/8/25, 12:01:10] Lourdes Abril Juárez Fernández: 👍🏽
+[29/8/25, 12:02:49] Nahuel Palma Collado: 👍🏻
+[29/8/25, 12:04:19] Gabriel Carabajal: 👍🏻
+[29/8/25, 12:06:18] Martín Gonzalo: 👍🏻
+[29/8/25, 12:07:15] Juan Martín Molina Navarro: 👍🏻
+[29/8/25, 12:17:17] Oscar Ignacio Sosa: 👍
+[29/8/25, 12:20:27] Maira Acosta: 👍
+[29/8/25, 12:21:07] Antonella Soto: 👍🏻
+[29/8/25, 12:29:45] Tisera Gaston Lopez: 👍🏻
+[29/8/25, 12:30:11] Patricio Agustín Jiménez Paz: 👍🏽
+[2/9/25, 10:21:59] Alan Godoy: ‎Gerardo Exequiel Donelli añadió a Alan Godoy.
+‎[3/9/25, 12:02:55] Máximo Alberto Collazos Cortez: ‎sticker omitido
+[3/9/25, 12:02:58] Nahuel Palma Collado: ☠️
+[3/9/25, 12:03:11] Maximiliano Massey: 🤯
+‎[3/9/25, 12:03:15] Juan José Oriz Caballero: ‎sticker omitido
+‎[3/9/25, 12:03:16] Lourdes Abril Juárez Fernández: ‎sticker omitido
+[3/9/25, 12:03:18] Abril María Agostina Tello: 👍🏼
+‎[3/9/25, 12:03:21] Juan Martín Molina Navarro: ‎sticker omitido
+‎[3/9/25, 12:03:22] Santiago Martínez Campero: ‎sticker omitido
+[3/9/25, 12:03:25] Juan Segundo Frías Silva: 👍
+‎[3/9/25, 12:03:26] Gerardo Exequiel Donelli: ‎sticker omitido
+[3/9/25, 12:03:26] José Augusto Orellana: 👍🏼
+‎[3/9/25, 12:03:27] Lucas David Paz Berrondo: ‎sticker omitido
+[3/9/25, 12:03:28] María Matilde Gallo: 👍🏻
+‎[3/9/25, 12:03:35] Ivam Agustín Herrera Palomino: ‎sticker omitido
+[3/9/25, 12:03:38] María Antonela Di Clemente: 👍🏻
+[3/9/25, 12:03:39] Lucas David Paz Berrondo: 👍🏻
+[3/9/25, 12:03:39] Antonella Soto: 👍🏻
+‎[3/9/25, 12:03:40] Marcelo Ezequiel Duclós: ‎sticker omitido
+‎[3/9/25, 12:03:49] Alfredo Nicolás Romano: ‎sticker omitido
+[3/9/25, 12:04:10] Oscar Ignacio Sosa: 👍
+‎[3/9/25, 12:04:16] Facundo Nahuel Trujillo: ‎sticker omitido
+[3/9/25, 12:04:22] Sergio Gonzalo Diaz Londero: 👍🏻
+‎[3/9/25, 12:04:24] Maira Acosta: ‎sticker omitido
+[3/9/25, 12:04:50] Mariano Moya: ✌🏻
+[3/9/25, 12:05:01] Mia de los Angeles Lobo Barrera: 👍🏻
+[3/9/25, 12:06:27] Ahumada Aiquen: 👍🏼
+[3/9/25, 12:08:51] Matias Gabriel Verón: 👍🏻
+[3/9/25, 12:09:09] Santiago Martínez Campero: 👍🏻
+[3/9/25, 12:16:38] Pablo Isaias Amoedo: 👍🏻
+[3/9/25, 12:29:43] Mariana Aylen Salcedo: 👍
+[3/9/25, 12:39:44] Martín Javier Gauna Serrano: 👍🏽
+[3/9/25, 12:52:13] Patricio Agustín Jiménez Paz: 👍🏽
+[3/9/25, 12:55:47] Rodrigo Exequiel Ponce: 👍🏽
+[3/9/25, 20:14:43] Alejandro Di Battista: Hola a todos.
+
+mañana clase virtual!!
+Le paso el link 5 minutos antes  
+
+los espero
+[4/9/25, 10:06:57] Alejandro Di Battista: Hola!!
+[4/9/25, 10:07:14] Alejandro Di Battista: Me pase unos minutos con la comision anterior
+[4/9/25, 10:07:26] Alejandro Di Battista: Este es el link para la clase
+
+https://meet.google.com/uqp-ehhd-ner
+[4/9/25, 10:07:38] Alejandro Di Battista: En 5 minutos empezamos
+[4/9/25, 11:09:11] Alejandro Di Battista: Vamos de nuevo…
+
+https://meet.google.com/zvu-prqs-ffq
+[5/9/25, 10:09:10] Alejandro Di Battista: Hola a todos…
+
+Disculpen la demora… esta en la otra comision.
+
+
+https://meet.google.com/ona-xrav-zto
+[5/9/25, 10:10:23] Alejandro Di Battista: En 5 minutos empezamos
+[5/9/25, 10:22:01] Maira Acosta: profe puede aceptar en el meet
+[5/9/25, 11:11:25] Alejandro Di Battista: Entremos de nuevo…
+
+https://meet.google.com/ntz-temh-xrg
+[9/9/25, 12:02:19] Gerardo Exequiel Donelli: 👍
+[9/9/25, 12:02:19] Nahuel Palma Collado: 👍🏻
+[9/9/25, 12:02:26] Abril María Agostina Tello: 👍🏼
+[9/9/25, 12:02:28] Rodrigo Federico Paz: 👍
+[9/9/25, 12:02:29] Tisera Gaston Lopez: 👍🏻
+[9/9/25, 12:02:31] Maira Acosta: 👍
+[9/9/25, 12:02:31] Santiago Martínez Campero: 👍🏻
+[9/9/25, 12:02:37] José Augusto Orellana: 👍🏼
+[9/9/25, 12:02:37] María Antonela Di Clemente: 👍🏻
+[9/9/25, 12:02:39] Patricio Agustín Jiménez Paz: 👍🏽
+[9/9/25, 12:02:39] Tomás Gustavo Lagoria Garcia: 👍🏻
+[9/9/25, 12:02:40] Ahumada Aiquen: 👍🏼
+[9/9/25, 12:02:41] Juan Martín Molina Navarro: 👍
+[9/9/25, 12:02:43] Alfredo Nicolás Romano: 👍🏼
+[9/9/25, 12:02:46] Facundo Nahuel Trujillo: 👍🏻
+[9/9/25, 12:02:54] Mariano Moya: 👍🏻
+[9/9/25, 12:02:54] Maximiliano Massey: 👍🏻
+[9/9/25, 12:03:10] Ivam Agustín Herrera Palomino: 👍🏽
+[9/9/25, 12:03:11] Lourdes Abril Juárez Fernández: 👍🏽
+[9/9/25, 12:03:13] Leandro Andres Suarez Vece: 👍🏻
+[9/9/25, 12:03:20] Oscar Ignacio Sosa: 👍
+[9/9/25, 12:05:08] Matias Gabriel Verón: 👍🏻
+[9/9/25, 12:05:47] Máximo Alberto Collazos Cortez: 👍🏻
+[9/9/25, 12:05:52] Pablo Isaias Amoedo: 👍🏻
+[9/9/25, 12:06:48] María Matilde Gallo: 👍🏻
+[9/9/25, 12:07:06] Antonella Soto: 👍🏻
+[9/9/25, 12:08:40] Sergio Gonzalo Diaz Londero: 👍🏻
+[9/9/25, 12:13:04] Martín Gonzalo: 👍🏻
+[9/9/25, 12:13:20] Juan José Oriz Caballero: 👍
+[9/9/25, 12:14:04] Lucas David Paz Berrondo: 👍🏻
+[10/9/25, 11:57:15] Nahuel Palma Collado: 🐦
+‎[10/9/25, 11:57:18] Santiago Martínez Campero: ‎sticker omitido
+[10/9/25, 11:57:28] José Augusto Orellana: 🐦
+[10/9/25, 11:57:28] Ahumada Aiquen: 🦅
+[10/9/25, 11:57:31] Juan Segundo Frías Silva: 🦅
+[10/9/25, 11:57:31] Tisera Gaston Lopez: 🦃
+[10/9/25, 11:57:33] Abril María Agostina Tello: 🦜
+[10/9/25, 11:57:34] Tomás Gustavo Lagoria Garcia: 🐦
+[10/9/25, 11:57:36] Hernán Ignacio Lobo Campero: 🐦
+[10/9/25, 11:57:36] Máximo Alberto Collazos Cortez: 🐦‍⬛
+[10/9/25, 11:57:39] Santiago Martínez Campero: 🦅
+[10/9/25, 11:57:47] Maximiliano Massey: 🐦
+[10/9/25, 11:57:48] Matias Gabriel Verón: 🐦
+[10/9/25, 11:57:58] Alfredo Nicolás Romano: 🕊️
+[10/9/25, 11:58:02] Rodrigo Federico Paz: 🐦
+[10/9/25, 11:58:03] Alejandro Di Battista: ok
+[10/9/25, 11:59:21] Sergio Gonzalo Diaz Londero: ‎Se eliminó este mensaje.
+[10/9/25, 11:59:52] Oscar Ignacio Sosa: 🦜
+[10/9/25, 12:03:04] Sergio Gonzalo Diaz Londero: 🐦‍⬛
+[10/9/25, 12:22:12] Juan Martín Molina Navarro: 🐦
+[11/9/25, 11:57:53] Tisera Gaston Lopez: 💦
+[11/9/25, 11:57:57] Facundo Nahuel Trujillo: 💧
+[11/9/25, 11:57:59] Ivam Agustín Herrera Palomino: 💦
+[11/9/25, 11:58:01] Santiago Martínez Campero: 💦
+[11/9/25, 11:58:02] Lucas David Paz Berrondo: 💦
+[11/9/25, 11:58:03] Martín Gonzalo: 💦
+[11/9/25, 11:58:04] Abril María Agostina Tello: 💧
+[11/9/25, 11:58:06] Alex Daniel Parrado Navarrete: 💧
+[11/9/25, 11:58:06] Alfredo Nicolás Romano: 🌊
+[11/9/25, 11:58:07] José Augusto Orellana: 💧
+[11/9/25, 11:58:07] Gabriel Carabajal: 💧
+[11/9/25, 11:58:07] Máximo Alberto Collazos Cortez: 💧
+[11/9/25, 11:58:07] Leandro Andres Suarez Vece: 💧
+[11/9/25, 11:58:07] María Antonela Di Clemente: 💧
+[11/9/25, 11:58:09] Nahuel Palma Collado: 💧
+[11/9/25, 11:58:11] Maira Acosta: 💧
+[11/9/25, 11:58:12] Juan José Oriz Caballero: 💧
+[11/9/25, 11:58:15] Matias Gabriel Verón: 💧
+[11/9/25, 11:58:16] Mariano Moya: 💦
+[11/9/25, 11:58:19] Tomás Gustavo Lagoria Garcia: 💧
+[11/9/25, 11:58:21] Juan Martín Molina Navarro: 💦
+[11/9/25, 11:58:23] Antonella Soto: 💧
+[11/9/25, 11:58:24] Gerardo Exequiel Donelli: 💧
+[11/9/25, 11:58:26] Martín Javier Gauna Serrano: 💧
+[11/9/25, 11:58:41] Lourdes Abril Juárez Fernández: 💧
+[11/9/25, 11:58:44] Pablo Isaias Amoedo: 💧
+[11/9/25, 11:58:54] Rodrigo Exequiel Ponce: 💧
+[11/9/25, 12:03:33] Oscar Ignacio Sosa: 💦
+[11/9/25, 22:17:49] Alejandro Di Battista: Hola, chicos 😊
+
+Mañana habrá paro y, lamentablemente, me han pedido que no tengamos clase virtual.
+
+Nos vemos el martes. ¡Que disfruten el día libre y cuídense!
+[13/9/25, 23:30:40] Alejandro Di Battista: 01000110 01000101 01001100 01001001 01011010 00100000 01000100 01001001 01000001 00100000 01000100 01000101 01001100 00100000 01010000 01010010 01001111 01000111 01010010 01000001 01001101 01000001 01000100 01001111 01010010
+[13/9/25, 23:32:59] Hernán Ignacio Lobo Campero: Feliz día profesor! 👏🏼
+[13/9/25, 23:36:54] Rodrigo Exequiel Ponce: Que grande, feliz día profesor!
+[13/9/25, 23:37:12] Oscar Ignacio Sosa: Feliz dia
+[13/9/25, 23:39:27] Martín Gonzalo: Feliz dia profe 👏🏻
+[13/9/25, 23:49:57] Ahumada Aiquen: Feliz día doctor 🙌🏼
+[13/9/25, 23:50:33] Maira Acosta: Feliz día profeee
+[13/9/25, 23:54:17] Santiago Martínez Campero: Feliz día idolo 👏🏻 ‎<Se editó este mensaje.>
+[13/9/25, 23:55:05] Juan Martín Molina Navarro: Feliz dia estimado!
+[14/9/25, 00:01:45] Nahuel Palma Collado: ¡Feliz día profeee!
+[14/9/25, 00:04:53] Juan Segundo Frías Silva: Feliz día profe
+[14/9/25, 00:19:24] Maximiliano Massey: Feliz día profe🙌🙌 ‎<Se editó este mensaje.>
+[14/9/25, 00:24:26] Alfredo Nicolás Romano: Feliz día profe
+[16/9/25, 12:03:38] Facundo Nahuel Trujillo: ✈️
+[16/9/25, 12:03:39] Nahuel Palma Collado: ✈️
+[16/9/25, 12:03:40] Tisera Gaston Lopez: 🛩️
+[16/9/25, 12:03:40] Maira Acosta: ✈️
+[16/9/25, 12:03:44] Ahumada Aiquen: 🛩️
+[16/9/25, 12:03:45] Abril María Agostina Tello: ✈️
+[16/9/25, 12:03:47] Leandro Andres Suarez Vece: ✈️
+[16/9/25, 12:03:49] María Antonela Di Clemente: ✈️
+[16/9/25, 12:03:50] Lourdes Abril Juárez Fernández: ✈️
+[16/9/25, 12:03:52] Máximo Alberto Collazos Cortez: ✈️
+[16/9/25, 12:03:53] Ivam Agustín Herrera Palomino: 🛩️
+[16/9/25, 12:03:55] Alfredo Nicolás Romano: ✈️
+[16/9/25, 12:03:55] Hernán Ignacio Lobo Campero: 🛬
+[16/9/25, 12:03:57] Antonella Soto: ✈️
+[16/9/25, 12:03:57] Gerardo Exequiel Donelli: ✈️
+[16/9/25, 12:03:59] Maximiliano Massey: ✈️
+[16/9/25, 12:04:08] José Augusto Orellana: ✈️
+[16/9/25, 12:04:11] Juan José Oriz Caballero: ✈️
+[16/9/25, 12:04:26] Sergio Gonzalo Diaz Londero: ✈️
+[16/9/25, 12:04:28] Oscar Ignacio Sosa: ✈️
+[16/9/25, 12:04:30] Santiago Martínez Campero: 🛩️ 🏢🏢 ‎<Se editó este mensaje.>
+[16/9/25, 12:04:38] Rodrigo Federico Paz: ✈️
+[16/9/25, 12:04:49] Juan Segundo Frías Silva: ✈️
+[16/9/25, 12:04:55] Mariano Moya: ✈️
+[16/9/25, 12:04:58] Rodrigo Exequiel Ponce: ✈️
+[16/9/25, 12:05:29] Marcelo Ezequiel Duclós: ✈️
+[16/9/25, 12:06:03] Tomás Gustavo Lagoria Garcia: 🛫
+[16/9/25, 12:06:11] Matias Gabriel Verón: ✈️
+[16/9/25, 12:08:38] Patricio Agustín Jiménez Paz: ✈️
+[16/9/25, 12:08:53] Martín Gonzalo: ✈️
+[16/9/25, 12:09:16] Juan Martín Molina Navarro: ✈️
+[16/9/25, 12:09:31] Lucas David Paz Berrondo: ✈️
+[17/9/25, 11:35:11] Tomás Gustavo Lagoria Garcia: 🖥️
+[17/9/25, 11:35:14] Ahumada Aiquen: 🖥️
+[17/9/25, 11:35:16] Mariano Moya: 💻
+[17/9/25, 11:35:17] Nahuel Palma Collado: 🖥️
+[17/9/25, 11:35:18] Mariana Aylen Salcedo: 🖥️
+[17/9/25, 11:35:18] Marcelo Ezequiel Duclós: 🖥️
+[17/9/25, 11:35:18] Lucas David Paz Berrondo: 🖥️
+[17/9/25, 11:35:19] Patricio Agustín Jiménez Paz: 🖥️
+[17/9/25, 11:35:20] Leandro Andres Suarez Vece: 📺
+[17/9/25, 11:35:22] Alan Godoy: 🖥️
+[17/9/25, 11:35:36] Gerardo Exequiel Donelli: 🖥️
+[17/9/25, 11:35:37] Pablo Isaias Amoedo: 🖥️
+[17/9/25, 11:36:06] Rodrigo Exequiel Ponce: 🖥
+[17/9/25, 11:36:15] Sergio Gonzalo Diaz Londero: 🖥️
+[17/9/25, 11:36:40] Juan Martín Molina Navarro: 🖥️
+[17/9/25, 11:36:42] Santiago Martínez Campero: 🖥
+[17/9/25, 11:37:08] Juan Segundo Frías Silva: 🖥
+[17/9/25, 11:41:03] Oscar Ignacio Sosa: 💻
+[17/9/25, 11:41:57] Maximiliano Massey: 🖥️
+[18/9/25, 12:15:17] Tisera Gaston Lopez: ☔️
+[18/9/25, 12:15:18] Maximiliano Massey: ☔
+[18/9/25, 12:15:19] Santiago Martínez Campero: ☔️
+[18/9/25, 12:15:19] Nahuel Palma Collado: 🌂
+[18/9/25, 12:15:19] Alfredo Nicolás Romano: ☔
+[18/9/25, 12:15:28] Máximo Alberto Collazos Cortez: ☔
+[18/9/25, 12:15:36] Patricio Agustín Jiménez Paz: ☔️
+[18/9/25, 12:15:37] Tomás Gustavo Lagoria Garcia: ☔️
+[18/9/25, 12:16:48] Oscar Ignacio Sosa: ☂️
+[18/9/25, 12:28:26] Martín Javier Gauna Serrano: ☔️
+[18/9/25, 20:54:18] Marcelo Ezequiel Duclós: Buenas noches profe @⁨Alejandro Di Battista⁩ ... La profe que tenemos en metodología recién nos confirma que sigue con licencia, existe la posibilidad de que mañana tengamos virtual?
+[18/9/25, 21:11:38] Alejandro Di Battista: Hola chicos… 
+
+Ya que la profe esta de licencia y alguno de sus compañeros me solicitaron que la clase sea virtual… 
+
+Que prefieren… Clase Virtual o Presencial...
+[18/9/25, 21:12:00] Alejandro Di Battista: ‎ENCUESTA:
+Que prefieren?
+‎OPCIÓN: Clase Virtual (34 votos)
+‎OPCIÓN: Clase Presencial (1 voto)
+[18/9/25, 21:16:50] Alejandro Di Battista: Bueno… dado que la votación fue unánime en las dos comisiones… 
+
+> Mañana clase virtual en el horario habitual.
+
+Avisen a sus compañeros.
+[19/9/25, 10:05:26] Alejandro Di Battista: Buena dia chicos…!!
+[19/9/25, 10:05:34] Alejandro Di Battista: Le comparto el link para la clase de hoy
+[19/9/25, 10:05:35] Alejandro Di Battista: https://meet.google.com/fnw-bnbj-rum
+[19/9/25, 10:05:44] Alejandro Di Battista: En 5 minutos empezamos
+[19/9/25, 11:08:52] Alejandro Di Battista: Le envio en nuevo link
+
+https://meet.google.com/dhq-zxiy-jaj
+[19/9/25, 11:09:57] Alejandro Di Battista: Caliento el agua para el mate y seguimos… 🙂
+[19/9/25, 12:10:28] Alejandro Di Battista: Esto informaron hoy…
+
+> Estimados colegas hoy 19/9  los alumnos de la facultad a través de la SAE tendrán jornada recreativa. Comuniquen a sus docentes  que pueden concurrir con los alumnos al campo de deportes o continuar con sus clases si lo consideran oportuno. Saludos
+
+@⁨Oscar Ignacio Sosa⁩
+[23/9/25, 12:00:01] Nahuel Palma Collado: 🦜
+[23/9/25, 12:00:10] Santiago Martínez Campero: 🦜
+[23/9/25, 12:00:10] Hernán Ignacio Lobo Campero: 🦜
+[23/9/25, 12:00:10] Rodrigo Federico Paz: 🦜
+[23/9/25, 12:00:11] Marcelo Ezequiel Duclós: 🦜
+[23/9/25, 12:00:13] Abril María Agostina Tello: 🦜
+[23/9/25, 12:00:13] Patricio Agustín Jiménez Paz: 🦜
+[23/9/25, 12:00:15] Tomás Gustavo Lagoria Garcia: 🦜
+[23/9/25, 12:00:15] Antonella Soto: 🦜
+[23/9/25, 12:00:16] Pablo Isaias Amoedo: 🦜
+[23/9/25, 12:00:18] Tisera Gaston Lopez: 🦜
+[23/9/25, 12:00:19] Maira Acosta: 🦜
+[23/9/25, 12:00:27] Alan Godoy: 🦜
+[23/9/25, 12:00:29] Facundo Nahuel Trujillo: 🦜
+[23/9/25, 12:00:30] Ivam Agustín Herrera Palomino: 🦜
+[23/9/25, 12:00:40] Rodrigo Exequiel Ponce: 🦜
+[23/9/25, 12:00:41] Juan Segundo Frías Silva: 🦜
+[23/9/25, 12:00:42] Ahumada Aiquen: 🦜
+[23/9/25, 12:00:51] Lourdes Abril Juárez Fernández: 🦜
+[23/9/25, 12:03:18] María Matilde Gallo: 🦜
+[23/9/25, 12:03:40] María Antonela Di Clemente: 🦜
+[23/9/25, 12:04:20] Sergio Gonzalo Diaz Londero: 🦜
+[23/9/25, 12:06:05] Oscar Ignacio Sosa: 🦜
+[23/9/25, 12:15:34] José Augusto Orellana: 🦜
+[23/9/25, 12:25:04] Matias Gabriel Verón: 🦜
+[23/9/25, 12:26:12] Martín Javier Gauna Serrano: 🦜
+[23/9/25, 22:17:47] Alejandro Di Battista: Hola !! Disculpen la hora...
+
+Mañana NO hay clase virtual!!
+
+Nos vemos el Jueves
+[23/9/25, 22:19:27] Alejandro Di Battista: Le paso el video de la clase del Viernes
+
+https://youtu.be/9C03eaVuGZ0?si=r7BnU6Ijjdyl7vHd
+[25/9/25, 04:55:32] Alejandro Di Battista: Hola... 
+
+Esta es la página para realizar los mini exámenes para conseguir los créditos.
+
+https://examen-p1.netlify.app/
+‎[25/9/25, 04:55:51] Alejandro Di Battista: preguntas.pdf • ‎156 páginas ‎documento omitido
+[25/9/25, 12:01:50] Máximo Alberto Collazos Cortez: 😁
+[25/9/25, 12:01:52] Abril María Agostina Tello: 😁
+[25/9/25, 12:01:54] Lourdes Abril Juárez Fernández: 😁
+[25/9/25, 12:01:55] Patricio Agustín Jiménez Paz: 😃
+[25/9/25, 12:01:56] Ivam Agustín Herrera Palomino: 😁
+[25/9/25, 12:01:56] José Augusto Orellana: 😁
+[25/9/25, 12:01:57] Nahuel Palma Collado: 😁
+[25/9/25, 12:02:01] Alfredo Nicolás Romano: 😁
+[25/9/25, 12:02:02] Rodrigo Federico Paz: 😁
+[25/9/25, 12:02:02] Maira Acosta: 😁
+[25/9/25, 12:02:04] Antonella Soto: 😁
+[25/9/25, 12:02:07] Facundo Nahuel Trujillo: 😁
+[25/9/25, 12:02:10] Gabriel Carabajal: 🙂
+[25/9/25, 12:02:16] Tomás Gustavo Lagoria Garcia: 😁
+[25/9/25, 12:02:20] Rodrigo Exequiel Ponce: 😁
+[25/9/25, 12:02:28] Juan Segundo Frías Silva: 😄
+[25/9/25, 12:02:32] Lucas David Paz Berrondo: 😆
+[25/9/25, 12:02:33] Leandro Andres Suarez Vece: 🫠
+[25/9/25, 12:02:33] Maximiliano Massey: 😁
+[25/9/25, 12:02:37] Oscar Ignacio Sosa: 😁
+[25/9/25, 12:02:38] María Antonela Di Clemente: 😁
+[25/9/25, 12:02:49] Ahumada Aiquen: 😁
+[25/9/25, 12:03:09] Martín Gonzalo: 😁
+[25/9/25, 12:03:19] Martín Javier Gauna Serrano: 😁
+[25/9/25, 12:03:29] Matias Gabriel Verón: 😄
+[25/9/25, 12:03:58] Juan José Oriz Caballero: 😀
+[25/9/25, 12:03:59] Santiago Martínez Campero: 😁
+[25/9/25, 12:05:14] Mariano Moya: 😁
+[26/9/25, 12:04:15] José Augusto Orellana: 👍🏼
+[26/9/25, 12:04:17] Santiago Martínez Campero: 🙏🏼
+[26/9/25, 12:04:23] Ahumada Aiquen: 👍🏼
+[26/9/25, 12:04:25] María Antonela Di Clemente: 👍🏻
+[26/9/25, 12:04:26] María Matilde Gallo: 👍🏻
+[26/9/25, 12:04:27] Maximiliano Massey: ✌️
+[26/9/25, 12:04:27] Gerardo Exequiel Donelli: 👍
+[26/9/25, 12:04:28] Gabriel Carabajal: 👍🏻
+[26/9/25, 12:04:30] Marcelo Ezequiel Duclós: 👍🏻
+[26/9/25, 12:04:30] Patricio Agustín Jiménez Paz: 👍🏽
+[26/9/25, 12:04:32] Hernán Ignacio Lobo Campero: 👍🏼 ‎<Se editó este mensaje.>
+[26/9/25, 12:04:35] Abril María Agostina Tello: 👍🏼
+[26/9/25, 12:04:36] Pablo Isaias Amoedo: 👍🏻
+[26/9/25, 12:04:38] Tomás Gustavo Lagoria Garcia: 👍🏿
+[26/9/25, 12:04:41] Máximo Alberto Collazos Cortez: 🙏🏻
+[26/9/25, 12:04:45] Matias Gabriel Verón: 👍🏼
+[26/9/25, 12:04:50] Sergio Gonzalo Diaz Londero: 👍🏻
+[26/9/25, 12:04:51] Nahuel Palma Collado: 🤞🏻
+[26/9/25, 12:05:03] Lourdes Abril Juárez Fernández: 👍🏽
+[26/9/25, 12:05:09] Ivam Agustín Herrera Palomino: 👍🏽
+[26/9/25, 12:05:11] Antonella Soto: 👍🏻
+[26/9/25, 12:07:22] Oscar Ignacio Sosa: 👍
+[26/9/25, 12:15:18] Tisera Gaston Lopez: 👍🏻
+[26/9/25, 12:15:34] Alfredo Nicolás Romano: 👍🏼
+[26/9/25, 12:40:03] Martín Javier Gauna Serrano: 👍🏽
+[30/9/25, 12:01:34] María Matilde Gallo: 👍🏻
+[30/9/25, 12:01:48] Juan Martín Molina Navarro: 👍
+[30/9/25, 12:01:49] María Antonela Di Clemente: 👍🏻
+[30/9/25, 12:01:50] Gerardo Exequiel Donelli: 👍
+[30/9/25, 12:01:50] José Augusto Orellana: 👍🏼
+[30/9/25, 12:01:52] Nahuel Palma Collado: 👍🏻
+[30/9/25, 12:01:55] Marcelo Ezequiel Duclós: 👍🏻
+[30/9/25, 12:01:56] Tomás Gustavo Lagoria Garcia: 👍🏻
+[30/9/25, 12:01:57] Mariana Aylen Salcedo: 👍
+[30/9/25, 12:01:58] Tisera Gaston Lopez: 👍🏻
+[30/9/25, 12:01:58] Patricio Agustín Jiménez Paz: 👍🏽
+[30/9/25, 12:02:01] Gabriel Carabajal: 👍🏻
+[30/9/25, 12:02:09] Hernán Ignacio Lobo Campero: 👍🏼
+[30/9/25, 12:02:41] Santiago Martínez Campero: 👍🏻
+[30/9/25, 12:02:47] Rodrigo Federico Paz: 👍
+[30/9/25, 12:02:58] Maximiliano Massey: 👍🏻
+[30/9/25, 12:03:10] Martín Javier Gauna Serrano: 👍🏽
+[30/9/25, 12:03:24] Oscar Ignacio Sosa: 👍
+[30/9/25, 12:03:29] Sergio Gonzalo Diaz Londero: 👍🏻
+[30/9/25, 12:03:41] Máximo Alberto Collazos Cortez: 👍🏻
+[30/9/25, 12:05:10] Facundo Nahuel Trujillo: 👍🏻
+[30/9/25, 12:05:14] Lourdes Abril Juárez Fernández: 👍🏽
+[30/9/25, 12:05:34] Matias Gabriel Verón: 👍🏻
+[30/9/25, 12:06:23] Antonella Soto: 👍🏻
+[30/9/25, 12:10:04] Rodrigo Exequiel Ponce: 👍🏽
+[30/9/25, 12:11:45] Lucas David Paz Berrondo: 👍🏻
+[30/9/25, 12:16:23] Pablo Isaias Amoedo: 👍🏻
+[30/9/25, 12:17:10] Alex Daniel Parrado Navarrete: 👍🏻
+[30/9/25, 12:17:40] Martín Gonzalo: 👍🏻
+[30/9/25, 12:18:21] Alan Godoy: 👍🏽
+[30/9/25, 12:28:13] Ahumada Aiquen: 👍🏼
+[30/9/25, 12:31:31] Abril María Agostina Tello: 👍🏼
+[30/9/25, 12:57:08] Maira Acosta: 👍🏼
+[30/9/25, 12:57:23] Ivam Agustín Herrera Palomino: 👍🏽
+[1/10/25, 11:58:07] Nahuel Palma Collado: 🥱
+[1/10/25, 11:58:15] Facundo Nahuel Trujillo: 😴
+[1/10/25, 11:58:19] Rodrigo Federico Paz: 🥱
+[1/10/25, 11:58:20] Alfredo Nicolás Romano: 😴
+[1/10/25, 11:58:21] Maira Acosta: 😴
+[1/10/25, 11:58:22] Ivam Agustín Herrera Palomino: 🤔
+[1/10/25, 11:58:25] Lourdes Abril Juárez Fernández: 😴
+[1/10/25, 11:58:27] Leandro Andres Suarez Vece: 😴
+[1/10/25, 11:58:28] Gerardo Exequiel Donelli: 🥱
+[1/10/25, 11:58:32] Tomás Gustavo Lagoria Garcia: 😴
+[1/10/25, 11:58:34] Lucas David Paz Berrondo: 😴
+[1/10/25, 11:58:36] Santiago Martínez Campero: 🥱
+[1/10/25, 11:58:36] Juan Ignacio Acevedo Costello: 😴
+[1/10/25, 11:58:44] Maximiliano Massey: 😴
+[1/10/25, 11:58:48] Mariano Moya: 😴
+[1/10/25, 11:58:50] Antonella Soto: 😴
+[1/10/25, 11:58:50] Gabriel Carabajal: 😴
+[1/10/25, 11:58:52] Juan Martín Molina Navarro: 🥱
+[1/10/25, 11:58:52] Máximo Alberto Collazos Cortez: 😴
+[1/10/25, 11:59:11] Hernán Ignacio Lobo Campero: 🥱
+[1/10/25, 11:59:13] Mariana Aylen Salcedo: 😴
+[1/10/25, 11:59:14] Abril María Agostina Tello: 😴
+[1/10/25, 11:59:35] Ahumada Aiquen: 🥱
+‎[1/10/25, 11:59:52] Ahumada Aiquen: ‎GIF omitido
+[1/10/25, 12:00:31] María Antonela Di Clemente: 😴
+[1/10/25, 12:14:03] Oscar Ignacio Sosa: 😴
+[2/10/25, 10:20:52] Alejandro Di Battista: Parcial 1
+https://examen-p1.netlify.app/
+[3/10/25, 12:05:23] Tomás Gustavo Lagoria Garcia: 🐍
+[3/10/25, 12:05:24] Santiago Martínez Campero: 🐍
+[3/10/25, 12:05:30] Maira Acosta: 🐍
+[3/10/25, 12:05:31] Nahuel Palma Collado: 🐍
+[3/10/25, 12:05:34] Hernán Ignacio Lobo Campero: 🐍
+[3/10/25, 12:05:36] Gabriel Carabajal: 🐍
+[3/10/25, 12:05:37] Juan José Oriz Caballero: 🐍
+[3/10/25, 12:05:39] Máximo Alberto Collazos Cortez: 🐍
+[3/10/25, 12:05:44] Juan Ignacio Acevedo Costello: 🐍
+[3/10/25, 12:05:44] Patricio Agustín Jiménez Paz: 🐍
+[3/10/25, 12:05:47] Gerardo Exequiel Donelli: 🐍
+[3/10/25, 12:05:58] Lourdes Abril Juárez Fernández: 🐍
+[3/10/25, 12:06:43] José Augusto Orellana: 🐍
+[3/10/25, 12:09:01] Facundo Nahuel Trujillo: 🐍
+[3/10/25, 12:09:10] Abril María Agostina Tello: 🐍
+[3/10/25, 12:09:21] Ahumada Aiquen: 🐍
+[3/10/25, 12:09:48] Oscar Ignacio Sosa: 🐍
+[3/10/25, 12:10:03] Rodrigo Exequiel Ponce: 🐍
+[3/10/25, 12:11:00] Maximiliano Massey: 🐍
+[3/10/25, 12:11:06] Antonella Soto: 🐍
+[3/10/25, 12:11:11] Martín Javier Gauna Serrano: 🐍
+[7/10/25, 12:08:54] Juan Martín Molina Navarro: 😱
+[7/10/25, 12:08:54] Tomás Gustavo Lagoria Garcia: 🫠
+[7/10/25, 12:09:02] Nahuel Palma Collado: 😄
+[7/10/25, 12:09:07] Lourdes Abril Juárez Fernández: 🫨
+[7/10/25, 12:09:10] José Augusto Orellana: 😁
+[7/10/25, 12:09:10] Gerardo Exequiel Donelli: 😵‍💫
+[7/10/25, 12:09:13] Leandro Andres Suarez Vece: 😬
+[7/10/25, 12:09:13] Antonella Soto: 😫
+[7/10/25, 12:09:40] Maximiliano Massey: 😀
+[7/10/25, 12:09:50] Ivam Agustín Herrera Palomino: 😁
+[7/10/25, 12:09:54] Maira Acosta: 😶
+[7/10/25, 12:10:14] Facundo Nahuel Trujillo: 😀
+[7/10/25, 12:10:18] Santiago Martínez Campero: 🧐
+[7/10/25, 12:10:22] Marcelo Ezequiel Duclós: 🤔
+[7/10/25, 12:11:52] Rodrigo Federico Paz: 😁
+[7/10/25, 12:12:14] Mariano Moya: 😉
+[7/10/25, 12:28:33] Oscar Ignacio Sosa: 😁
+[7/10/25, 12:31:31] Máximo Alberto Collazos Cortez: 😁
+[7/10/25, 12:32:12] Martín Javier Gauna Serrano: 😁
+[7/10/25, 12:41:53] Patricio Agustín Jiménez Paz: 😃
+[7/10/25, 12:52:07] Rodrigo Exequiel Ponce: 😄
+[8/10/25, 11:56:46] Juan Martín Molina Navarro: 💅
+[8/10/25, 11:56:55] Hernán Ignacio Lobo Campero: 💅
+[8/10/25, 11:57:05] Santiago Martínez Campero: 💅
+[8/10/25, 11:57:16] Maximiliano Massey: 💅
+[8/10/25, 11:57:28] Rodrigo Federico Paz: 💅
+[8/10/25, 11:57:51] María Matilde Gallo: 💅
+[8/10/25, 11:58:05] Juan Segundo Frías Silva: 💅
+[8/10/25, 11:58:32] Matias Gabriel Verón: 💅
+[8/10/25, 11:58:33] Gerardo Exequiel Donelli: 💅
+[8/10/25, 11:58:34] Mariana Aylen Salcedo: 💅
+[8/10/25, 11:58:57] María Antonela Di Clemente: 💅
+[8/10/25, 12:00:30] Martín Javier Gauna Serrano: 💅🏽
+[8/10/25, 12:02:50] Abril María Agostina Tello: 💅
+[8/10/25, 12:03:39] Alfredo Nicolás Romano: 💅
+[8/10/25, 12:04:15] Ahumada Aiquen: 💅
+[8/10/25, 12:09:01] Sergio Gonzalo Diaz Londero: 💅
+[14/10/25, 11:59:18] Alejandro Di Battista: http://asistencia-p4.netlify.app
+[15/10/25, 11:08:02] Alejandro Di Battista: https://alejandrodibattista-p2-prueba-j9idjt.streamlit.app/
+[17/10/25, 12:06:53] Abril María Agostina Tello: 📊
+[17/10/25, 12:06:55] Juan Segundo Frías Silva: 📈
+[17/10/25, 12:06:55] Maira Acosta: 📈
+[17/10/25, 12:06:56] Santiago Martínez Campero: 📊
+[17/10/25, 12:06:57] Nahuel Palma Collado: 📈
+[17/10/25, 12:07:02] Facundo Nahuel Trujillo: 📊
+[17/10/25, 12:07:02] Maximiliano Massey: 📊
+[17/10/25, 12:07:02] Juan Martín Molina Navarro: 📈
+[17/10/25, 12:07:04] Ivam Agustín Herrera Palomino: 📈
+[17/10/25, 12:07:04] Lourdes Abril Juárez Fernández: 📈
+[17/10/25, 12:07:05] Máximo Alberto Collazos Cortez: 📈
+[17/10/25, 12:07:06] Rodrigo Federico Paz: 📊
+[17/10/25, 12:07:06] Patricio Agustín Jiménez Paz: 📈
+[17/10/25, 12:07:07] Oscar Ignacio Sosa: 📈
+[17/10/25, 12:07:09] Santiago Martínez Campero: 📈
+[17/10/25, 12:07:11] Ahumada Aiquen: 📊
+[17/10/25, 12:07:13] Santiago Martínez Campero: 💹
+[17/10/25, 12:07:14] Antonella Soto: 📊
+[17/10/25, 12:07:18] Martín Javier Gauna Serrano: 📈
+[17/10/25, 12:07:19] Pablo Isaias Amoedo: 📊
+[17/10/25, 12:16:02] Martín Gonzalo: 📊
+[17/10/25, 12:22:04] Rodrigo Exequiel Ponce: 📊
+[17/10/25, 15:26:16] Oscar Ignacio Sosa: ‎Cambió tu código de seguridad con Oscar Ignacio.
+[17/10/25, 21:31:22] Oscar Ignacio Sosa: ‎Cambió tu código de seguridad con Oscar Ignacio.
+[20/10/25, 22:44:05] Alejandro Di Battista: Hola Chicos…
+
+mañana hay clase virtual. 
+Le paso el link un rato antes.
+[21/10/25, 10:02:55] Alejandro Di Battista: Hola a todos!
+
+En minutos empezamos la clase de hoy
+[21/10/25, 10:03:17] Alejandro Di Battista: La direccion es 
+
+https://meet.jit.si/programacion3
+[21/10/25, 10:03:45] Alejandro Di Battista: Vamos a darle unos minutos para que se conecten todos (y de paso preparo el mate 🙂)
+[21/10/25, 12:05:06] Abril María Agostina Tello: 📈
+[21/10/25, 12:05:07] José Augusto Orellana: 📊
+[21/10/25, 12:05:09] Ahumada Aiquen: 📈
+[21/10/25, 12:05:10] Gabriel Carabajal: 📊
+[21/10/25, 12:05:11] Máximo Alberto Collazos Cortez: 📈
+[21/10/25, 12:05:12] Juan Segundo Frías Silva: 📊
+[21/10/25, 12:05:13] Santiago Martínez Campero: 📈
+[21/10/25, 12:05:13] Mariana Aylen Salcedo: 📊
+[21/10/25, 12:05:14] Sergio Gonzalo Diaz Londero: 📊
+[21/10/25, 12:05:15] Tisera Gaston Lopez: 📊
+[21/10/25, 12:05:16] Tomás Gustavo Lagoria Garcia: 📊
+[21/10/25, 12:05:17] Pablo Isaias Amoedo: 📈
+[21/10/25, 12:05:18] Alfredo Nicolás Romano: 📊
+[21/10/25, 12:05:19] Gerardo Exequiel Donelli: 📊
+[21/10/25, 12:05:19] Maximiliano Massey: 📈
+[21/10/25, 12:05:20] Maira Acosta: 📊
+[21/10/25, 12:05:20] Matias Gabriel Verón: 📈
+[21/10/25, 12:05:23] Antonella Soto: 📊
+[21/10/25, 12:05:30] Leandro Andres Suarez Vece: 📊
+[21/10/25, 12:05:30] Ivam Agustín Herrera Palomino: 📊
+[21/10/25, 12:05:32] Marcelo Ezequiel Duclós: 📈
+[21/10/25, 12:05:33] Lourdes Abril Juárez Fernández: 📈
+[21/10/25, 12:05:35] Facundo Nahuel Trujillo: 📈
+[21/10/25, 12:05:41] Nahuel Palma Collado: 📈
+[21/10/25, 12:05:41] María Antonela Di Clemente: 📈
+[21/10/25, 12:05:46] Rodrigo Exequiel Ponce: 📈
+[21/10/25, 12:06:24] Rodrigo Federico Paz: 📈
+[21/10/25, 12:06:49] Juan Martín Molina Navarro: 📈
+[21/10/25, 12:07:52] Oscar Ignacio Sosa: 📈
+[21/10/25, 12:08:30] Lucas David Paz Berrondo: 📈
+[21/10/25, 12:09:13] Juan José Oriz Caballero: 📈
+[21/10/25, 12:12:26] Hernán Ignacio Lobo Campero: 📈
+[21/10/25, 12:24:10] Martín Gonzalo: 📈
+[21/10/25, 12:42:59] Martín Javier Gauna Serrano: 📈
+[22/10/25, 10:03:23] Alejandro Di Battista: Estamos por comenzar la clase
+
+https://meet.jit.si/programacion3
+
+10:10 comenzamos
+[22/10/25, 10:04:10] Alejandro Di Battista: Mientras tanto y para que no se aburran conteste el examen de ayer
+
+https://asistencia-p4.netlify.app/
+[22/10/25, 10:07:47] Gerardo Exequiel Donelli: Profe no voy a poder conectarme por problemas de conexión
+[22/10/25, 11:57:35] Alejandro Di Battista: Hola!! Este pudiendo ver… a mi no me aparecen
+[22/10/25, 11:57:54] Nahuel Palma Collado: No profe, se desconectó
+[22/10/25, 11:58:05] Leandro Andres Suarez Vece: se desconecto profe
+[22/10/25, 12:09:00] Alejandro Di Battista: Envien la asistencia please!! 👍🏻
+[22/10/25, 12:09:16] Abril María Agostina Tello: 👍🏼
+[22/10/25, 12:09:18] Gabriel Carabajal: 👍🏻
+[22/10/25, 12:09:19] Sergio Gonzalo Diaz Londero: 👍🏻
+[22/10/25, 12:09:21] María Antonela Di Clemente: 👍🏻
+[22/10/25, 12:09:22] Rodrigo Federico Paz: 👍🏻
+[22/10/25, 12:09:23] Nahuel Palma Collado: 👍🏻
+[22/10/25, 12:09:23] Facundo Nahuel Trujillo: 👍🏻
+[22/10/25, 12:09:23] Juan Segundo Frías Silva: 👍🏼
+[22/10/25, 12:09:24] Antonella Soto: 👍🏻
+[22/10/25, 12:09:24] Ahumada Aiquen: 👍🏼
+[22/10/25, 12:09:25] Maira Acosta: 👍
+[22/10/25, 12:09:25] Patricio Agustín Jiménez Paz: 👍🏽
+[22/10/25, 12:09:26] Juan Martín Molina Navarro: 👍
+[22/10/25, 12:09:29] Marcelo Ezequiel Duclós: 👍🏻
+[22/10/25, 12:09:30] Lourdes Abril Juárez Fernández: 👍🏽
+[22/10/25, 12:09:31] Lucas David Paz Berrondo: 👍🏻
+[22/10/25, 12:09:35] Oscar Ignacio Sosa: 👍
+[22/10/25, 12:09:39] Santiago Martínez Campero: 👍🏻
+[22/10/25, 12:09:40] Rodrigo Exequiel Ponce: 👍🏽
+[22/10/25, 12:09:41] Hernán Ignacio Lobo Campero: 👍
+[22/10/25, 12:09:42] Alfredo Nicolás Romano: 👍🏻
+[22/10/25, 12:09:50] Mariano Moya: 👍🏻
+[22/10/25, 12:09:56] Tomás Gustavo Lagoria Garcia: 👍🏽
+[22/10/25, 12:09:58] Ivam Agustín Herrera Palomino: 👍🏽
+[22/10/25, 12:10:12] Leandro Andres Suarez Vece: 👍🏻
+[22/10/25, 12:11:13] Matias Gabriel Verón: 👍🏻
+[22/10/25, 12:13:28] Tisera Gaston Lopez: 👍🏻
+[22/10/25, 12:17:21] José Augusto Orellana: 👍🏼
+[22/10/25, 12:22:38] Alan Godoy: 👍🏼
+[22/10/25, 12:22:50] Juan José Oriz Caballero: 👍
+[22/10/25, 12:22:55] Máximo Alberto Collazos Cortez: 👍🏻
+[22/10/25, 12:22:56] María Matilde Gallo: 👍🏻
+[22/10/25, 12:26:39] Pablo Isaias Amoedo: 👍🏻
+[22/10/25, 12:29:51] Martín Gonzalo: 👍🏻
+[22/10/25, 12:49:05] Martín Javier Gauna Serrano: 👍🏽
+[23/10/25, 12:06:13] Nahuel Palma Collado: 🤖
+[23/10/25, 12:06:14] Ivam Agustín Herrera Palomino: 🤖
+[23/10/25, 12:06:18] Juan Segundo Frías Silva: 🤖
+[23/10/25, 12:06:20] Facundo Nahuel Trujillo: 🤖
+[23/10/25, 12:06:21] Gabriel Carabajal: 🤖
+[23/10/25, 12:06:21] Abril María Agostina Tello: 🤖
+[23/10/25, 12:06:24] José Augusto Orellana: 🤖
+[23/10/25, 12:06:24] Máximo Alberto Collazos Cortez: 🤖
+[23/10/25, 12:06:25] Lourdes Abril Juárez Fernández: 🤖
+[23/10/25, 12:06:26] Maximiliano Massey: 🤖
+[23/10/25, 12:06:26] Antonella Soto: 🤖
+[23/10/25, 12:06:28] Patricio Agustín Jiménez Paz: 🤖
+[23/10/25, 12:06:31] Ahumada Aiquen: 🤖
+[23/10/25, 12:06:37] Tomás Gustavo Lagoria Garcia: 🤖
+[23/10/25, 12:06:38] Rodrigo Exequiel Ponce: 🤖
+[23/10/25, 12:06:39] Santiago Martínez Campero: 🤖
+[23/10/25, 12:06:42] Juan Martín Molina Navarro: 🤖
+[23/10/25, 12:08:52] Juan Ignacio Acevedo Costello: 🤖
+[23/10/25, 12:08:54] Lucas David Paz Berrondo: 🤖
+[23/10/25, 12:09:00] Hernán Ignacio Lobo Campero: 🤖
+[23/10/25, 12:09:18] Mariana Aylen Salcedo: 🤖
+[23/10/25, 12:09:19] Maira Acosta: 🤖
+[23/10/25, 12:11:08] Alfredo Nicolás Romano: 🤖
+[23/10/25, 12:11:20] Mariano Moya: 🤖
+[23/10/25, 12:11:49] Oscar Ignacio Sosa: 🤖
+[23/10/25, 12:23:58] Martín Javier Gauna Serrano: 🤖
+[23/10/25, 13:45:35] Sergio Gonzalo Diaz Londero: 🤖
+[28/10/25, 12:09:34] Leandro Andres Suarez Vece: 🤖
+[28/10/25, 12:09:37] María Matilde Gallo: 👍🏻
+[28/10/25, 12:09:40] José Augusto Orellana: 🤖
+[28/10/25, 12:09:40] Máximo Alberto Collazos Cortez: 🤖
+[28/10/25, 12:09:41] Abril María Agostina Tello: 🤖
+[28/10/25, 12:09:44] Nahuel Palma Collado: 🤖
+[28/10/25, 12:09:44] Maira Acosta: 🤖
+[28/10/25, 12:09:49] Lucas David Paz Berrondo: 🤖
+[28/10/25, 12:09:49] Juan Martín Molina Navarro: 🤖
+[28/10/25, 12:09:50] Gabriel Carabajal: 🤖
+[28/10/25, 12:11:30] Antonella Soto: 🤖
+[28/10/25, 12:09:53] Patricio Agustín Jiménez Paz: 🤖
+[28/10/25, 12:09:54] María Antonela Di Clemente: 🤖
+[28/10/25, 12:09:55] Juan Segundo Frías Silva: 🤖
+[28/10/25, 12:09:58] Martín Gonzalo: 🤖
+[28/10/25, 12:09:58] Lourdes Abril Juárez Fernández: 🤖
+[28/10/25, 12:10:02] Rodrigo Exequiel Ponce: 🤖
+[28/10/25, 12:10:09] Mariano Moya: 🤖
+[28/10/25, 12:10:13] Tomás Gustavo Lagoria Garcia: 🤖
+[28/10/25, 12:10:33] Matias Gabriel Verón: 🤖
+[28/10/25, 12:10:40] Pablo Isaias Amoedo: 🤖
+[28/10/25, 12:10:44] Oscar Ignacio Sosa: 🤖
+[28/10/25, 12:11:04] Sergio Gonzalo Diaz Londero: 🤖
+[28/10/25, 12:13:28] Ahumada Aiquen: 🤖
+[28/10/25, 12:17:35] Santiago Martínez Campero: 🤖
+‎[29/10/25, 12:13:21] Nahuel Palma Collado: ‎sticker omitido
+[29/10/25, 12:13:23] Santiago Martínez Campero: ✌️
+‎[29/10/25, 12:13:27] Hernán Ignacio Lobo Campero: ‎sticker omitido
+[29/10/25, 12:13:29] Maira Acosta: 🤩
+[29/10/25, 12:13:31] Facundo Nahuel Trujillo: 😱
+[29/10/25, 12:13:32] Ivam Agustín Herrera Palomino: 😍
+‎[29/10/25, 12:13:34] Máximo Alberto Collazos Cortez: ‎sticker omitido
+[29/10/25, 12:13:39] Rodrigo Federico Paz: ✌️
+[29/10/25, 12:13:40] Patricio Agustín Jiménez Paz: 👌🏽
+‎[29/10/25, 12:13:44] Alfredo Nicolás Romano: ‎sticker omitido
+[29/10/25, 12:13:46] José Augusto Orellana: 🤐
+‎[29/10/25, 12:13:47] Lourdes Abril Juárez Fernández: ‎sticker omitido
+[29/10/25, 12:13:47] Maximiliano Massey: ✌️
+‎[29/10/25, 12:13:49] Juan José Oriz Caballero: ‎sticker omitido
+[29/10/25, 12:13:51] Juan Martín Molina Navarro: 🧌
+[29/10/25, 12:13:52] Tomás Gustavo Lagoria Garcia: 🚀
+[29/10/25, 12:13:52] Ahumada Aiquen: ☠️
+[29/10/25, 12:13:57] Mariana Aylen Salcedo: 🫩
+[29/10/25, 12:14:01] Oscar Ignacio Sosa: 🤔
+[29/10/25, 12:14:03] Lucas David Paz Berrondo: 🐲
+[29/10/25, 12:14:07] Sergio Gonzalo Diaz Londero: 😁
+[29/10/25, 12:14:24] Antonella Soto: 🤨
+[29/10/25, 12:14:38] María Antonela Di Clemente: 😁
+[29/10/25, 12:16:34] Marcelo Ezequiel Duclós: 🫩
+[29/10/25, 12:26:07] Martín Javier Gauna Serrano: 😁
+[29/10/25, 12:30:18] Rodrigo Exequiel Ponce: 🤠
+[29/10/25, 12:48:58] Abril María Agostina Tello: 😁
+[30/10/25, 12:00:41] Máximo Alberto Collazos Cortez: 1
+[30/10/25, 12:00:48] Tomás Gustavo Lagoria Garcia: 3
+[30/10/25, 12:00:48] María Antonela Di Clemente: 7
+[30/10/25, 12:00:49] María Matilde Gallo: 8
+[30/10/25, 12:00:50] Juan Segundo Frías Silva: 13
+[30/10/25, 12:00:51] Abril María Agostina Tello: 15
+[30/10/25, 12:00:52] Lourdes Abril Juárez Fernández: 9
+[30/10/25, 12:00:52] Patricio Agustín Jiménez Paz: 2
+[30/10/25, 12:00:52] Marcelo Ezequiel Duclós: 1️⃣ ‎<Se editó este mensaje.>
+[30/10/25, 12:00:53] Ahumada Aiquen: 14
+[30/10/25, 12:00:55] Ivam Agustín Herrera Palomino: 12
+[30/10/25, 12:00:55] Gabriel Carabajal: 16
+[30/10/25, 12:00:55] Leandro Andres Suarez Vece: 4
+[30/10/25, 12:00:56] Maira Acosta: 10
+[30/10/25, 12:00:56] Nahuel Palma Collado: 5
+[30/10/25, 12:00:56] Facundo Nahuel Trujillo: 11
+[30/10/25, 12:00:57] Pablo Isaias Amoedo: 1
+[30/10/25, 12:01:03] Oscar Ignacio Sosa: 17
+[30/10/25, 12:05:11] Santiago Martínez Campero: ‎Se eliminó este mensaje.
+[30/10/25, 12:07:16] Rodrigo Federico Paz: ‎Se eliminó este mensaje.
+[30/10/25, 21:04:09] Alejandro Di Battista: hola...
+
+sus compañeros de la comision 1 tienen clases virtuales con la profesora de metodología...
+
+ustedes tambien?
+[30/10/25, 21:05:04] Alfredo Nicolás Romano: Asi es profe
+[30/10/25, 21:08:18] Alejandro Di Battista: Ok. Entonces hagamos clase virtual también nosotros… asi no le complico la vida con la asistencia…
+[30/10/25, 21:11:04] Rodrigo Exequiel Ponce: Perfecto profesor, muchas gracias
+[30/10/25, 21:22:37] Alejandro Di Battista: *Hola, Viernes Clase Virtual 10hs👋* 
+
+La profe de *Metodología* mañana da clase virtual, sus compañeros me pidieron que *programación 3* también sea virtual.
+
+Así que la clase de mañana viernes los espero en linea a las 10hs.
+
+El enlace es el mismo de la clase anterior: 
+https://meet.jit.si/programacion3
+
+sds
+[30/10/25, 23:59:32] Alejandro Di Battista: 🤦🏻‍♂️Escribir “Programacion 3” en lugar de “Programacion 4”, mala mía…
+
+El enlace es *https://meet.jit.si/programacion4*
+[31/10/25, 10:06:34] Alejandro Di Battista: Hola a todos….
+
+Vamos a espera que se conecten algunos alumnos mas…
+
+Empezamos 10:15 en punto
+[31/10/25, 10:17:51] Alejandro Di Battista: Chicos… necesito 5 minutos. Ya estoy con ustedes
+[31/10/25, 11:34:48] Leandro Andres Suarez Vece: Profe está muteado
+[4/11/25, 17:35:50] Antonella Soto: ‎Cambió tu código de seguridad con Antonella.

@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 :root {
   --background: #ffffff;
@@ -26,6 +23,99 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-html, body, #__next {
-  height: 100%;
+}
+
+/* ------------------------------------------------------
+   COMPONENTES GLOBALES
+------------------------------------------------------ */
+@layer components {
+
+  /* ------------------------------
+     BOTÓN PRINCIPAL
+  ------------------------------ */
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg 
+           bg-black px-4 py-2 text-sm font-semibold text-white 
+           transition-all shadow hover:bg-gray-900 
+           focus:outline-none focus:ring-2 focus:ring-black 
+           focus:ring-offset-2 disabled:bg-gray-500 
+           disabled:text-gray-300 disabled:cursor-not-allowed;
+  }
+
+  /* ------------------------------
+     LINK COMO BOTÓN
+  ------------------------------ */
+  .btn-link {
+    @apply text-sm font-medium text-blue-600 hover:underline cursor-pointer;
+  }
+
+  /* ------------------------------
+     NOMBRE DEL USUARIO EN NAVBAR
+  ------------------------------ */
+  .nav-username {
+    @apply text-sm font-semibold text-gray-700;
+  }
+
+  /* ------------------------------
+     INPUT MODERNO
+  ------------------------------ */
+  .input-field {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg 
+           text-sm shadow-sm placeholder:text-gray-400
+           focus:outline-none focus:ring-2 focus:ring-blue-400 
+           focus:border-transparent transition;
+  }
+
+  /* ------------------------------
+     TARJETAS SUPER CLEAN
+  ------------------------------ */
+  .card-surface {
+    @apply bg-white rounded-xl shadow-md border border-gray-200 p-5;
+  }
+
+}
+
+/* ------------------------------------------------------
+   SCROLL SUAVE PROFESIONAL
+------------------------------------------------------ */
+.card-surface .overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card-surface .overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.card-surface .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+@layer components {
+
+  /* Botones, inputs, tarjetas... tus estilos anteriores */
+
+  /* ------------------------------------------------------
+     AJUSTES GLOBALIZADOS PARA COMPONENTES
+  ------------------------------------------------------ */
+
+  .product-card-title {
+    @apply text-lg font-semibold text-gray-900 leading-tight;
+  }
+
+  .product-card-price {
+    @apply text-2xl font-bold text-blue-600;
+  }
+
+  .product-card-stock {
+    @apply text-xs text-gray-500;
+  }
+
+  .product-card-category {
+    @apply text-xs px-2 py-1 rounded bg-gray-100 text-gray-600;
+  }
+
+  .product-card-rating {
+    @apply text-yellow-500 mr-1;
+  }
 }

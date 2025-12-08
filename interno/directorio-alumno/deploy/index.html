@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Directorio de alumnos</title>
+    <style>
+      :root{
+        --bg:#f5f7fb;
+        --card:#ffffff;
+        --text:#1f2d3d;
+        --muted:#5f6b7a;
+        --border:#e5e9f2;
+        --brand:#0f6fff;
+        --star:#f5c33b;
+        --shadow:0 4px 16px rgba(16,24,40,.08);
+        --radius:16px;
+        --radius-sm:12px;
+      }
+      *{box-sizing:border-box}
+      html,body{height:100%}
+      body{
+        margin:0; padding:24px 24px 64px; background:var(--bg);
+        color:var(--text); font:400 16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+      }
+      .container{max-width:1200px; margin:0 auto}
+      header{display:flex; align-items:center; gap:24px; justify-content:space-between; margin-bottom:18px}
+      h1{margin:0; font-weight:800; letter-spacing:-.02em; color:#263445}
+      .searchbar{position:relative; width:min(420px, 60vw)}
+      .searchbar input{
+        width:100%; padding:12px 40px; border-radius:999px; border:1px solid var(--border); background:#fff; outline:none;
+        box-shadow:0 1px 0 rgba(16,24,40,.02) inset;
+      }
+      .searchbar svg{position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#98a2b3}
+      section{margin-top:22px}
+      .section-title{display:flex; align-items:baseline; gap:8px; color:#2b3b4f; margin:0 0 12px 6px}
+      .section-title small{color:#98a2b3}
+      .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:18px}
+      .card{
+        background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow);
+        position:relative; min-height:150px; display:grid; grid-template-columns:56px 1fr; column-gap:14px; align-content:start
+      }
+      .avatar {width:60px; height:60px; border-radius:50%; overflow:hidden; display:grid; place-items:center; border:3px solid #fff; box-shadow:0 2px 6px rgba(16,24,40,.10)}
+      .avatar img{width:56px; height:56px; object-fit:cover; display:block}
+      .avatar .initials{font-weight:700; color:#fff; text-shadow:0 1px 0 rgba(0,0,0,.12)}
+      .content{flex:1; min-width:0}
+  .name{margin:0 26px 8px 0; font-weight:800; color:#2b3b4f; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block}
+      .meta{margin:2px 0; color:var(--muted)}
+      .meta b{color:#2b3b4f}
+      .courses{margin-top:10px; display:flex; flex-direction:column; gap:4px; grid-column:1 / -1}
+      .course-line{font-size:.92rem; color:#324559; background:#f8fafc; border:1px solid var(--border); border-radius:var(--radius-sm); padding:6px 8px; display:flex; gap:8px; align-items:center}
+      .course-line .emoji{flex:0 0 18px }
+      .course-line .practicos{margin-top:4px; font-size: 6px; color:#475569; background:#f1f5f9; border:1px solid var(--border); border-radius:var(--radius-sm); padding:4px 6px}
+      .muted{color:#98a2b3}
+      .empty{padding:16px; color:#98a2b3}
+      .footer-note{margin-top:24px; color:#98a2b3; font-size:.9rem}
+      #avatar-zoom{position:fixed; inset:0; background:rgba(15,23,42,.58); display:none; place-items:center; z-index:999; backdrop-filter:blur(3px); cursor:zoom-out}
+      #avatar-zoom.active{display:grid; animation:fadeIn .15s ease-out}
+      #avatar-zoom .zoom-frame{width:min(320px, 90vw); height:min(320px, 90vw); border-radius:50%; overflow:hidden; box-shadow:0 18px 50px rgba(0,0,0,.28); background:var(--card); border:4px solid #fff; display:grid; place-items:center}
+      #avatar-zoom img{width:100%; height:100%; object-fit:cover; border-radius:50%}
+      @keyframes fadeIn{from{opacity:0; transform:scale(.95)} to{opacity:1; transform:scale(1)}}
+      @media (max-width:640px){ header{flex-direction:column; align-items:flex-start} .searchbar{width:100%} }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Directorio de Alumnos</h1>
+        <div class="searchbar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input id="search" placeholder="Buscar por nombre, teléfono, legajo, materia, comisión, estado o año" autocomplete="off" />
+        </div>
+      </header>
+
+      <section>
+        <h2 class="section-title">Contactos <small id="all-count" class="muted"></small></h2>
+        <div id="contacts" class="grid"></div>
+      </section>
+
+      <p class="footer-note">Listado actualizado al <span id="last-updated" class="muted">3 de diciembre de 2025</span>.</p>
+    </div>
+
+    <script type="module">
+      // Utilidades -----------------------------------------------------------
+      const stateEmoji = new Map([
+        ["Promocionado", "🟢"],
+        ["Pendiente",    "🔵"],
+        ["Regular",      "🟡"],
+        ["Libre",        "🔴"],
+        ["Cursando",     "⚪️"],
+      ]);
+
+      const norm = (s) => (s||"")
+        .toString()
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/\p{Diacritic}/gu, '')
+        .replace(/[^a-z0-9 @._-]+/g,' ')
+        .trim();
+
+      function initials(fullName){
+        if(!fullName) return "?";
+        const [ap, nom] = fullName.split(",");
+        const first = (nom||"").trim().split(/\s+/)[0]||"";
+        const last  = (ap||"").trim().split(/\s+/)[0]||"";
+        return (first[0]||"") + (last[0]||"");
+      }
+
+      function colorFor(text){
+        let h=0; for(let i=0;i<text.length;i++) h=(h*31 + text.charCodeAt(i))>>>0;
+        h = h % 360; const s=70, l=50;
+        return `linear-gradient(135deg, hsl(${h},${s}%,${l+8}%) 0%, hsl(${(h+30)%360},${s-10}%,${l-6}%) 100%)`;
+      }
+
+      function githubAvatar(username){
+        if(!username) return null;
+        const u = username.replace(/^@+/, '').trim();
+        if(!u) return null;
+        return `https://github.com/${encodeURIComponent(u)}.png?size=120`;
+      }
+
+      // Overlay de zoom para avatares ------------------------------------
+      const avatarZoom = (()=>{
+        const overlay = document.createElement('div');
+        overlay.id = 'avatar-zoom';
+        overlay.innerHTML = `<div class="zoom-frame"><img alt="Avatar ampliado" /></div>`;
+        overlay.addEventListener('click', ()=> overlay.classList.remove('active'));
+        document.body.appendChild(overlay);
+        const img = overlay.querySelector('img');
+        const show = (src, alt='Avatar') => {
+          if(!src) return;
+          img.src = src;
+          img.alt = alt;
+          overlay.classList.add('active');
+        };
+        window.addEventListener('keydown', (ev)=>{
+          if(ev.key === 'Escape') overlay.classList.remove('active');
+        });
+        return { show };
+      })();
+
+      // (Sin favoritos ni localStorage)
+
+      // Render --------------------------------------------------------------
+      function cardTemplate(a){
+        const tel = a.telefono || '';
+        const gh = githubAvatar(a.github);
+        const em = s => stateEmoji.get(s) || '⚪️';
+
+        let perfil = '';
+        if(a.foto){
+          perfil = `<div class="avatar"><img alt="avatar" src="./img/${a.legajo}.png" loading="lazy" referrerpolicy="no-referrer"/></div>`;
+        } else if (gh){
+          perfil = `<div class="avatar"><img alt="avatar" src="${gh}" loading="lazy" referrerpolicy="no-referrer"/></div>`
+        } else {
+          perfil = `<div class="avatar" style="background:${colorFor(a.nombre || a.legajo)}"><span class="initials">${initials(a.nombre).toUpperCase()}</span></div>`;
+        }
+        const avatarHtml = perfil;
+        const telefonoHtml = tel ? `<p class="meta"><b>Tel:</b> <a href="tel:${tel.replace(/[^0-9+]/g,'')}">${tel}</a></p>` : '';
+
+        const practicos = (curso) => {
+            let salida = '';
+            for (const [key, value] of Object.entries(curso)) {
+                if (key.startsWith('TP') && value) {
+                    salida += value + ' ';
+                }
+            }
+            if (salida) {
+                return `<div class="practicos">Prácticos: ${salida}</div>`;
+            } else {
+                return '';
+            }
+        };
+
+        const cursos = (a.cursos||[]).map(c=>`
+            <div class="course-line" style="flex-direction:column; align-items:flex-start;">
+                <div class="emoji">${em(c.estado)}</span> <span>${c.año} · ${c.materia} · ${c.comision} — ${c.estado}</div>
+                ${practicos(c)}
+                </div>
+        `
+        ).join('');
+
+        return `
+          <article class="card" data-legajo="${a.legajo}">
+            ${avatarHtml}
+            <div class="content">
+              <h3 class="name" title="${(a.nombre||'').replace(/&/g,'&amp;').replace(/\"/g,'&quot;')}">${a.nombre || 'Sin nombre'}</h3>
+              <p class="meta"><b>Legajo:</b> ${a.legajo}</p>
+              ${telefonoHtml}
+            </div>
+            <div class="courses">${cursos}</div>
+          </article>`;
+      }
+
+      function mountCards(container, list){
+        container.innerHTML = list.length ? list.map(cardTemplate).join('') : `<div class="empty">Sin resultados</div>`;
+        // (Sin manejadores de favoritos)
+        // Fallback a iniciales si el avatar de GitHub falla
+        container.querySelectorAll('.avatar img').forEach(img=>{
+          img.addEventListener('error', ()=>{
+            const card = img.closest('.card');
+            const name = card?.querySelector('.name')?.textContent || '';
+            const wrapper = img.parentElement;
+            if(wrapper){
+              wrapper.innerHTML = `<span class="initials">${initials(name).toUpperCase()}</span>`;
+              wrapper.style.background = colorFor(name);
+            }
+          }, {once:true});
+
+          img.addEventListener('click', (ev)=>{
+            ev.stopPropagation();
+            avatarZoom.show(img.src, img.alt || 'Avatar');
+          });
+        });
+      }
+
+      function asArray(dict){ return Object.values(dict||{}); }
+
+      function filterItems(items, q){
+        if(!q) return items;
+        const palabras = norm(q).split(/\s+/).filter(Boolean)
+        return items.filter(a=>{
+          const cursos = (a.cursos||[]).flatMap(c=> [c.materia, c.comision, c.estado, String(c.año), c.codigo]);
+          const base = [a.nombre, a.telefono||'', a.legajo||'', a.github||'', `${a.cursos.length}x`];
+          const texto = norm(base.concat(cursos).filter(Boolean).join(' '));
+          const hay = palabras.every(p=> texto.includes(p));
+          return hay;
+        });
+      }
+
+      function sortByNombre(items){
+        return [...items].sort((a,b)=> (a.nombre||'').localeCompare(b.nombre||'', 'es', {sensitivity:'base'}));
+      }
+
+  let ALL = [];
+  let DATA_LOADED = false;
+  let DATA_PROMISE = null;
+
+      function render(){
+        const q = document.getElementById('search').value;
+        const filtered = sortByNombre(filterItems(ALL, q));
+        mountCards(document.getElementById('contacts'), filtered);
+        document.getElementById('all-count').textContent = `(${filtered.length})`;
+      }
+
+      const applySearch = () => render();
+
+            // Carga única de datos -----------------------------------------------
+            function ensureDataLoaded(){
+              if(DATA_LOADED) return Promise.resolve(ALL);
+              if(!DATA_PROMISE){
+                const contacts = document.getElementById('contacts');
+                contacts.innerHTML = '<div class="empty">Cargando datos...</div>';
+                DATA_PROMISE = (async ()=>{
+                  const resp = await fetch('./alumnos.json', {cache:'no-store'});
+                  if(!resp.ok) throw new Error('HTTP '+resp.status);
+                  const data = await resp.json();
+                  ALL = asArray(data).map(a=>({
+                    legajo: String(a.legajo||'').trim(),
+                    nombre: a.nombre||'',
+                    telefono: a.telefono||'',
+                    github: a.github||'',
+                    foto: a.foto||false,
+                    cursos: Array.isArray(a.cursos)? a.cursos : [],
+                  }));
+                  DATA_LOADED = true;
+                  return ALL;
+                })().catch(err=>{
+                  console.error('Error al cargar alumnos (fetch)', err);
+                  const container = document.getElementById('contacts');
+                  container.innerHTML = '<div class="empty">No se pudo cargar alumnos.json</div>';
+                  throw err;
+                });
+              }
+              return DATA_PROMISE;
+            }
+
+            document.getElementById('search').addEventListener('input', ()=>{
+              if(!DATA_LOADED){
+                // Evita intentar filtrar sin datos; la promesa actualizará después
+                return;
+              }
+              applySearch();
+            });
+
+            function start(){
+              ensureDataLoaded().then(()=> render());
+            }
+            if(document.readyState === 'loading'){
+              window.addEventListener('DOMContentLoaded', start, {once:true});
+            } else {
+              start();
+            }
+    </script>
+       
+  </body>
+  </html>
