@@ -14,9 +14,11 @@
       --border: #e5e9f2;
       --brand: #0f6fff;
       --star: #f5c33b;
-      --shadow: 0 4px 16px rgba(16, 24, 40, .08);
+      --shadow: 2px 2px 6px rgba(16, 24, 40, .15);
+      
       --radius: 24px;
-      --radius-sm: 12px;
+      corner-shape: squircle;    /* forma tipo “squircle” */
+      /* --radius-sm: 12px; */
     }
 
     * {
@@ -30,7 +32,7 @@
 
     body {
       margin: 0;
-      padding: 24px 24px 64px;
+      padding: 20px 20px 56px;
       background: var(--bg);
       color: var(--text);
       font: 400 16px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
@@ -107,7 +109,8 @@
       align-items: center;
       gap: 24px;
       justify-content: space-between;
-      margin-bottom: 18px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
     }
 
     h1 {
@@ -115,15 +118,27 @@
       font-weight: 800;
       letter-spacing: -.02em;
       color: #263445;
+      flex: 1 1 auto;
+      min-width: 220px;
+    }
+
+    .filter-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-end;
+      width: min(640px, 80vw);
+      flex: 1 1 80px;
     }
 
     .searchbar {
       position: relative;
-      width: min(420px, 60vw);
+      width: 100%;
     }
 
     .searchbar input {
       width: 100%;
+      font-size: 24px;
       padding: 12px 40px;
       border-radius: 999px;
       border: 1px solid var(--border);
@@ -131,8 +146,14 @@
       outline: 0.2px solid gray;
       box-shadow:
         inset 0px 0px 4px rgba(15, 23, 42, .3),
-        /* inset 0 1px 0 rgba(255, 255, 255, .65), */
         0 1px 1px rgba(16, 24, 40, .04);
+    }
+
+    .searchbar input::placeholder {
+      color: #9aa5b5;
+      opacity: 0.9;
+      font-size: 16px;
+      line-height: 24px;
     }
 
     .searchbar svg {
@@ -143,8 +164,66 @@
       color: #98a2b3;
     }
 
+    .facet-board {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .facet-line {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .facet-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .facet-sep {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .facet-pill {
+      border: none;
+      background: transparent;
+      color: var(--brand);
+      padding: 4px 6px;
+      font-size: .95rem;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: color .15s ease, background .15s ease;
+    }
+
+    .facet-pill:hover {
+      color: #0b56c8;
+      text-decoration: underline;
+      background: rgba(15, 111, 255, .05);
+    }
+
+    .facet-pill.active {
+      color: #0b56c8;
+      font-weight: 700;
+      text-decoration: underline;
+      background: rgba(15, 111, 255, .12);
+    }
+
+    .facet-empty {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
     section {
-      margin-top: 22px;
+      margin-top: 10px;
     }
 
     .section-title {
@@ -225,6 +304,16 @@
 
     .meta b {
       color: #2b3b4f;
+    }
+
+    .whatsapp-link {
+      color: #22c35e;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .whatsapp-link:hover {
+      text-decoration: underline;
     }
 
     .courses {
@@ -344,13 +433,30 @@
     }
 
     @media (max-width:640px) {
+      body {
+        padding: 10px 12px 32px;
+      }
+
       header {
         flex-direction: column;
         align-items: flex-start;
+        gap: 6px;
+        margin-bottom: 0;
       }
 
       .searchbar {
         width: 100%;
+      }
+
+      .filter-panel,
+      .facet-board {
+        width: 100%;
+        align-items: flex-start;
+        gap: 6px;
+      }
+
+      section {
+        margin-top: 0;
       }
     }
   </style>
@@ -360,13 +466,24 @@
   <div class="container">
     <header>
       <h1>Directorio de Alumnos</h1>
-      <div class="searchbar">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" />
-        </svg>
-        <input id="search" placeholder="Buscar por nombre, teléfono, legajo, materia, comisión, estado o año"
-          autocomplete="off" />
+      <div class="filter-panel">
+        <div class="searchbar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <input id="search" placeholder="Buscar por nombre, teléfono, legajo, materia, comisión, estado o año"
+            autocomplete="off" />
+        </div>
+        <div class="facet-board" aria-live="polite">
+          <div class="facet-line">
+            <div id="facet-years" class="facet-links"></div>
+            <span id="facet-sep-1" class="facet-sep">▶</span>
+            <div id="facet-materias" class="facet-links"></div>
+            <span id="facet-sep-2" class="facet-sep">▶</span>
+            <div id="facet-comisiones" class="facet-links"></div>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -441,8 +558,30 @@
     // (Sin favoritos ni localStorage)
 
     // Render --------------------------------------------------------------
+    function coursesForFacet(a) {
+      let list = Array.isArray(a.cursos) ? a.cursos : [];
+      const { year, materia, comision } = facetState;
+      if (year) list = list.filter(c => String(c.año) === String(year));
+      if (materia) list = list.filter(c => String(c.materia) === String(materia));
+      if (comision) list = list.filter(c => String(c.comision) === String(comision));
+
+      const abbrFilters = abbrevFiltersFromQuery(document.getElementById('search').value);
+      if (abbrFilters.length) {
+        list = list.filter(c => abbrFilters.includes(materiaAbbreviation(c.materia).toUpperCase()));
+      }
+      const stateFilters = stateFiltersFromQuery(document.getElementById('search').value);
+      if (stateFilters.length) {
+        list = list.filter(c => {
+          const st = norm(c.estado || '');
+          return stateFilters.every(sf => st.startsWith(sf));
+        });
+      }
+      return list;
+    }
+
     function cardTemplate(a) {
       const tel = a.telefono || '';
+      const waNumber = tel.replace(/\D/g, '');
       const gh = githubAvatar(a.github);
       const em = s => stateEmoji.get(s) || '⚪️';
 
@@ -455,7 +594,7 @@
         perfil = `<div class="avatar" style="background:${colorFor(a.nombre || a.legajo)}"><span class="initials">${initials(a.nombre).toUpperCase()}</span></div>`;
       }
       const avatarHtml = perfil;
-      const telefonoHtml = tel ? `<p class="meta"><b>Tel:</b> <a href="tel:${tel.replace(/[^0-9+]/g, '')}">${tel}</a></p>` : '';
+      const telefonoHtml = tel ? `<p class="meta"><b>Tel:</b> <a class="whatsapp-link" href="https://wa.me/${waNumber}" target="_blank" rel="noopener">${tel}</a></p>` : '';
 
       const practicos = (curso) => {
         let salida = '';
@@ -471,13 +610,15 @@
         }
       };
 
-      const cursos = (a.cursos || []).map(c => `
+      const cursosFiltrados = coursesForFacet(a);
+      const cursos = cursosFiltrados.map(c => `
             <div class="course-line" style="flex-direction:column; align-items:flex-start;">
                 <div class="emoji">${em(c.estado)}</span> <span>${c.año} · ${c.materia} · ${c.comision} <small>${c.estado}</small></div>
                 ${practicos(c)}
                 </div>
         `
       ).join('');
+      const cursosHtml = cursos || `<div class="course-line muted">Sin cursos en esta faceta</div>`;
 
       return `
           <article class="card" data-legajo="${a.legajo}">
@@ -487,7 +628,7 @@
               <p class="meta"><b>Legajo:</b> ${a.legajo}</p>
               ${telefonoHtml}
             </div>
-            <div class="courses">${cursos}</div>
+            <div class="courses">${cursosHtml}</div>
           </article>`;
     }
 
@@ -515,14 +656,108 @@
 
     function asArray(dict) { return Object.values(dict || {}); }
 
+    const ABBREV_REGEX = /^(p|l)(\d+)$/i;
+
+    function abbrevFiltersFromQuery(q) {
+      return norm(q).split(/\s+/).filter(Boolean).filter(t => ABBREV_REGEX.test(t)).map(t => t.toUpperCase());
+    }
+
+    function materiaFromAbbr(abbr, year) {
+      if (!abbr) return null;
+      const upper = abbr.toUpperCase();
+      const set = new Set();
+      ALL.forEach(a => (a.cursos || []).forEach(c => {
+        if (upper === materiaAbbreviation(c.materia).toUpperCase() && (!year || String(c.año) === String(year))) {
+          set.add(String(c.materia));
+        }
+      }));
+      const list = [...set].sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }));
+      return list[0] || null;
+    }
+
+    function comisionFromToken(token, year, materia) {
+      if (!token || !materia) return null;
+      const target = norm(token);
+      const set = new Set();
+      ALL.forEach(a => (a.cursos || []).forEach(c => {
+        if (String(c.materia) === String(materia) && (!year || String(c.año) === String(year))) {
+          const comp = norm(String(c.comision || ''));
+          if (comp && comp === target) set.add(String(c.comision));
+        }
+      }));
+      const list = [...set].sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }));
+      return list[0] || null;
+    }
+
+    const ESTADOS = ['libre', 'regular', 'promocionado', 'pendiente'];
+
+    function expandSearchTokens(tokens) {
+      const out = [];
+      for (const t of tokens) {
+        if (!t) continue;
+        const m = t.match(ABBREV_REGEX);
+        if (m) {
+          const full = (m[1].toLowerCase() === 'p' ? 'programacion' : 'laboratorio') + ' ' + m[2];
+          norm(full).split(/\s+/).filter(Boolean).forEach(part => out.push(part));
+        } else {
+          out.push(t);
+        }
+      }
+      return out;
+    }
+
+    function stateFiltersFromQuery(q) {
+      const toks = norm(q).split(/\s+/).filter(Boolean);
+      return toks.filter(t => ESTADOS.some(e => e.startsWith(t)));
+    }
+
+    function materiaAbbreviation(name) {
+      const normalized = norm(name);
+      const regexMatch = normalized.match(/^(programacion|laboratorio)[a-z\s]*?(\d+)/);
+      if (regexMatch) {
+        const prefix = regexMatch[1] === 'programacion' ? 'P' : 'L';
+        return `${prefix}${regexMatch[2]}`;
+      }
+      const m = normalized.match(/^(p|l)(\d+)/);
+      if (m) {
+        return m[0].toUpperCase();
+      }
+      return name;
+    }
+
+    function yearsForMateria(materia) {
+      if (!materia) return [];
+      const set = new Set();
+      ALL.forEach(a => (a.cursos || []).forEach(c => {
+        if (String(c.materia) === String(materia)) set.add(String(c.año));
+      }));
+      return [...set].filter(Boolean).sort((a, b) => a.localeCompare(b, 'es', { numeric: true }));
+    }
+
     function filterItems(items, q) {
       if (!q) return items;
-      const palabras = norm(q).split(/\s+/).filter(Boolean)
+      const abbrFilters = abbrevFiltersFromQuery(q);
+      const stateFilters = stateFiltersFromQuery(q);
+      const palabras = expandSearchTokens(norm(q).split(/\s+/).filter(Boolean));
       return items.filter(a => {
         const cursos = (a.cursos || []).flatMap(c => [c.materia, c.comision, c.estado, String(c.año), c.codigo]);
         const base = [a.nombre, a.telefono || '', a.legajo || '', a.github || '', `${a.cursos.length}x`];
         const texto = norm(base.concat(cursos).filter(Boolean).join(' '));
-        const hay = palabras.every(p => texto.includes(p));
+        const tokens = texto.split(/\s+/).filter(Boolean);
+        const hay = palabras.every(p => tokens.some(t => t.startsWith(p)));
+        if (!hay) return false;
+        if (abbrFilters.length) {
+          const tieneAbbr = abbrFilters.every(abbr =>
+            (a.cursos || []).some(c => materiaAbbreviation(c.materia).toUpperCase() === abbr)
+          );
+          if (!tieneAbbr) return false;
+        }
+        if (stateFilters.length) {
+          const tieneEstado = stateFilters.every(sf =>
+            (a.cursos || []).some(c => norm(c.estado || '').startsWith(sf))
+          );
+          if (!tieneEstado) return false;
+        }
         return hay;
       });
     }
@@ -575,6 +810,173 @@
     }
 
     const searchInput = document.getElementById('search');
+    const facetState = { year: null, materia: null, comision: null };
+    const facetContainers = {
+      years: document.getElementById('facet-years'),
+      materias: document.getElementById('facet-materias'),
+      comisiones: document.getElementById('facet-comisiones'),
+    };
+    const facetSeparators = {
+      yToM: document.getElementById('facet-sep-1'),
+      mToC: document.getElementById('facet-sep-2'),
+    };
+
+    function facetQueryString() {
+      const materiaToken = facetState.materia ? materiaAbbreviation(facetState.materia) : null;
+      return [facetState.year, materiaToken, facetState.comision].filter(Boolean).join(' ');
+    }
+
+    function validYearToken(t) {
+      if (!/^\d{4}$/.test(t)) return false;
+      const years = getYears();
+      return years.includes(String(t));
+    }
+
+    function syncFacetsFromQuery(q) {
+      if (!DATA_LOADED) return;
+      const tokens = norm(q).split(/\s+/).filter(Boolean);
+      const yearToken = tokens.find(validYearToken) || null;
+      const abbrTokenRaw = tokens.find(t => ABBREV_REGEX.test(t)) || null;
+      const abbrToken = abbrTokenRaw ? abbrTokenRaw.toUpperCase() : null;
+      const comToken = tokens.find(t => /^c[\w-]+$/i.test(t)) || null;
+
+      const materiaToken = abbrToken ? materiaFromAbbr(abbrToken, yearToken) : null;
+      let resolvedYear = yearToken;
+      if (!resolvedYear && materiaToken) {
+        const years = yearsForMateria(materiaToken);
+        if (years.length === 1) {
+          resolvedYear = years[0];
+        } else if (years.length > 1) {
+          resolvedYear = years[years.length - 1]; // toma el año más reciente
+        }
+      }
+      const comisionToken = comToken ? comisionFromToken(comToken, resolvedYear, materiaToken) : null;
+
+      facetState.year = resolvedYear;
+      facetState.materia = materiaToken;
+      facetState.comision = comisionToken;
+      renderFacets();
+    }
+
+    function getYears() {
+      const set = new Set();
+      ALL.forEach(a => (a.cursos || []).forEach(c => {
+        if (c.año !== undefined && c.año !== null && c.año !== '') {
+          set.add(String(c.año));
+        }
+      }));
+      return [...set].sort((a, b) => a.localeCompare(b, 'es', { numeric: true }));
+    }
+
+    function getMaterias(year) {
+      if (!year) return [];
+      const set = new Set();
+      ALL.forEach(a => (a.cursos || []).forEach(c => {
+        if (String(c.año) === String(year) && c.materia) set.add(String(c.materia));
+      }));
+      return [...set].sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }));
+    }
+
+    function getComisiones(year, materia) {
+      if (!year || !materia) return [];
+      const set = new Set();
+      ALL.forEach(a => (a.cursos || []).forEach(c => {
+        if (String(c.año) === String(year) && String(c.materia) === String(materia) && c.comision) {
+          set.add(String(c.comision));
+        }
+      }));
+      return [...set].sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }));
+    }
+
+    function renderFacetLinks(container, values, activeValue, onClick) {
+      container.innerHTML = '';
+      if (!values.length) return;
+      values.forEach(val => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'facet-pill' + (activeValue === val ? ' active' : '');
+        btn.textContent = val;
+        btn.addEventListener('click', () => onClick(val));
+        container.appendChild(btn);
+      });
+    }
+
+    function renderFacets() {
+      if (!DATA_LOADED) return;
+      facetSeparators.yToM.style.display = 'none';
+      facetSeparators.mToC.style.display = 'none';
+      const years = getYears();
+      const yearsToShow = facetState.year ? [facetState.year] : years;
+      renderFacetLinks(facetContainers.years, yearsToShow, facetState.year, toggleYear);
+
+      if (!facetState.year) {
+        facetContainers.materias.innerHTML = '';
+        facetContainers.comisiones.innerHTML = '';
+        return;
+      }
+      facetSeparators.yToM.style.display = 'inline-block';
+
+      const materias = getMaterias(facetState.year);
+      const materiasToShow = facetState.materia ? [facetState.materia] : materias;
+      renderFacetLinks(facetContainers.materias, materiasToShow, facetState.materia, toggleMateria);
+
+      if (!facetState.materia) {
+        facetContainers.comisiones.innerHTML = '';
+        return;
+      }
+      facetSeparators.mToC.style.display = 'inline-block';
+
+      const comisiones = getComisiones(facetState.year, facetState.materia);
+      const comisionesToShow = facetState.comision ? [facetState.comision] : comisiones;
+      renderFacetLinks(facetContainers.comisiones, comisionesToShow, facetState.comision, toggleComision);
+    }
+
+    function syncFacetsToSearch() {
+      const q = facetQueryString();
+      searchInput.value = q;
+      setSearchParam(q);
+      if (DATA_LOADED) {
+        render();
+      }
+    }
+
+    function toggleYear(year) {
+      if (facetState.year === year) {
+        facetState.year = null;
+        facetState.materia = null;
+        facetState.comision = null;
+      } else {
+        facetState.year = year;
+        facetState.materia = null;
+        facetState.comision = null;
+      }
+      syncFacetsToSearch();
+      renderFacets();
+    }
+
+    function toggleMateria(materia) {
+      if (!facetState.year) return;
+      if (facetState.materia === materia) {
+        facetState.materia = null;
+        facetState.comision = null;
+      } else {
+        facetState.materia = materia;
+        facetState.comision = null;
+      }
+      syncFacetsToSearch();
+      renderFacets();
+    }
+
+    function toggleComision(comision) {
+      if (!facetState.year || !facetState.materia) return;
+      if (facetState.comision === comision) {
+        facetState.comision = null;
+      } else {
+        facetState.comision = comision;
+      }
+      syncFacetsToSearch();
+      renderFacets();
+    }
 
     function setSearchParam(q) {
       const url = new URL(window.location.href);
@@ -600,21 +1002,30 @@
         // Evita intentar filtrar sin datos; la promesa actualizará después
         return;
       }
+      syncFacetsFromQuery(q);
       applySearch();
     });
 
     window.addEventListener('popstate', () => {
-      syncInputFromURL();
+      const q = syncInputFromURL();
       if (DATA_LOADED) {
+        syncFacetsFromQuery(q);
         render();
       } else {
-        ensureDataLoaded().then(() => render());
+        ensureDataLoaded().then(() => {
+          syncFacetsFromQuery(q);
+          render();
+        });
       }
     });
 
     function start() {
-      syncInputFromURL();
-      ensureDataLoaded().then(() => render());
+      const q = syncInputFromURL();
+      ensureDataLoaded().then(() => {
+        syncFacetsFromQuery(q);
+        renderFacets();
+        render();
+      });
     }
     if (document.readyState === 'loading') {
       window.addEventListener('DOMContentLoaded', start, { once: true });
