@@ -348,6 +348,17 @@
       small { color: gray; }
     }
 
+    .tp-link {
+      margin-left: 6px;
+      font-weight: 700;
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    .tp-link:hover {
+      text-decoration: underline;
+    }
+
     .course-line .emoji {
       flex: 0 0 18px;
     }
@@ -564,8 +575,17 @@
     function githubAvatar(username) {
       if (!username) return null;
       const u = username.replace(/^@+/, '').trim();
+      const github = `https://github.com/AlejandroDiBattista/{repo}/tree/main/TP/`
       if (!u) return null;
       return `https://github.com/${encodeURIComponent(u)}.png?size=120`;
+    }
+
+    function githubTP(curso) {
+      if (!curso || !curso.carpeta_tp) return null;
+      const comision = curso.codigo[0] == 'L' ? `-${curso.comision}`.trim() : "";
+      const repo = `TUP${Number(curso.año) - 2000}-${curso.codigo}${comision}`;
+      const carpeta = encodeURIComponent(curso.carpeta_tp);
+      return `https://github.com/AlejandroDiBattista/${repo}/tree/main/TP/${carpeta}`;
     }
 
     // Overlay de zoom para avatares ------------------------------------
@@ -616,6 +636,7 @@
       const tel = a.telefono || '';
       const waNumber = tel.replace(/\D/g, '');
       const gh = githubAvatar(a.github);
+
       const em = s => stateEmoji.get(s) || '⚪️';
 
       let perfil = '';
@@ -644,15 +665,17 @@
       };
 
       const cursosFiltrados = coursesForFacet(a);
-      const cursos = cursosFiltrados.map(c => `
-            <div class="course-line" style="flex-direction:column; align-items:flex-start;">
-                <div class="emoji">${em(c.estado)}</span> <span>${c.año} · ${c.materia} · ${c.comision} <small>${c.estado}</small></div>
-                ${practicos(c)}
-                </div>
-        `
-      ).join('');
+      const cursos = cursosFiltrados.map(c => {
+        const repoUrl = githubTP(c);
+        const link = repoUrl ? ` · <a class="tp-link" href="${repoUrl}" target="_blank" rel="noopener">TP</a>` : '';
+        return `
+          <div class="course-line" style="flex-direction:column; align-items:flex-start;">
+            <div><span class="emoji">${em(c.estado)}</span> <span>${c.año} · ${c.materia} · ${c.comision} <small>${c.estado}</small>${link}</span></div>
+            ${practicos(c)}
+          </div>
+        `;
+      }).join('');
       const cursosHtml = cursos || `<div class="course-line muted">Sin cursos en esta faceta</div>`;
-
       return `
           <article class="card" data-legajo="${a.legajo}">
             ${avatarHtml}
