@@ -582,7 +582,7 @@
 
     function githubTP(curso) {
       if (!curso || !curso.carpeta_tp) return null;
-      const comision = curso.codigo[0] == 'L' ? `-${curso.comision}`.trim() : "";
+      const comision = curso.codigo.startsWith('L') ? `-${curso.comision}`.trim() : "";
       const repo = `TUP${Number(curso.año) - 2000}-${curso.codigo}${comision}`;
       const carpeta = encodeURIComponent(curso.carpeta_tp);
       return `https://github.com/AlejandroDiBattista/${repo}/tree/main/TP/${carpeta}`;
