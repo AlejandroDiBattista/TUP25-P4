@@ -555,7 +555,7 @@
       .toLowerCase()
       .normalize('NFD')
       .replace(/\p{Diacritic}/gu, '')
-      .replace(/[^a-z0-9 @._-]+/g, ' ')
+      .replace(/[^a-z0-9 @._+\-]+/g, ' ')
       .trim();
 
     function initials(fullName) {
@@ -713,6 +713,28 @@
     function asArray(dict) { return Object.values(dict || {}); }
 
     const ABBREV_REGEX = /^(p|l)(\d+)$/i;
+    const SPECIAL_QUERY_TOKENS = new Set(['f+', 'f-', 't+', 't-', 'g+', 'g-']);
+
+    function flagFilterFromTokens(tokens, yes, no) {
+      const hasYes = tokens.includes(yes);
+      const hasNo = tokens.includes(no);
+      if (hasYes && hasNo) return null;
+      if (hasYes) return true;
+      if (hasNo) return false;
+      return null;
+    }
+
+    function photoFilterFromTokens(tokens) {
+      return flagFilterFromTokens(tokens, 'f+', 'f-');
+    }
+
+    function phoneFilterFromTokens(tokens) {
+      return flagFilterFromTokens(tokens, 't+', 't-');
+    }
+
+    function githubFilterFromTokens(tokens) {
+      return flagFilterFromTokens(tokens, 'g+', 'g-');
+    }
 
     function abbrevFiltersFromQuery(q) {
       return norm(q).split(/\s+/).filter(Boolean).filter(t => ABBREV_REGEX.test(t)).map(t => t.toUpperCase());
@@ -792,9 +814,13 @@
 
     function filterItems(items, q) {
       if (!q) return items;
+      const normalizedTokens = norm(q).split(/\s+/).filter(Boolean);
       const abbrFilters = abbrevFiltersFromQuery(q);
       const stateFilters = stateFiltersFromQuery(q);
-      const palabras = expandSearchTokens(norm(q).split(/\s+/).filter(Boolean));
+      const photoFilter = photoFilterFromTokens(normalizedTokens);
+      const phoneFilter = phoneFilterFromTokens(normalizedTokens);
+      const githubFilter = githubFilterFromTokens(normalizedTokens);
+      const palabras = expandSearchTokens(normalizedTokens.filter(t => !SPECIAL_QUERY_TOKENS.has(t)));
       return items.filter(a => {
         const cursos = (a.cursos || []).flatMap(c => [c.materia, c.comision, c.estado, String(c.año), c.codigo]);
         const base = [a.nombre, a.telefono || '', a.legajo || '', a.github || '', `${a.cursos.length}x`];
@@ -802,6 +828,14 @@
         const tokens = texto.split(/\s+/).filter(Boolean);
         const hay = palabras.every(p => tokens.some(t => t.startsWith(p)));
         if (!hay) return false;
+        if (photoFilter === true && !a.foto) return false;
+        if (photoFilter === false && a.foto) return false;
+        const hasPhone = Boolean((a.telefono || '').trim());
+        if (phoneFilter === true && !hasPhone) return false;
+        if (phoneFilter === false && hasPhone) return false;
+        const hasGithub = Boolean((a.github || '').trim());
+        if (githubFilter === true && !hasGithub) return false;
+        if (githubFilter === false && hasGithub) return false;
         if (abbrFilters.length) {
           const tieneAbbr = abbrFilters.every(abbr =>
             (a.cursos || []).some(c => materiaAbbreviation(c.materia).toUpperCase() === abbr)

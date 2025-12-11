@@ -2944,6 +2944,7 @@
                 "carpeta_tp": "58764 - Acuña, Ana Sofía"
             }
         ],
+        "telefono": "(381) 405-9847",
         "foto": false
     },
     "59277": {
@@ -3094,7 +3095,8 @@
                 "carpeta_tp": "59234 - Chocobar, Matías Sebastián"
             }
         ],
-        "foto": false
+        "telefono": "(381) 320-0213",
+        "foto": true
     },
     "59268": {
         "legajo": "59268",
@@ -3139,7 +3141,8 @@
                 "carpeta_tp": "59423 - Esper, Rodrigo Fernando"
             }
         ],
-        "foto": false
+        "telefono": "(381) 320-0213",
+        "foto": true
     },
     "55530": {
         "legajo": "55530",
@@ -4119,7 +4122,7 @@
         ],
         "telefono": "(381) 350-5275",
         "github": "@maximocollazos",
-        "foto": false
+        "foto": true
     },
     "61248": {
         "legajo": "61248",
@@ -4937,7 +4940,7 @@
         ],
         "telefono": "(381) 526-8193",
         "github": "@SantiBarriox",
-        "foto": false
+        "foto": true
     },
     "61203": {
         "legajo": "61203",
@@ -5199,7 +5202,7 @@
         ],
         "telefono": "(381) 624-2939",
         "github": "@nicoiosa",
-        "foto": false
+        "foto": true
     },
     "61050": {
         "legajo": "61050",
@@ -5233,7 +5236,7 @@
         ],
         "telefono": "(296) 663-5548",
         "github": "@agustin-diaz05",
-        "foto": false
+        "foto": true
     },
     "61060": {
         "legajo": "61060",
@@ -5335,7 +5338,7 @@
         ],
         "telefono": "(381) 642-7386",
         "github": "@FedericoVM",
-        "foto": false
+        "foto": true
     },
     "61290": {
         "legajo": "61290",
@@ -5352,7 +5355,7 @@
         ],
         "telefono": "(381) 680-5666",
         "github": "@Tomtestt",
-        "foto": false
+        "foto": true
     },
     "61328": {
         "legajo": "61328",
@@ -5420,7 +5423,7 @@
         ],
         "telefono": "(381) 636-2211",
         "github": "@AlejoBJ6",
-        "foto": false
+        "foto": true
     },
     "61652": {
         "legajo": "61652",
@@ -5573,7 +5576,7 @@
         ],
         "telefono": "(381) 650-4400",
         "github": "@MuseAleJandro",
-        "foto": false
+        "foto": true
     },
     "61042": {
         "legajo": "61042",
@@ -5658,7 +5661,7 @@
         ],
         "telefono": "(381) 619-4179",
         "github": "@Nahumolher",
-        "foto": false
+        "foto": true
     },
     "61140": {
         "legajo": "61140",
@@ -5709,7 +5712,7 @@
         ],
         "telefono": "(381) 213-0484",
         "github": "@LautaroLiendo",
-        "foto": false
+        "foto": true
     },
     "61247": {
         "legajo": "61247",
