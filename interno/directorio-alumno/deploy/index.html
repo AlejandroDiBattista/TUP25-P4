@@ -828,14 +828,14 @@
         const tokens = texto.split(/\s+/).filter(Boolean);
         const hay = palabras.every(p => tokens.some(t => t.startsWith(p)));
         if (!hay) return false;
-        if (photoFilter === true && !a.foto) return false;
-        if (photoFilter === false && a.foto) return false;
+        if (photoFilter === true  && !a.foto) return false;
+        if (photoFilter === false &&  a.foto) return false;
         const hasPhone = Boolean((a.telefono || '').trim());
-        if (phoneFilter === true && !hasPhone) return false;
-        if (phoneFilter === false && hasPhone) return false;
+        if (phoneFilter === true  && !hasPhone) return false;
+        if (phoneFilter === false &&  hasPhone) return false;
         const hasGithub = Boolean((a.github || '').trim());
-        if (githubFilter === true && !hasGithub) return false;
-        if (githubFilter === false && hasGithub) return false;
+        if (githubFilter === true  && !hasGithub) return false;
+        if (githubFilter === false &&  hasGithub) return false;
         if (abbrFilters.length) {
           const tieneAbbr = abbrFilters.every(abbr =>
             (a.cursos || []).some(c => materiaAbbreviation(c.materia).toUpperCase() === abbr)
