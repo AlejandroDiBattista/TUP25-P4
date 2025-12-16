@@ -5,6 +5,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Directorio de alumnos</title>
+  <link rel="preconnect" href="https://github.com" crossorigin />
+  <link rel="preconnect" href="https://avatars.githubusercontent.com" crossorigin />
   <style>
     :root {
       --bg: #f5f7fb;
@@ -580,6 +582,165 @@
       return `https://github.com/${encodeURIComponent(u)}.png?size=120`;
     }
 
+    // Precarga de imágenes (avatares) -------------------------------------
+    const imagePreloader = (() => {
+      const preloaded = new Set();
+      const queued = new Set();
+      const inflight = new Set();
+      const queue = [];
+      let scheduled = null;
+      let enabled = false;
+      const maxConcurrency = 2;
+
+      function schedule(mode = 'idle') {
+        if (!enabled) return;
+        if (scheduled) return;
+        if ('requestIdleCallback' in window) {
+          scheduled = window.requestIdleCallback(() => {
+            scheduled = null;
+            pump();
+          });
+          return;
+        }
+        scheduled = window.setTimeout(() => {
+          scheduled = null;
+          pump();
+        }, mode === 'urgent' ? 250 : 500);
+      }
+
+      function preloadOne(url) {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.decoding = 'async';
+          img.loading = 'eager';
+          img.referrerPolicy = 'no-referrer';
+          if ('fetchPriority' in img) img.fetchPriority = 'low';
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+          img.src = url;
+        });
+      }
+
+      function pump() {
+        if (!enabled) return;
+        while (inflight.size < maxConcurrency && queue.length) {
+          const url = queue.shift();
+          queued.delete(url);
+          if (!url || preloaded.has(url) || inflight.has(url)) continue;
+          inflight.add(url);
+          preloadOne(url).finally(() => {
+            inflight.delete(url);
+            preloaded.add(url);
+            if (queue.length) schedule('idle');
+          });
+        }
+      }
+
+      function add(urls, mode = 'idle') {
+        (urls || []).forEach(url => {
+          if (!url || preloaded.has(url) || inflight.has(url) || queued.has(url)) return;
+          queue.push(url);
+          queued.add(url);
+        });
+        if (queue.length) schedule(mode);
+      }
+
+      function enable() {
+        enabled = true;
+        if (queue.length) schedule('idle');
+      }
+
+      function isEnabled() {
+        return enabled;
+      }
+
+      return { add, enable, isEnabled };
+    })();
+
+    function canPreloadRemote() {
+      const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      const saveData = !!conn?.saveData;
+      const effectiveType = String(conn?.effectiveType || '').toLowerCase();
+      const slow = effectiveType.includes('2g') || effectiveType.includes('slow');
+      return !saveData && !slow;
+    }
+
+    function avatarUrlFor(a) {
+      if (!a) return null;
+      if (a.foto) return `./img/${a.legajo}.png`;
+      return githubAvatar(a.github);
+    }
+
+    function primeAvatarPreload(list) {
+      const urls = [];
+      let remoteCount = 0;
+      const allowRemote = canPreloadRemote();
+      for (const a of (list || []).slice(0, 36)) {
+        const url = avatarUrlFor(a);
+        if (!url) continue;
+        const isRemote = /^https?:\/\//i.test(url);
+        if (isRemote) {
+          if (!allowRemote) continue;
+          if (remoteCount >= 12) continue;
+          remoteCount += 1;
+        }
+        urls.push(url);
+      }
+      imagePreloader.add(urls, 'idle');
+    }
+
+    function warmLocalPhotos(all) {
+      const urls = (all || []).filter(a => a?.foto).map(a => `./img/${a.legajo}.png`);
+      imagePreloader.add(urls, 'idle');
+    }
+
+    let LAST_RENDERED = [];
+    let primeIdleId = null;
+    let primeTimeoutId = null;
+
+    function schedulePrimeAvatarPreload() {
+      if (!imagePreloader.isEnabled()) return;
+      if ('cancelIdleCallback' in window && primeIdleId) {
+        window.cancelIdleCallback(primeIdleId);
+        primeIdleId = null;
+      }
+      if (primeTimeoutId) {
+        window.clearTimeout(primeTimeoutId);
+        primeTimeoutId = null;
+      }
+
+      if ('requestIdleCallback' in window) {
+        primeIdleId = window.requestIdleCallback(() => {
+          primeIdleId = null;
+          primeAvatarPreload(LAST_RENDERED);
+        });
+        return;
+      }
+      primeTimeoutId = window.setTimeout(() => {
+        primeTimeoutId = null;
+        primeAvatarPreload(LAST_RENDERED);
+      }, 600);
+    }
+
+    function enablePreloadingAfterLoad() {
+      const run = () => {
+        const enable = () => {
+          imagePreloader.enable();
+          schedulePrimeAvatarPreload();
+        };
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(enable);
+          return;
+        }
+        window.setTimeout(enable, 800);
+      };
+      if (document.readyState === 'complete') {
+        run();
+        return;
+      }
+      window.addEventListener('load', run, { once: true });
+    }
+
     function githubTP(curso) {
       if (!curso || !curso.carpeta_tp) return null;
       const comision = curso.codigo.startsWith('L') ? `-${curso.comision}`.trim() : "";
@@ -641,9 +802,9 @@
 
       let perfil = '';
       if (a.foto) {
-        perfil = `<div class="avatar"><img alt="avatar" src="./img/${a.legajo}.png" loading="lazy" referrerpolicy="no-referrer"/></div>`;
+        perfil = `<div class="avatar"><img alt="avatar" src="./img/${a.legajo}.png" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer"/></div>`;
       } else if (gh) {
-        perfil = `<div class="avatar"><img alt="avatar" src="${gh}" loading="lazy" referrerpolicy="no-referrer"/></div>`
+        perfil = `<div class="avatar"><img alt="avatar" src="${gh}" loading="lazy" decoding="async" fetchpriority="low" referrerpolicy="no-referrer"/></div>`
       } else {
         perfil = `<div class="avatar" style="background:${colorFor(a.nombre || a.legajo)}"><span class="initials">${initials(a.nombre).toUpperCase()}</span></div>`;
       }
@@ -871,6 +1032,8 @@
       const filtered = sortByNombre(filterItems(ALL, q));
       mountCards(document.getElementById('contacts'), filtered);
       document.getElementById('all-count').textContent = `(${filtered.length})`;
+      LAST_RENDERED = filtered;
+      schedulePrimeAvatarPreload();
     }
 
     const applySearch = () => render();
@@ -1128,6 +1291,8 @@
     } else {
       start();
     }
+
+    enablePreloadingAfterLoad();
   </script>
 
 </body>
