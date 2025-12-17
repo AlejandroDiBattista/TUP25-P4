@@ -275,6 +275,33 @@
       grid-template-columns: 56px 1fr;
       column-gap: 14px;
       align-content: start;
+      outline: none;
+    }
+
+    .card.kbd-selected {
+      border-color: rgba(15, 111, 255, .45);
+    }
+
+    .card:focus-visible {
+      border-color: rgba(15, 111, 255, .55);
+      box-shadow:
+        0 0 0 4px rgba(15, 111, 255, .18),
+        var(--shadow);
+    }
+
+    .card[data-copied="true"]::after {
+      content: "Copiado";
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      background: rgba(15, 111, 255, .10);
+      border: 1px solid rgba(15, 111, 255, .25);
+      color: #0b56c8;
+      font-weight: 700;
+      font-size: .78rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      pointer-events: none;
     }
 
     .avatar {
@@ -293,6 +320,7 @@
       height: 56px;
       object-fit: cover;
       display: block;
+      cursor: pointer;
     }
 
     .avatar .initials {
@@ -838,7 +866,7 @@
       }).join('');
       const cursosHtml = cursos || `<div class="course-line muted">Sin cursos en esta faceta</div>`;
       return `
-          <article class="card" data-legajo="${a.legajo}">
+          <article class="card" data-legajo="${a.legajo}" tabindex="-1">
             ${avatarHtml}
             <div class="content">
               <h3 class="name" title="${(a.nombre || '').replace(/&/g, '&amp;').replace(/\"/g, '&quot;')}">${a.nombre || 'Sin nombre'}</h3>
@@ -849,9 +877,174 @@
           </article>`;
     }
 
+    // Navegación por teclado (contactos) ---------------------------------
+    let ACTIVE_LEGAJO = null;
+    let ACTIVE_CARD = null;
+    const COPY_FLASH = new WeakMap();
+
+    function isEditableTarget(el) {
+      if (!(el instanceof Element)) return false;
+      if (el.isContentEditable) return true;
+      const tag = el.tagName?.toLowerCase();
+      return tag === 'input' || tag === 'textarea' || tag === 'select';
+    }
+
+    function setActiveCard(card, { focus = false, scroll = false } = {}) {
+      if (!card) return;
+      if (!(card instanceof Element)) return;
+
+      if (ACTIVE_CARD && ACTIVE_CARD !== card) {
+        ACTIVE_CARD.classList.remove('kbd-selected');
+        ACTIVE_CARD.tabIndex = -1;
+        ACTIVE_CARD.removeAttribute('aria-selected');
+        ACTIVE_CARD = null;
+      }
+
+      card.classList.add('kbd-selected');
+      card.tabIndex = 0;
+      card.setAttribute('aria-selected', 'true');
+      ACTIVE_CARD = card;
+      ACTIVE_LEGAJO = card.dataset.legajo || null;
+
+      if (focus) {
+        card.focus({ preventScroll: true });
+      }
+      if (scroll) {
+        card.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      }
+    }
+
+    function gridColumnCount(cards) {
+      if (!cards.length) return 0;
+      const top0 = cards[0].offsetTop;
+      let cols = 0;
+      for (const c of cards) {
+        if (Math.abs(c.offsetTop - top0) <= 2) cols++;
+        else break;
+      }
+      return Math.max(cols, 1);
+    }
+
+    function nextIndexFromArrow(key, index, cols, length) {
+      if (index < 0 || index >= length) return index;
+      if (!cols) return index;
+
+      const row = Math.floor(index / cols);
+      const col = index % cols;
+
+      if (key === 'ArrowLeft') {
+        return Math.max(index - 1, 0);
+      }
+      if (key === 'ArrowRight') {
+        return Math.min(index + 1, length - 1);
+      }
+      if (key === 'ArrowUp') {
+        if (row === 0) return index;
+        return (row - 1) * cols + col;
+      }
+      if (key === 'ArrowDown') {
+        const nextRowStart = (row + 1) * cols;
+        if (nextRowStart >= length) return index;
+        const nextRowLen = Math.min(cols, length - nextRowStart);
+        return nextRowStart + Math.min(col, nextRowLen - 1);
+      }
+      return index;
+    }
+
+    async function writeToClipboard(text) {
+      if (!text) return false;
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+          return true;
+        }
+      } catch (err) {
+        // fallback below
+      }
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.top = '-9999px';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        return ok;
+      } catch (err) {
+        return false;
+      }
+    }
+
+    function contactTextFromCard(card) {
+      const legajo = card?.dataset?.legajo || '';
+      const data = legajo ? ALL.find(a => String(a.legajo) === String(legajo)) : null;
+      if (data) {
+        const lines = [];
+        lines.push(`${data.nombre || 'Sin nombre'} (${data.legajo || 'Sin legajo'})`);
+        if ((data.telefono || '').trim()) lines.push(`Tel: ${data.telefono}`);
+        if ((data.github || '').trim()) lines.push(`GitHub: ${data.github.replace(/^@+/, '')}`);
+        const cursos = Array.isArray(data.cursos) ? data.cursos : [];
+        if (cursos.length) {
+          lines.push('Cursos:');
+          cursos.forEach(c => {
+            const año = c.año ?? '';
+            const materia = c.materia ?? '';
+            const comision = c.comision ?? '';
+            const estado = c.estado ?? '';
+            const parts = [año, materia, comision].filter(Boolean).join(' · ');
+            const st = estado ? ` (${estado})` : '';
+            if (parts) lines.push(`- ${parts}${st}`);
+          });
+        }
+        return lines.join('\n');
+      }
+
+      const name = card?.querySelector?.('.name')?.textContent?.trim() || 'Sin nombre';
+      const tel = card?.querySelector?.('.whatsapp-link')?.textContent?.trim() || '';
+      const lines = [`${name}${legajo ? ` (${legajo})` : ''}`];
+      if (tel) lines.push(`Tel: ${tel}`);
+      return lines.join('\n');
+    }
+
+    function flashCopied(card) {
+      if (!card) return;
+      card.dataset.copied = 'true';
+      const prev = COPY_FLASH.get(card);
+      if (prev) window.clearTimeout(prev);
+      const t = window.setTimeout(() => {
+        if (card?.dataset) delete card.dataset.copied;
+        COPY_FLASH.delete(card);
+      }, 900);
+      COPY_FLASH.set(card, t);
+    }
+
+    function zoomFromCard(card) {
+      if (!card) return;
+      const img = card.querySelector('.avatar img');
+      if (!img?.src) return;
+      avatarZoom.show(img.src, img.alt || 'Avatar');
+    }
+
     function mountCards(container, list) {
       container.innerHTML = list.length ? list.map(cardTemplate).join('') : `<div class="empty">Sin resultados</div>`;
       // (Sin manejadores de favoritos)
+      // Roving tabindex + selección
+      ACTIVE_CARD = null;
+      const cards = [...container.querySelectorAll('.card')];
+      cards.forEach(c => {
+        c.tabIndex = -1;
+        c.classList.remove('kbd-selected');
+        c.removeAttribute('aria-selected');
+        c.addEventListener('focus', () => setActiveCard(c));
+        c.addEventListener('click', () => setActiveCard(c, { focus: true }));
+      });
+      const preferred = ACTIVE_LEGAJO ? cards.find(c => c.dataset.legajo === ACTIVE_LEGAJO) : null;
+      if (preferred) setActiveCard(preferred);
+      else if (cards[0]) setActiveCard(cards[0]);
+
       // Fallback a iniciales si el avatar de GitHub falla
       container.querySelectorAll('.avatar img').forEach(img => {
         img.addEventListener('error', () => {
@@ -1080,6 +1273,73 @@
       mToC: document.getElementById('facet-sep-2'),
     };
 
+    // Atajos globales ------------------------------------------------------
+    document.addEventListener('keydown', (ev) => {
+      const key = (ev.key || '').toLowerCase();
+      const isMod = ev.ctrlKey || ev.metaKey;
+      if (isMod && key === 'k') {
+        ev.preventDefault();
+        searchInput.focus();
+        searchInput.select();
+      }
+    });
+
+    // Navegación en grilla de contactos -----------------------------------
+    const contactsGrid = document.getElementById('contacts');
+    contactsGrid.addEventListener('keydown', (ev) => {
+      const card = ev.target?.closest?.('.card');
+      if (!card || !contactsGrid.contains(card)) return;
+      if (isEditableTarget(ev.target)) return;
+
+      const key = ev.key || '';
+      const lower = key.toLowerCase();
+      const isMod = ev.ctrlKey || ev.metaKey;
+
+      if (isMod && lower === 'c') {
+        const selectedText = (window.getSelection?.()?.toString?.() || '').trim();
+        if (selectedText) return;
+        ev.preventDefault();
+        const text = contactTextFromCard(card);
+        writeToClipboard(text).then((ok) => {
+          if (ok) flashCopied(card);
+        });
+        return;
+      }
+
+      if (key === ' ' || key === 'Spacebar') {
+        ev.preventDefault();
+        zoomFromCard(card);
+        return;
+      }
+
+      if (key === 'Tab') {
+        const cards = [...contactsGrid.querySelectorAll('.card')];
+        const index = cards.indexOf(card);
+        if (index < 0) return;
+        if (ev.shiftKey) {
+          if (index === 0) return;
+          ev.preventDefault();
+          setActiveCard(cards[index - 1], { focus: true, scroll: true });
+          return;
+        }
+        if (index >= cards.length - 1) return;
+        ev.preventDefault();
+        setActiveCard(cards[index + 1], { focus: true, scroll: true });
+        return;
+      }
+
+      if (key === 'ArrowLeft' || key === 'ArrowRight' || key === 'ArrowUp' || key === 'ArrowDown') {
+        ev.preventDefault();
+        const cards = [...contactsGrid.querySelectorAll('.card')];
+        const index = cards.indexOf(card);
+        if (index < 0) return;
+        const cols = gridColumnCount(cards);
+        const next = nextIndexFromArrow(key, index, cols, cards.length);
+        if (next === index) return;
+        setActiveCard(cards[next], { focus: true, scroll: true });
+      }
+    });
+
     function facetQueryString() {
       const materiaToken = facetState.materia ? materiaAbbreviation(facetState.materia) : null;
       return [facetState.year, materiaToken, facetState.comision].filter(Boolean).join(' ');
@@ -1263,6 +1523,32 @@
       }
       syncFacetsFromQuery(q);
       applySearch();
+    });
+
+    searchInput.addEventListener('keydown', (ev) => {
+      if (ev.key !== 'ArrowDown') return;
+      ev.preventDefault();
+
+      const focusFirstCard = () => {
+        const grid = document.getElementById('contacts');
+        const card = ACTIVE_CARD || grid.querySelector('.card[tabindex="0"]') || grid.querySelector('.card');
+        if (!card) return;
+        setActiveCard(card, { focus: true, scroll: true });
+      };
+
+      const afterRender = () => window.requestAnimationFrame(focusFirstCard);
+
+      if (DATA_LOADED) {
+        afterRender();
+        return;
+      }
+
+      ensureDataLoaded().then(() => {
+        syncFacetsFromQuery(searchInput.value);
+        renderFacets();
+        render();
+        afterRender();
+      });
     });
 
     window.addEventListener('popstate', () => {
