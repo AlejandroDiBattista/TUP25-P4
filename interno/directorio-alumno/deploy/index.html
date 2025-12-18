@@ -235,6 +235,12 @@
       background: rgba(15, 111, 255, .12);
     }
 
+    .facet-count {
+      font-size: 0.55em;
+      opacity: .65;
+      margin-left: 4px;
+    }
+
     .facet-empty {
       color: var(--muted);
       font-size: .9rem;
@@ -571,7 +577,7 @@
       <div id="contacts" class="grid"></div>
     </section>
 
-    <p class="footer-note">Listado actualizado al <span id="last-updated" class="muted">17 de diciembre de 2025</span>.
+    <p class="footer-note">Listado actualizado al <span id="last-updated" class="muted">18 de diciembre de 2025</span>.
     </p>
   </div>
 
@@ -805,18 +811,18 @@
     // (Sin favoritos ni localStorage)
 
     // Render --------------------------------------------------------------
-    function coursesForFacet(a) {
+    function coursesForFacet(a, facets = facetState, searchText = baseSearchText) {
       let list = Array.isArray(a.cursos) ? a.cursos : [];
-      const { year, materia, comision } = facetState;
+      const { year, materia, comision } = facets;
       if (year) list = list.filter(c => String(c.año) === String(year));
       if (materia) list = list.filter(c => String(c.materia) === String(materia));
       if (comision) list = list.filter(c => String(c.comision) === String(comision));
 
-      const abbrFilters = abbrevFiltersFromQuery(document.getElementById('search').value);
+      const abbrFilters = abbrevFiltersFromQuery(searchText);
       if (abbrFilters.length) {
         list = list.filter(c => abbrFilters.includes(materiaAbbreviation(c.materia).toUpperCase()));
       }
-      const stateFilters = stateFiltersFromQuery(document.getElementById('search').value);
+      const stateFilters = stateFiltersFromQuery(searchText);
       if (stateFilters.length) {
         list = list.filter(c => {
           const st = norm(c.estado || '');
@@ -1410,9 +1416,8 @@
       return [...set].filter(Boolean).sort((a, b) => a.localeCompare(b, 'es', { numeric: true }));
     }
 
-    function filterItems(items, q) {
-      if (!q) return items;
-      const normalizedTokens = norm(q).split(/\s+/).filter(Boolean);
+    function filterItems(items, q, facets = facetState) {
+      const normalizedTokens = norm(q || '').split(/\s+/).filter(Boolean);
       const abbrFilters = abbrevFiltersFromQuery(q);
       const stateFilters = stateFiltersFromQuery(q);
       const photoFilter = photoFilterFromTokens(normalizedTokens);
@@ -1447,9 +1452,9 @@
           if (!tieneEstado) return false;
         }
         // Si hay filtros de faceta/abreviatura/estado, el alumno debe tener cursos que cumplan todos
-        const facetApplied = facetState.year || facetState.materia || facetState.comision || abbrFilters.length || stateFilters.length;
+        const facetApplied = facets.year || facets.materia || facets.comision || abbrFilters.length || stateFilters.length;
         if (facetApplied) {
-          const courses = coursesForFacet(a);
+          const courses = coursesForFacet(a, facets, q);
           if (!courses.length) return false;
         }
         return hay;
@@ -1463,13 +1468,15 @@
     let ALL = [];
     let DATA_LOADED = false;
     let DATA_PROMISE = null;
+    let baseSearchText = '';
+    let LAST_FILTERED = [];
 
     function render() {
-      const q = document.getElementById('search').value;
-      const filtered = sortByNombre(filterItems(ALL, q));
+      const filtered = sortByNombre(filterItems(ALL, baseSearchText, facetState));
       mountCards(document.getElementById('contacts'), filtered);
       document.getElementById('all-count').textContent = `(${filtered.length})`;
       LAST_RENDERED = filtered;
+      LAST_FILTERED = filtered;
       schedulePrimeAvatarPreload();
     }
 
@@ -1526,6 +1533,15 @@
       yToM: document.getElementById('facet-sep-1'),
       mToC: document.getElementById('facet-sep-2'),
     };
+    function combinedSearchText() {
+      const facetPart = facetQueryString();
+      return [baseSearchText, facetPart].filter(Boolean).join(' ').trim();
+    }
+
+    function refreshSearchDisplay() {
+      const combined = combinedSearchText();
+      if (searchInput.value !== combined) searchInput.value = combined;
+    }
 
     // Atajos globales ------------------------------------------------------
     document.addEventListener('keydown', (ev) => {
@@ -1655,9 +1671,9 @@
       renderFacets();
     }
 
-    function getYears() {
+    function getYears(list) {
       const set = new Set();
-      ALL.forEach(a => (a.cursos || []).forEach(c => {
+      list.forEach(a => (a.cursos || []).forEach(c => {
         if (c.año !== undefined && c.año !== null && c.año !== '') {
           set.add(String(c.año));
         }
@@ -1665,19 +1681,19 @@
       return [...set].sort((a, b) => a.localeCompare(b, 'es', { numeric: true }));
     }
 
-    function getMaterias(year) {
+    function getMaterias(year, list) {
       if (!year) return [];
       const set = new Set();
-      ALL.forEach(a => (a.cursos || []).forEach(c => {
+      list.forEach(a => (a.cursos || []).forEach(c => {
         if (String(c.año) === String(year) && c.materia) set.add(String(c.materia));
       }));
       return [...set].sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }));
     }
 
-    function getComisiones(year, materia) {
+    function getComisiones(year, materia, list) {
       if (!year || !materia) return [];
       const set = new Set();
-      ALL.forEach(a => (a.cursos || []).forEach(c => {
+      list.forEach(a => (a.cursos || []).forEach(c => {
         if (String(c.año) === String(year) && String(c.materia) === String(materia) && c.comision) {
           set.add(String(c.comision));
         }
@@ -1685,14 +1701,57 @@
       return [...set].sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }));
     }
 
-    function renderFacetLinks(container, values, activeValue, onClick) {
+    function countYears(list) {
+      const out = {};
+      list.forEach(a => {
+        const years = new Set();
+        (a.cursos || []).forEach(c => {
+          if (c.año !== undefined && c.año !== null && c.año !== '') {
+            years.add(String(c.año));
+          }
+        });
+        years.forEach(y => { out[y] = (out[y] || 0) + 1; });
+      });
+      return out;
+    }
+
+    function countMaterias(list, year) {
+      const out = {};
+      list.forEach(a => {
+        const materias = new Set();
+        (a.cursos || []).forEach(c => {
+          if (String(c.año) === String(year) && c.materia) {
+            materias.add(String(c.materia));
+          }
+        });
+        materias.forEach(m => { out[m] = (out[m] || 0) + 1; });
+      });
+      return out;
+    }
+
+    function countComisiones(list, year, materia) {
+      const out = {};
+      list.forEach(a => {
+        const comisiones = new Set();
+        (a.cursos || []).forEach(c => {
+          if (String(c.año) === String(year) && String(c.materia) === String(materia) && c.comision) {
+            comisiones.add(String(c.comision));
+          }
+        });
+        comisiones.forEach(c => { out[c] = (out[c] || 0) + 1; });
+      });
+      return out;
+    }
+
+    function renderFacetLinks(container, values, activeValue, onClick, counts = null) {
       container.innerHTML = '';
       if (!values.length) return;
       values.forEach(val => {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'facet-pill' + (activeValue === val ? ' active' : '');
-        btn.textContent = val;
+        const count = counts ? counts[val] || 0 : 0;
+        btn.innerHTML = count ? `${val} <span class="facet-count">(${count})</span>` : val;
         btn.addEventListener('click', () => onClick(val));
         container.appendChild(btn);
       });
@@ -1702,9 +1761,13 @@
       if (!DATA_LOADED) return;
       facetSeparators.yToM.style.display = 'none';
       facetSeparators.mToC.style.display = 'none';
-      const years = getYears();
+      const baseForYears = facetState.year
+        ? filterItems(ALL, baseSearchText, { year: facetState.year, materia: null, comision: null })
+        : filterItems(ALL, baseSearchText, { year: null, materia: null, comision: null });
+      const yearCounts = countYears(baseForYears);
+      const years = Object.keys(yearCounts).sort((a, b) => a.localeCompare(b, 'es', { numeric: true }));
       const yearsToShow = facetState.year ? [facetState.year] : years;
-      renderFacetLinks(facetContainers.years, yearsToShow, facetState.year, toggleYear);
+      renderFacetLinks(facetContainers.years, yearsToShow, facetState.year, toggleYear, yearCounts);
 
       if (!facetState.year) {
         facetContainers.materias.innerHTML = '';
@@ -1713,9 +1776,11 @@
       }
       facetSeparators.yToM.style.display = 'inline-block';
 
-      const materias = getMaterias(facetState.year);
+      const materiaFiltered = filterItems(ALL, baseSearchText, { year: facetState.year, materia: null, comision: null });
+      const materiaCounts = countMaterias(materiaFiltered, facetState.year);
+      const materias = getMaterias(facetState.year, materiaFiltered);
       const materiasToShow = facetState.materia ? [facetState.materia] : materias;
-      renderFacetLinks(facetContainers.materias, materiasToShow, facetState.materia, toggleMateria);
+      renderFacetLinks(facetContainers.materias, materiasToShow, facetState.materia, toggleMateria, materiaCounts);
 
       if (!facetState.materia) {
         facetContainers.comisiones.innerHTML = '';
@@ -1723,18 +1788,17 @@
       }
       facetSeparators.mToC.style.display = 'inline-block';
 
-      const comisiones = getComisiones(facetState.year, facetState.materia);
+      const comisionFiltered = filterItems(ALL, baseSearchText, { year: facetState.year, materia: facetState.materia, comision: null });
+      const comisionCounts = countComisiones(comisionFiltered, facetState.year, facetState.materia);
+      const comisiones = getComisiones(facetState.year, facetState.materia, comisionFiltered);
       const comisionesToShow = facetState.comision ? [facetState.comision] : comisiones;
-      renderFacetLinks(facetContainers.comisiones, comisionesToShow, facetState.comision, toggleComision);
+      renderFacetLinks(facetContainers.comisiones, comisionesToShow, facetState.comision, toggleComision, comisionCounts);
     }
 
     function syncFacetsToSearch() {
-      const q = facetQueryString();
-      searchInput.value = q;
-      setSearchParam(q);
-      if (DATA_LOADED) {
-        render();
-      }
+      refreshSearchDisplay();
+      setSearchParam(baseSearchText);
+      if (DATA_LOADED) render();
     }
 
     function toggleYear(year) {
@@ -1788,18 +1852,27 @@
     function syncInputFromURL() {
       const url = new URL(window.location.href);
       const q = url.searchParams.get('q') || '';
-      if (searchInput.value !== q) searchInput.value = q;
+      baseSearchText = q;
+      refreshSearchDisplay();
       return q;
     }
 
     searchInput.addEventListener('input', () => {
-      const q = searchInput.value;
-      setSearchParam(q);
+      const facetPart = facetQueryString();
+      const raw = searchInput.value;
+      if (facetPart && raw.toLowerCase().trim().endsWith(facetPart.toLowerCase())) {
+        baseSearchText = raw.slice(0, raw.length - facetPart.length).trim();
+      } else {
+        baseSearchText = raw;
+      }
+      setSearchParam(baseSearchText);
+      refreshSearchDisplay();
       if (!DATA_LOADED) {
         // Evita intentar filtrar sin datos; la promesa actualizará después
         return;
       }
-      syncFacetsFromQuery(q);
+      syncFacetsFromQuery(baseSearchText);
+      renderFacets();
       scheduleSearchRender();
     });
 
@@ -1822,7 +1895,7 @@
       }
 
       ensureDataLoaded().then(() => {
-        syncFacetsFromQuery(searchInput.value);
+        syncFacetsFromQuery(baseSearchText);
         renderFacets();
         render();
         afterRender();
@@ -1832,11 +1905,13 @@
     window.addEventListener('popstate', () => {
       const q = syncInputFromURL();
       if (DATA_LOADED) {
-        syncFacetsFromQuery(q);
+        syncFacetsFromQuery(baseSearchText);
+        refreshSearchDisplay();
         render();
       } else {
         ensureDataLoaded().then(() => {
-          syncFacetsFromQuery(q);
+          syncFacetsFromQuery(baseSearchText);
+          refreshSearchDisplay();
           render();
         });
       }
@@ -1845,8 +1920,9 @@
     function start() {
       const q = syncInputFromURL();
       ensureDataLoaded().then(() => {
-        syncFacetsFromQuery(q);
+        syncFacetsFromQuery(baseSearchText);
         renderFacets();
+        refreshSearchDisplay();
         render();
       });
     }
