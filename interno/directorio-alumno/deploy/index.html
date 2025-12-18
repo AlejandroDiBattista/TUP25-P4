@@ -34,7 +34,7 @@
 
     body {
       margin: 0;
-      padding: 0 20px 88px;
+      padding: 0 20px 40px;
       background: var(--bg);
       color: var(--text);
       font: 400 16px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
@@ -261,6 +261,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 18px;
+      padding-bottom: 80px; /* espacio para que no se solape con el pie */
     }
 
     .card {
@@ -278,10 +279,7 @@
       outline: none;
     }
 
-    .card.kbd-selected {
-      border-color: rgba(15, 111, 255, .45);
-    }
-
+    .card.kbd-selected,
     .card:focus-visible {
       border-color: rgba(15, 111, 255, .55);
       box-shadow:
@@ -412,6 +410,13 @@
       color: #98a2b3;
     }
 
+    .typeahead-hit {
+      background: #fff6a5;
+      color: inherit;
+      border-radius: 4px;
+      padding: 0 0px;
+    }
+
     .footer-note {
       position: fixed;
       left: 50%;
@@ -505,7 +510,7 @@
 
     @media (max-width:640px) {
       body {
-        padding: 0 12px 88px;
+        padding: 0 12px 40px;
       }
 
       header {
@@ -566,7 +571,7 @@
       <div id="contacts" class="grid"></div>
     </section>
 
-    <p class="footer-note">Listado actualizado al <span id="last-updated" class="muted">8 de diciembre de 2025</span>.
+    <p class="footer-note">Listado actualizado al <span id="last-updated" class="muted">17 de diciembre de 2025</span>.
     </p>
   </div>
 
@@ -870,7 +875,7 @@
             ${avatarHtml}
             <div class="content">
               <h3 class="name" title="${(a.nombre || '').replace(/&/g, '&amp;').replace(/\"/g, '&quot;')}">${a.nombre || 'Sin nombre'}</h3>
-              <p class="meta"><b>Legajo:</b> ${a.legajo}</p>
+              <p class="meta"><b>Legajo:</b> <span class="legajo-value" data-original-legajo="${a.legajo}">${a.legajo}</span></p>
               ${telefonoHtml}
             </div>
             <div class="courses">${cursosHtml}</div>
@@ -881,6 +886,10 @@
     let ACTIVE_LEGAJO = null;
     let ACTIVE_CARD = null;
     const COPY_FLASH = new WeakMap();
+    const TYPEAHEAD_RESET_MS = 1000;
+    let typeaheadBuffer = '';
+    let typeaheadTimer = null;
+    let typeaheadExpired = false;
 
     function isEditableTarget(el) {
       if (!(el instanceof Element)) return false;
@@ -910,7 +919,29 @@
         card.focus({ preventScroll: true });
       }
       if (scroll) {
-        card.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+        ensureCardVisible(card);
+      }
+    }
+
+    function ensureCardVisible(card) {
+      if (!card?.getBoundingClientRect) return;
+      const rect = card.getBoundingClientRect();
+      const header = document.querySelector('header');
+      const footer = document.querySelector('.footer-note');
+      const topOffset = (header?.offsetHeight || 0) + 20;
+      const bottomOffset = (footer?.offsetHeight || 0) + 20;
+      const usableBottom = window.innerHeight - bottomOffset;
+
+      if (rect.top < topOffset) {
+        const target = window.scrollY + rect.top - topOffset;
+        window.scrollTo({ top: Math.max(target, 0), behavior: 'auto' });
+        return;
+      }
+
+      const bottomOverflow = rect.bottom - usableBottom;
+      if (bottomOverflow > 0) {
+        const target = window.scrollY + bottomOverflow + 20;
+        window.scrollTo({ top: target, behavior: 'auto' });
       }
     }
 
@@ -949,6 +980,215 @@
         return nextRowStart + Math.min(col, nextRowLen - 1);
       }
       return index;
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+    }
+
+    function normalizeChar(ch) {
+      return ch.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
+    }
+
+    function subsequencePositions(buffer, source) {
+      const queryParts = normalizedQueryParts(buffer);
+      if (!queryParts.length) return [];
+      let qi = 0;
+      const positions = [];
+      for (let i = 0; i < source.length && qi < queryParts.length; i++) {
+        const part = queryParts[qi];
+        const nc = normalizeChar(source[i]);
+        if (!nc.trim()) continue;
+        if (nc === part.ch) {
+          if (part.upper) {
+            const prev = source[i - 1];
+            const isWordStart = i === 0 || !/[\p{L}\p{N}]/u.test(prev || '');
+            if (!isWordStart) continue;
+          }
+          positions.push(i);
+          qi++;
+        }
+      }
+      return qi === queryParts.length ? positions : [];
+    }
+
+    function clearTypeaheadHighlights() {
+      contactsGrid.querySelectorAll('.card .name').forEach((el) => {
+        const original = el.dataset.originalName || el.textContent || '';
+        el.textContent = original;
+      });
+      contactsGrid.querySelectorAll('.card .legajo-value').forEach((el) => {
+        const original = el.dataset.originalLegajo || el.textContent || '';
+        el.textContent = original;
+      });
+    }
+
+    function highlightMatch(card, buffer) {
+      if (!card || !buffer) return;
+      const nameEl = card.querySelector('.name');
+      if (!nameEl) return;
+      const original = nameEl.dataset.originalName || nameEl.textContent || '';
+      const hits = subsequencePositions(buffer, original);
+      if (!hits.length) {
+        nameEl.textContent = original;
+        return;
+      }
+      const hitSet = new Set(hits);
+      let html = '';
+      for (let i = 0; i < original.length; i++) {
+        const ch = original[i];
+        const safe = escapeHtml(ch);
+        html += hitSet.has(i) ? `<span class="typeahead-hit">${safe}</span>` : safe;
+      }
+      nameEl.innerHTML = html;
+    }
+
+    function highlightLegajo(card, buffer) {
+      if (!card || !buffer) return;
+      const legajoEl = card.querySelector('.legajo-value');
+      if (!legajoEl) return;
+      const original = legajoEl.dataset.originalLegajo || legajoEl.textContent || '';
+      const parts = normalizedQueryParts(buffer);
+      const onlyDigits = parts.every(p => /\d/.test(p.ch));
+      const hits = onlyDigits ? consecutivePositions(parts, original) : subsequencePositions(buffer, original);
+      if (!hits.length) {
+        legajoEl.textContent = original;
+        return;
+      }
+      const hitSet = new Set(hits);
+      let html = '';
+      for (let i = 0; i < original.length; i++) {
+        const ch = original[i];
+        const safe = escapeHtml(ch);
+        html += hitSet.has(i) ? `<span class="typeahead-hit">${safe}</span>` : safe;
+      }
+      legajoEl.innerHTML = html;
+    }
+
+    function resetTypeahead() {
+      typeaheadExpired = true;
+      if (typeaheadTimer) {
+        window.clearTimeout(typeaheadTimer);
+        typeaheadTimer = null;
+      }
+    }
+
+    function scheduleTypeaheadReset() {
+      if (typeaheadTimer) window.clearTimeout(typeaheadTimer);
+      typeaheadTimer = window.setTimeout(resetTypeahead, TYPEAHEAD_RESET_MS);
+    }
+
+    function cardNameForSearch(card) {
+      const legajo = card?.dataset?.legajo || '';
+      const data = legajo ? ALL.find(a => String(a.legajo) === String(legajo)) : null;
+      const raw = data?.nombre || card?.querySelector('.name')?.textContent || '';
+      return (raw || '').replace(/,/g, ' ').trim();
+    }
+
+    function cardLegajoForSearch(card) {
+      const fromDataset = card?.dataset?.legajo || '';
+      if (fromDataset) return String(fromDataset);
+      const legajoEl = card?.querySelector?.('.legajo-value');
+      if (legajoEl) return legajoEl.textContent || '';
+      return '';
+    }
+
+    function normalizedQueryParts(buffer) {
+      const parts = [];
+      for (const ch of buffer) {
+        if (!ch.trim()) continue;
+        const normalized = normalizeChar(ch);
+        if (!normalized.trim()) continue;
+        const isUpper = ch === ch.toUpperCase() && ch !== ch.toLowerCase();
+        parts.push({ ch: normalized, upper: isUpper, raw: ch });
+      }
+      return parts;
+    }
+
+    function queryStringFromParts(parts) {
+      return parts.map(p => p.ch).join('');
+    }
+
+    function consecutivePositions(query, source) {
+      const q = queryStringFromParts(query);
+      if (!q) return [];
+      const target = String(source || '');
+      const idx = target.indexOf(q);
+      if (idx === -1) return [];
+      return Array.from({ length: q.length }, (_, i) => idx + i);
+    }
+
+    function matchesPartsInText(parts, text) {
+      let qi = 0;
+      for (let i = 0; i < text.length && qi < parts.length; i++) {
+        const part = parts[qi];
+        const targetChar = text[i];
+        const normTarget = normalizeChar(targetChar);
+        if (!normTarget.trim()) continue;
+        if (normTarget === part.ch) {
+          if (part.upper) {
+            const prev = text[i - 1];
+            const isWordStart = i === 0 || !/[\p{L}\p{N}]/u.test(prev || '');
+            if (!isWordStart) continue;
+          }
+          qi++;
+        }
+      }
+      return qi === parts.length;
+    }
+
+    function matchesForBuffer(buffer) {
+      const queryParts = normalizedQueryParts(buffer);
+      if (!queryParts.length) return { cards: [], mode: null };
+      const onlyDigits = queryParts.every(p => /\d/.test(p.ch));
+      const mode = onlyDigits ? 'legajo' : 'name';
+      const cards = [...contactsGrid.querySelectorAll('.card')];
+      const matches = cards.filter(c => {
+        const target = mode === 'legajo' ? cardLegajoForSearch(c) : cardNameForSearch(c);
+        if (mode === 'legajo') {
+          const normalizedTarget = String(target || '').replace(/\D+/g, '');
+          const q = queryStringFromParts(queryParts);
+          if (!q) return false;
+          return normalizedTarget.includes(q);
+        }
+        return matchesPartsInText(queryParts, target);
+      });
+      return { cards: matches, mode };
+    }
+
+    function typeaheadMatch(buffer) {
+      const { cards, mode } = matchesForBuffer(buffer);
+      const first = cards[0] || null;
+      return first ? { card: first, mode } : null;
+    }
+
+    function applyHighlights(buffer) {
+      clearTypeaheadHighlights();
+      const { cards: matches, mode } = matchesForBuffer(buffer);
+      matches.forEach(card => {
+        if (mode === 'legajo') highlightLegajo(card, buffer);
+        else highlightMatch(card, buffer);
+      });
+    }
+
+    function handleTypeahead(char) {
+      if (typeaheadExpired) {
+        typeaheadExpired = false;
+        typeaheadBuffer = '';
+        clearTypeaheadHighlights();
+      }
+      typeaheadBuffer += char;
+      scheduleTypeaheadReset();
+      const result = typeaheadMatch(typeaheadBuffer);
+      if (result?.card) {
+        setActiveCard(result.card, { focus: true, scroll: true });
+        if (result.mode === 'legajo') {
+          highlightLegajo(result.card, typeaheadBuffer);
+        } else {
+          highlightMatch(result.card, typeaheadBuffer);
+        }
+      }
+      applyHighlights(typeaheadBuffer);
     }
 
     async function writeToClipboard(text) {
@@ -1040,6 +1280,10 @@
         c.removeAttribute('aria-selected');
         c.addEventListener('focus', () => setActiveCard(c));
         c.addEventListener('click', () => setActiveCard(c, { focus: true }));
+        const nameEl = c.querySelector('.name');
+        if (nameEl && !nameEl.dataset.originalName) {
+          nameEl.dataset.originalName = nameEl.textContent || '';
+        }
       });
       const preferred = ACTIVE_LEGAJO ? cards.find(c => c.dataset.legajo === ACTIVE_LEGAJO) : null;
       if (preferred) setActiveCard(preferred);
@@ -1230,6 +1474,16 @@
     }
 
     const applySearch = () => render();
+    let searchRenderId = null;
+    function scheduleSearchRender() {
+      if (searchRenderId) {
+        cancelAnimationFrame(searchRenderId);
+      }
+      searchRenderId = requestAnimationFrame(() => {
+        searchRenderId = null;
+        applySearch();
+      });
+    }
 
     // Carga única de datos -----------------------------------------------
     function ensureDataLoaded() {
@@ -1312,10 +1566,34 @@
         return;
       }
 
+      const isCharKey = key.length === 1 && !isMod && !ev.altKey && key.trim() !== '';
+      if (isCharKey) {
+        ev.preventDefault();
+        handleTypeahead(key);
+        return;
+      }
+
       if (key === 'Tab') {
         const cards = [...contactsGrid.querySelectorAll('.card')];
         const index = cards.indexOf(card);
         if (index < 0) return;
+        const buffer = typeaheadBuffer.trim();
+        if (buffer) {
+          const { cards: matches, mode } = matchesForBuffer(buffer);
+          if (matches.length) {
+            ev.preventDefault();
+            const cur = matches.indexOf(card);
+            let nextCard = null;
+            if (ev.shiftKey) {
+              nextCard = matches[cur > 0 ? cur - 1 : matches.length - 1];
+            } else {
+              nextCard = matches[cur >= 0 ? (cur + 1) % matches.length : 0];
+            }
+            setActiveCard(nextCard, { focus: true, scroll: true });
+            applyHighlights(buffer);
+            return;
+          }
+        }
         if (ev.shiftKey) {
           if (index === 0) return;
           ev.preventDefault();
@@ -1522,7 +1800,7 @@
         return;
       }
       syncFacetsFromQuery(q);
-      applySearch();
+      scheduleSearchRender();
     });
 
     searchInput.addEventListener('keydown', (ev) => {
