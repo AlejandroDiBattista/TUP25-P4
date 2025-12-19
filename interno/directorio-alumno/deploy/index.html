@@ -152,19 +152,61 @@
     .searchbar {
       position: relative;
       width: 100%;
-    }
-
-    .searchbar input {
-      width: 100%;
-      font-size: 24px;
-      padding: 12px 40px;
-      border-radius: 999px;
       border: 1px solid var(--border);
+      border-radius: 999px;
       background: #fdfefe;
-      outline: 0.2px solid gray;
       box-shadow:
         inset 0px 0px 4px rgba(15, 23, 42, .3),
         0 1px 1px rgba(16, 24, 40, .04);
+    }
+
+    .searchbar .search-overlay {
+      position: absolute;
+      inset: 0;
+      padding: 12px 40px;
+      display: block;
+      color: #1f2d3d;
+      pointer-events: none;
+      white-space: pre;
+      font: inherit;
+      font-size: 24px;
+      line-height: 1.4;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .searchbar .pill {
+      /* background: transparent; */
+      background: #fff9c4;
+
+      color: #0f6fff;
+      border-radius: 0;
+      padding: 0;
+      font-weight: inherit;
+      border: none;
+    }
+
+    .searchbar .pill.materia {
+      color: #0f6fff;
+    }
+
+    .searchbar .pill.comision {
+      color: #0f6fff;
+    }
+
+    .searchbar input {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      font-size: 24px;
+      padding: 12px 40px;
+      border: none;
+      background: transparent;
+      outline: none;
+      box-shadow: none;
+      color: transparent;
+      text-shadow: none;
+      caret-color: #0f6fff;
     }
 
     .searchbar input::placeholder {
@@ -172,6 +214,7 @@
       opacity: 0.9;
       font-size: 16px;
       line-height: 24px;
+      text-shadow: none;
     }
 
     .searchbar svg {
@@ -180,6 +223,7 @@
       top: 50%;
       transform: translateY(-50%);
       color: #98a2b3;
+      z-index: 4;
     }
 
     .facet-board {
@@ -552,6 +596,7 @@
         <h1>Directorio de Alumnos</h1>
         <div class="filter-panel">
           <div class="searchbar">
+            <div id="search-overlay" class="search-overlay" aria-hidden="true"></div>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" />
@@ -802,8 +847,8 @@
         img.alt = alt;
         overlay.classList.add('active');
       };
-      window.addEventListener('keydown', (ev) => {
-        if (ev.key === 'Escape') overlay.classList.remove('active');
+      window.addEventListener('keydown', () => {
+        if (overlay.classList.contains('active')) overlay.classList.remove('active');
       });
       return { show };
     })();
@@ -1292,8 +1337,9 @@
         }
       });
       const preferred = ACTIVE_LEGAJO ? cards.find(c => c.dataset.legajo === ACTIVE_LEGAJO) : null;
-      if (preferred) setActiveCard(preferred);
-      else if (cards[0]) setActiveCard(cards[0]);
+      const shouldAutoSelect = document.activeElement !== searchInput;
+      if (preferred && shouldAutoSelect) setActiveCard(preferred);
+      else if (cards[0] && shouldAutoSelect) setActiveCard(cards[0]);
 
       // Fallback a iniciales si el avatar de GitHub falla
       container.querySelectorAll('.avatar img').forEach(img => {
@@ -1319,6 +1365,44 @@
     const ABBREV_REGEX = /^(p|l)(\d+)$/i;
     const SPECIAL_QUERY_TOKENS = new Set(['f+', 'f-', 't+', 't-', 'g+', 'g-']);
 
+    function addCourseTokens(tokens) {
+      const out = [];
+      for (let i = 0; i < tokens.length; i++) {
+        const t = tokens[i];
+        if (!t) continue;
+        const next = tokens[i + 1] || '';
+        const combined = t.match(/^(laboratorio|programacion|comision)(\d+)$/);
+        if (combined) {
+          out.push(`${combined[1][0]}${combined[2]}`);
+        }
+        if ((t === 'laboratorio' || t === 'programacion' || t === 'comision') && /^\d+$/.test(next)) {
+          out.push(`${t[0]}${next}`);
+        }
+        const abbr = t.match(/^([plc])(\d+)$/);
+        if (abbr) {
+          const full = abbr[1] === 'p' ? 'programacion' : abbr[1] === 'l' ? 'laboratorio' : 'comision';
+          out.push(full);
+          out.push(abbr[2]);
+        }
+        out.push(t);
+      }
+      return [...new Set(out.filter(Boolean))];
+    }
+
+    function tokenizeParts(parts = []) {
+      const tokens = [];
+      (parts || []).forEach(part => {
+        const normalized = norm(part);
+        if (!normalized) return;
+        normalized.split(/\s+/).filter(Boolean).forEach(t => tokens.push(t));
+      });
+      return addCourseTokens(tokens);
+    }
+
+    function tokenizeQuery(q) {
+      return tokenizeParts([q || '']);
+    }
+
     function flagFilterFromTokens(tokens, yes, no) {
       const hasYes = tokens.includes(yes);
       const hasNo = tokens.includes(no);
@@ -1340,8 +1424,12 @@
       return flagFilterFromTokens(tokens, 'g+', 'g-');
     }
 
+    function abbrevFiltersFromTokens(tokens) {
+      return tokens.filter(t => ABBREV_REGEX.test(t)).map(t => t.toUpperCase());
+    }
+
     function abbrevFiltersFromQuery(q) {
-      return norm(q).split(/\s+/).filter(Boolean).filter(t => ABBREV_REGEX.test(t)).map(t => t.toUpperCase());
+      return abbrevFiltersFromTokens(tokenizeQuery(q));
     }
 
     function materiaFromAbbr(abbr, year) {
@@ -1374,23 +1462,15 @@
     const ESTADOS = ['libre', 'regular', 'promocionado', 'pendiente'];
 
     function expandSearchTokens(tokens) {
-      const out = [];
-      for (const t of tokens) {
-        if (!t) continue;
-        const m = t.match(ABBREV_REGEX);
-        if (m) {
-          const full = (m[1].toLowerCase() === 'p' ? 'programacion' : 'laboratorio') + ' ' + m[2];
-          norm(full).split(/\s+/).filter(Boolean).forEach(part => out.push(part));
-        } else {
-          out.push(t);
-        }
-      }
-      return out;
+      return addCourseTokens(tokens);
+    }
+
+    function stateFiltersFromTokens(tokens) {
+      return tokens.filter(t => ESTADOS.some(e => e.startsWith(t)));
     }
 
     function stateFiltersFromQuery(q) {
-      const toks = norm(q).split(/\s+/).filter(Boolean);
-      return toks.filter(t => ESTADOS.some(e => e.startsWith(t)));
+      return stateFiltersFromTokens(tokenizeQuery(q));
     }
 
     function materiaAbbreviation(name) {
@@ -1417,18 +1497,15 @@
     }
 
     function filterItems(items, q, facets = facetState) {
-      const normalizedTokens = norm(q || '').split(/\s+/).filter(Boolean);
-      const abbrFilters = abbrevFiltersFromQuery(q);
-      const stateFilters = stateFiltersFromQuery(q);
-      const photoFilter = photoFilterFromTokens(normalizedTokens);
-      const phoneFilter = phoneFilterFromTokens(normalizedTokens);
-      const githubFilter = githubFilterFromTokens(normalizedTokens);
-      const palabras = expandSearchTokens(normalizedTokens.filter(t => !SPECIAL_QUERY_TOKENS.has(t)));
+      const queryTokens = tokenizeQuery(q);
+      const abbrFilters = abbrevFiltersFromTokens(queryTokens);
+      const stateFilters = stateFiltersFromTokens(queryTokens);
+      const photoFilter = photoFilterFromTokens(queryTokens);
+      const phoneFilter = phoneFilterFromTokens(queryTokens);
+      const githubFilter = githubFilterFromTokens(queryTokens);
+      const palabras = expandSearchTokens(queryTokens.filter(t => !SPECIAL_QUERY_TOKENS.has(t)));
       return items.filter(a => {
-        const cursos = (a.cursos || []).flatMap(c => [c.materia, c.comision, c.estado, String(c.año), c.codigo]);
-        const base = [a.nombre, a.telefono || '', a.legajo || '', a.github || '', `${a.cursos.length}x`];
-        const texto = norm(base.concat(cursos).filter(Boolean).join(' '));
-        const tokens = texto.split(/\s+/).filter(Boolean);
+        const tokens = a.__searchTokens || [];
         const hay = palabras.every(p => tokens.some(t => t.startsWith(p)));
         if (!hay) return false;
         if (photoFilter === true  && !a.foto) return false;
@@ -1469,7 +1546,36 @@
     let DATA_LOADED = false;
     let DATA_PROMISE = null;
     let baseSearchText = '';
+    let baseTrailingSpace = false;
     let LAST_FILTERED = [];
+    let lastFacetRemoved = false;
+
+    function prepareSearchIndex(list) {
+      (list || []).forEach(a => {
+        const baseTokens = tokenizeParts([
+          a.nombre,
+          a.telefono || '',
+          a.legajo || '',
+          a.github || '',
+          `${(a.cursos || []).length}x`,
+        ]);
+        const courseTokens = [];
+        (a.cursos || []).forEach(c => {
+          courseTokens.push(...tokenizeParts([
+            c.materia,
+            c.comision,
+            c.estado,
+            String(c.año ?? ''),
+            c.codigo,
+          ]));
+          const matAbbr = materiaAbbreviation(c.materia);
+          if (matAbbr) courseTokens.push(...tokenizeParts([matAbbr]));
+          const comToken = formatComisionToken(c.comision);
+          if (comToken) courseTokens.push(...tokenizeParts([comToken]));
+        });
+        a.__searchTokens = [...new Set([...baseTokens, ...courseTokens])];
+      });
+    }
 
     function render() {
       const filtered = sortByNombre(filterItems(ALL, baseSearchText, facetState));
@@ -1477,19 +1583,25 @@
       document.getElementById('all-count').textContent = `(${filtered.length})`;
       LAST_RENDERED = filtered;
       LAST_FILTERED = filtered;
+      renderFacets();
       schedulePrimeAvatarPreload();
     }
 
     const applySearch = () => render();
     let searchRenderId = null;
+    let searchTimer = null;
     function scheduleSearchRender() {
-      if (searchRenderId) {
-        cancelAnimationFrame(searchRenderId);
+      if (searchTimer) {
+        window.clearTimeout(searchTimer);
       }
-      searchRenderId = requestAnimationFrame(() => {
-        searchRenderId = null;
-        applySearch();
-      });
+      searchTimer = window.setTimeout(() => {
+        searchTimer = null;
+        if (searchRenderId) cancelAnimationFrame(searchRenderId);
+        searchRenderId = requestAnimationFrame(() => {
+          searchRenderId = null;
+          applySearch();
+        });
+      }, 60);
     }
 
     // Carga única de datos -----------------------------------------------
@@ -1510,6 +1622,7 @@
             foto: a.foto || false,
             cursos: Array.isArray(a.cursos) ? a.cursos : [],
           }));
+          prepareSearchIndex(ALL);
           DATA_LOADED = true;
           return ALL;
         })().catch(err => {
@@ -1523,6 +1636,7 @@
     }
 
     const searchInput = document.getElementById('search');
+    const searchOverlay = document.getElementById('search-overlay');
     const facetState = { year: null, materia: null, comision: null };
     const facetContainers = {
       years: document.getElementById('facet-years'),
@@ -1533,14 +1647,242 @@
       yToM: document.getElementById('facet-sep-1'),
       mToC: document.getElementById('facet-sep-2'),
     };
-    function combinedSearchText() {
-      const facetPart = facetQueryString();
-      return [baseSearchText, facetPart].filter(Boolean).join(' ').trim();
+    let lastInputValue = '';
+
+    function isMateriaLikeToken(t) {
+      const lower = norm(t);
+      return /^(p|l)\d+$/.test(lower)
+        || /^(programacion|laboratorio)\d+$/.test(lower);
+    }
+
+    function isMateriaFragmentToken(t) {
+      const lower = norm(t);
+      return lower === 'l' || lower === 'p' || lower === 'laboratorio' || lower === 'programacion'
+        || /^l\d*$/.test(lower) || /^p\d*$/.test(lower)
+        || /^laboratorio\d*$/.test(lower) || /^programacion\d*$/.test(lower)
+        || /^\d{1,2}$/.test(lower);
+    }
+
+    function isComisionLikeToken(t) {
+      const lower = norm(t);
+      return /^c\d+$/.test(lower)
+        || /^comision\d+$/.test(lower)
+        || lower === 'c'
+        || lower === 'comision';
+    }
+
+    function stripYearTokens(text) {
+      const raw = String(text || '');
+      const tokens = raw.trim().split(/\s+/).filter(Boolean);
+      const filtered = tokens.filter(t => !/^\d{1,4}$/.test(norm(t)));
+      const trailingSpace = /\s$/.test(raw);
+      let out = filtered.join(' ');
+      if (trailingSpace && (out || raw.trim() === '')) out += ' ';
+      return out;
+    }
+
+    function formatComisionToken(val) {
+      if (!val) return null;
+      const v = String(val).trim();
+      if (!v) return null;
+      if (/^c/i.test(v)) return v.toUpperCase();
+      return `C${v}`;
+    }
+
+    function parseSearchInput(raw) {
+      const trailingSpace = /\s$/.test(raw);
+      const tokens = raw.trim().split(/\s+/).filter(Boolean);
+      let year = null;
+      let materiaAbbr = null;
+      let comToken = null;
+      let freeTokens = [];
+      const hadYear = facetState.year;
+      const hadMateria = facetState.materia;
+      const hadComision = facetState.comision;
+
+      tokens.forEach(tok => {
+        const lower = norm(tok);
+        if (!year && validYearToken(lower)) {
+          year = lower;
+        }
+      });
+
+      for (let i = 0; i < tokens.length; i++) {
+        const t = tokens[i];
+        const lower = norm(t);
+
+        if (validYearToken(lower)) {
+          year = year || lower;
+          continue;
+        }
+
+        if (year) {
+          const matCombined = lower.match(/^(programacion|laboratorio)(\d+)$/);
+          if (matCombined) {
+            materiaAbbr = `${matCombined[1][0].toUpperCase()}${matCombined[2]}`;
+            continue;
+          }
+
+          if ((lower === 'programacion' || lower === 'laboratorio') && tokens[i + 1]) {
+            const nextNorm = norm(tokens[i + 1]);
+            if (/^\d+$/.test(nextNorm)) {
+              materiaAbbr = `${lower[0].toUpperCase()}${nextNorm}`;
+              i++;
+              continue;
+            }
+          }
+
+          const matAbbr = lower.match(/^(p|l)(\d+)$/);
+          if (matAbbr) {
+            materiaAbbr = `${matAbbr[1].toUpperCase()}${matAbbr[2]}`;
+            continue;
+          }
+
+          if (!materiaAbbr && hadMateria && isMateriaFragmentToken(t)) {
+            continue; // fragmento de materia roto, limpiar faceta completa
+          }
+        }
+
+        if (year && materiaAbbr) {
+          const comCombined = lower.match(/^comision(\d+)$/);
+          if (comCombined) {
+            comToken = `C${comCombined[1]}`;
+            continue;
+          }
+
+          if (lower === 'comision' && tokens[i + 1]) {
+            const nextNorm = norm(tokens[i + 1]);
+            if (/^\d+$/.test(nextNorm)) {
+              comToken = `C${nextNorm}`;
+              i++;
+              continue;
+            }
+          }
+
+          const comMatch = lower.match(/^c(\d+)$/);
+          if (comMatch) {
+            comToken = `C${comMatch[1]}`;
+            continue;
+          }
+
+        }
+
+        freeTokens.push(t);
+      }
+
+      // Si había un año activo y ahora se borró parcial, descartamos fragmentos numéricos
+      if (!year && facetState.year) {
+        freeTokens = freeTokens.filter(t => !/^\d{1,4}$/.test(norm(t)));
+      }
+
+      // Si no hay año, ninguna subfaceta es válida
+      if (!year && hadYear) {
+        freeTokens = freeTokens.filter(t => !isMateriaLikeToken(t) && !isComisionLikeToken(t));
+      }
+
+      // Si hay año pero no materia, eliminar restos de materia/comisión
+      if (year && !materiaAbbr && (hadMateria || hadComision)) {
+        freeTokens = freeTokens.filter(t => !isMateriaLikeToken(t) && !isComisionLikeToken(t) && !isMateriaFragmentToken(t));
+      }
+
+      // Si hay año y materia pero se rompió la comisión, limpiar restos
+      if (year && materiaAbbr && !comToken && hadComision) {
+        freeTokens = freeTokens.filter(t => !isComisionLikeToken(t));
+      }
+
+      return {
+        year,
+        materiaAbbr,
+        comToken,
+        freeTokens,
+        trailingSpace,
+      };
+    }
+
+    function displayFacetTokens() {
+      const out = [];
+      if (facetState.year) out.push(String(facetState.year));
+      if (facetState.materia) out.push(materiaAbbreviation(facetState.materia));
+      if (facetState.comision) out.push(formatComisionToken(facetState.comision));
+      return out.filter(Boolean);
+    }
+
+    function buildDisplayString() {
+      const parts = [...displayFacetTokens()];
+      const free = baseSearchText || '';
+      const freeTrim = free.trim();
+      if (freeTrim) parts.push(freeTrim);
+      let output = parts.join(' ');
+      if (baseTrailingSpace && output && !output.endsWith(' ')) output += ' ';
+      if (baseTrailingSpace && !output) output = ' ';
+      return output;
+    }
+
+    function renderSearchOverlay() {
+      if (!searchOverlay) return;
+      const parts = [];
+      const facets = displayFacetTokens();
+      const free = baseSearchText || '';
+      const freeTrim = free.trim();
+      facets.forEach((f, idx) => {
+        const cls = 'pill';
+        parts.push(`<span class="${cls}">${escapeHtml(f)}</span>`);
+        parts.push(' ');
+      });
+      if (freeTrim) {
+        parts.push(escapeHtml(freeTrim));
+      }
+      if (baseTrailingSpace) parts.push(' ');
+      searchOverlay.innerHTML = parts.join('');
     }
 
     function refreshSearchDisplay() {
-      const combined = combinedSearchText();
-      if (searchInput.value !== combined) searchInput.value = combined;
+      const display = buildDisplayString();
+      if (searchInput.value !== display) searchInput.value = display;
+      lastInputValue = searchInput.value;
+      renderSearchOverlay();
+    }
+
+    function applyParsedSearch(parsed, { updateInput = true, setParam = true } = {}) {
+      const prevYear = facetState.year;
+      const prevMateria = facetState.materia;
+      const prevComision = facetState.comision;
+
+      const year = parsed.year;
+      let materiaName = parsed.materiaAbbr ? materiaFromAbbr(parsed.materiaAbbr, year) : null;
+      let comResolved = parsed.comToken
+        ? (comisionFromToken(parsed.comToken, year, materiaName) || parsed.comToken)
+        : null;
+
+      if (!year) {
+        materiaName = null;
+        comResolved = null;
+      } else if (!materiaName) {
+        comResolved = null;
+      }
+
+      facetState.year = year;
+      facetState.materia = materiaName;
+      facetState.comision = comResolved;
+
+      baseSearchText = parsed.freeTokens.join(' ');
+      baseTrailingSpace = parsed.trailingSpace;
+
+      lastFacetRemoved = Boolean(
+        (prevYear && !facetState.year) ||
+        (prevMateria && !facetState.materia) ||
+        (prevComision && !facetState.comision)
+      );
+      const display = buildDisplayString();
+      if (updateInput) {
+        if (searchInput.value !== display) {
+          searchInput.value = display;
+        }
+        lastInputValue = searchInput.value;
+      }
+      renderSearchOverlay();
+      if (setParam) setSearchParam(display);
+      return display;
     }
 
     // Atajos globales ------------------------------------------------------
@@ -1557,9 +1899,11 @@
     // Navegación en grilla de contactos -----------------------------------
     const contactsGrid = document.getElementById('contacts');
     contactsGrid.addEventListener('keydown', (ev) => {
-      const card = ev.target?.closest?.('.card');
-      if (!card || !contactsGrid.contains(card)) return;
       if (isEditableTarget(ev.target)) return;
+      const directCard = ev.target?.closest?.('.card');
+      const fallbackCard = contactsGrid.contains(ACTIVE_CARD) ? ACTIVE_CARD : null;
+      const card = directCard || fallbackCard;
+      if (!card || !contactsGrid.contains(card)) return;
 
       const key = ev.key || '';
       const lower = key.toLowerCase();
@@ -1576,7 +1920,7 @@
         return;
       }
 
-      if (key === ' ' || key === 'Spacebar') {
+      if (key === 'Enter' || key === 'NumpadEnter') {
         ev.preventDefault();
         zoomFromCard(card);
         return;
@@ -1642,36 +1986,17 @@
     function validYearToken(t) {
       if (!/^\d{4}$/.test(t)) return false;
       const years = getYears();
+      if (!years.length || !DATA_LOADED) return true;
       return years.includes(String(t));
     }
 
     function syncFacetsFromQuery(q) {
-      if (!DATA_LOADED) return;
-      const tokens = norm(q).split(/\s+/).filter(Boolean);
-      const yearToken = tokens.find(validYearToken) || null;
-      const abbrTokenRaw = tokens.find(t => ABBREV_REGEX.test(t)) || null;
-      const abbrToken = abbrTokenRaw ? abbrTokenRaw.toUpperCase() : null;
-      const comToken = tokens.find(t => /^c[\w-]+$/i.test(t)) || null;
-
-      const materiaToken = abbrToken ? materiaFromAbbr(abbrToken, yearToken) : null;
-      let resolvedYear = yearToken;
-      if (!resolvedYear && materiaToken) {
-        const years = yearsForMateria(materiaToken);
-        if (years.length === 1) {
-          resolvedYear = years[0];
-        } else if (years.length > 1) {
-          resolvedYear = years[years.length - 1]; // toma el año más reciente
-        }
-      }
-      const comisionToken = comToken ? comisionFromToken(comToken, resolvedYear, materiaToken) : null;
-
-      facetState.year = resolvedYear;
-      facetState.materia = materiaToken;
-      facetState.comision = comisionToken;
+      const parsed = parseSearchInput(q || '');
+      applyParsedSearch(parsed, { updateInput: false, setParam: false });
       renderFacets();
     }
 
-    function getYears(list) {
+    function getYears(list = ALL) {
       const set = new Set();
       list.forEach(a => (a.cursos || []).forEach(c => {
         if (c.año !== undefined && c.año !== null && c.año !== '') {
@@ -1797,8 +2122,10 @@
 
     function syncFacetsToSearch() {
       refreshSearchDisplay();
-      setSearchParam(baseSearchText);
-      if (DATA_LOADED) render();
+      setSearchParam(buildDisplayString());
+      if (DATA_LOADED) {
+        render();
+      }
     }
 
     function toggleYear(year) {
@@ -1811,8 +2138,12 @@
         facetState.materia = null;
         facetState.comision = null;
       }
+      baseSearchText = stripYearTokens(baseSearchText);
+      baseTrailingSpace = /\s$/.test(baseSearchText);
       syncFacetsToSearch();
+      searchInput.focus();
       renderFacets();
+      scheduleSearchRender();
     }
 
     function toggleMateria(materia) {
@@ -1824,8 +2155,11 @@
         facetState.materia = materia;
         facetState.comision = null;
       }
+      baseTrailingSpace = /\s$/.test(baseSearchText);
       syncFacetsToSearch();
+      searchInput.focus();
       renderFacets();
+      scheduleSearchRender();
     }
 
     function toggleComision(comision) {
@@ -1835,8 +2169,11 @@
       } else {
         facetState.comision = comision;
       }
+      baseTrailingSpace = /\s$/.test(baseSearchText);
       syncFacetsToSearch();
+      searchInput.focus();
       renderFacets();
+      scheduleSearchRender();
     }
 
     function setSearchParam(q) {
@@ -1852,27 +2189,45 @@
     function syncInputFromURL() {
       const url = new URL(window.location.href);
       const q = url.searchParams.get('q') || '';
-      baseSearchText = q;
-      refreshSearchDisplay();
+      const parsed = parseSearchInput(q);
+      applyParsedSearch(parsed, { updateInput: true, setParam: false });
       return q;
     }
 
     searchInput.addEventListener('input', () => {
-      const facetPart = facetQueryString();
-      const raw = searchInput.value;
-      if (facetPart && raw.toLowerCase().trim().endsWith(facetPart.toLowerCase())) {
-        baseSearchText = raw.slice(0, raw.length - facetPart.length).trim();
-      } else {
-        baseSearchText = raw;
+      const prevValue = lastInputValue ?? searchInput.value;
+      const prevPos = searchInput.selectionStart ?? searchInput.value.length;
+      const parsed = parseSearchInput(searchInput.value);
+      const display = applyParsedSearch(parsed, { updateInput: true, setParam: true });
+      renderFacets();
+      if (searchInput.value !== display) {
+        searchInput.value = display;
       }
-      setSearchParam(baseSearchText);
-      refreshSearchDisplay();
+      const newValue = searchInput.value;
+      let firstDiff = 0;
+      const minLen = Math.min(prevValue.length, newValue.length);
+      while (firstDiff < minLen && prevValue[firstDiff] === newValue[firstDiff]) {
+        firstDiff++;
+      }
+      if (firstDiff === minLen && prevValue.length !== newValue.length) {
+        firstDiff = minLen;
+      }
+      let nextPos = prevPos;
+      if (newValue.length < prevValue.length && prevPos >= firstDiff) {
+        nextPos = firstDiff;
+        if (lastFacetRemoved && nextPos > 0 && newValue[nextPos - 1] === ' ') {
+          nextPos -= 1;
+        }
+      } else if (prevPos > newValue.length) {
+        nextPos = newValue.length;
+      }
+      searchInput.setSelectionRange(nextPos, nextPos);
+      lastInputValue = newValue;
+      lastFacetRemoved = false;
       if (!DATA_LOADED) {
         // Evita intentar filtrar sin datos; la promesa actualizará después
         return;
       }
-      syncFacetsFromQuery(baseSearchText);
-      renderFacets();
       scheduleSearchRender();
     });
 
@@ -1895,7 +2250,8 @@
       }
 
       ensureDataLoaded().then(() => {
-        syncFacetsFromQuery(baseSearchText);
+        const parsed = parseSearchInput(searchInput.value);
+        applyParsedSearch(parsed, { updateInput: true, setParam: false });
         renderFacets();
         render();
         afterRender();
@@ -1905,13 +2261,15 @@
     window.addEventListener('popstate', () => {
       const q = syncInputFromURL();
       if (DATA_LOADED) {
-        syncFacetsFromQuery(baseSearchText);
-        refreshSearchDisplay();
+        const parsed = parseSearchInput(q);
+        applyParsedSearch(parsed, { updateInput: true, setParam: false });
+        renderFacets();
         render();
       } else {
         ensureDataLoaded().then(() => {
-          syncFacetsFromQuery(baseSearchText);
-          refreshSearchDisplay();
+          const parsed = parseSearchInput(q);
+          applyParsedSearch(parsed, { updateInput: true, setParam: false });
+          renderFacets();
           render();
         });
       }
@@ -1920,9 +2278,9 @@
     function start() {
       const q = syncInputFromURL();
       ensureDataLoaded().then(() => {
-        syncFacetsFromQuery(baseSearchText);
+        const parsed = parseSearchInput(q);
+        applyParsedSearch(parsed, { updateInput: true, setParam: false });
         renderFacets();
-        refreshSearchDisplay();
         render();
       });
     }
