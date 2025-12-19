@@ -1549,6 +1549,18 @@
     let baseTrailingSpace = false;
     let LAST_FILTERED = [];
     let lastFacetRemoved = false;
+    let INDEX_READY = false;
+    let INDEX_BUILDING = false;
+
+    function quickSearchIndex(list) {
+      (list || []).forEach(a => {
+        const baseTokens = tokenizeParts([
+          a.nombre,
+          a.legajo || '',
+        ]);
+        a.__searchTokens = [...new Set(baseTokens)];
+      });
+    }
 
     function prepareSearchIndex(list) {
       (list || []).forEach(a => {
@@ -1575,6 +1587,8 @@
         });
         a.__searchTokens = [...new Set([...baseTokens, ...courseTokens])];
       });
+      INDEX_READY = true;
+      INDEX_BUILDING = false;
     }
 
     function render() {
@@ -1604,6 +1618,21 @@
       }, 60);
     }
 
+    function scheduleFullIndex() {
+      if (INDEX_READY || INDEX_BUILDING) return;
+      INDEX_BUILDING = true;
+      const run = () => {
+        prepareSearchIndex(ALL);
+        const hasFilters = (baseSearchText || '').trim().length || facetState.year || facetState.materia || facetState.comision;
+        if (hasFilters) render();
+      };
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(run, { timeout: 200 });
+      } else {
+        setTimeout(run, 50);
+      }
+    }
+
     // Carga única de datos -----------------------------------------------
     function ensureDataLoaded() {
       if (DATA_LOADED) return Promise.resolve(ALL);
@@ -1622,8 +1651,9 @@
             foto: a.foto || false,
             cursos: Array.isArray(a.cursos) ? a.cursos : [],
           }));
-          prepareSearchIndex(ALL);
+          quickSearchIndex(ALL); // index ligero para render inmediato
           DATA_LOADED = true;
+          scheduleFullIndex();
           return ALL;
         })().catch(err => {
           console.error('Error al cargar alumnos (fetch)', err);
@@ -1894,6 +1924,25 @@
         searchInput.focus();
         searchInput.select();
       }
+    });
+
+    // Espacio inicia/continúa escritura en la búsqueda (sin hacer scroll)
+    window.addEventListener('keydown', (ev) => {
+      if (ev.key !== ' ' || ev.ctrlKey || ev.metaKey || ev.altKey) return;
+      if (isEditableTarget(ev.target)) return;
+      ev.preventDefault();
+      const pos = searchInput.selectionStart ?? searchInput.value.length;
+      const value = searchInput.value || '';
+      const next = value.slice(0, pos) + ' ' + value.slice(pos);
+      searchInput.value = next;
+      lastInputValue = next;
+      const newPos = pos + 1;
+      searchInput.setSelectionRange(newPos, newPos);
+      const parsed = parseSearchInput(next);
+      applyParsedSearch(parsed, { updateInput: false, setParam: true });
+      renderFacets();
+      scheduleSearchRender();
+      searchInput.focus({ preventScroll: true });
     });
 
     // Navegación en grilla de contactos -----------------------------------
@@ -2280,6 +2329,7 @@
       ensureDataLoaded().then(() => {
         const parsed = parseSearchInput(q);
         applyParsedSearch(parsed, { updateInput: true, setParam: false });
+        searchInput.focus({ preventScroll: true });
         renderFacets();
         render();
       });
