@@ -100,7 +100,7 @@
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1600px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
@@ -121,7 +121,7 @@
     }
 
     .header-inner {
-      max-width: 1200px;
+      max-width: 1600px;
       margin: 0 auto;
       width: 100%;
       display: flex;
@@ -145,8 +145,8 @@
       flex-direction: column;
       gap: 8px;
       align-items: flex-end;
-      width: min(640px, 80vw);
-      flex: 1 1 80px;
+      width: min(1100px, 96vw);
+      flex: 1 1 320px;
     }
 
     .searchbar {
@@ -257,26 +257,25 @@
 
     .facet-pill {
       border: none;
-      background: transparent;
+      /* background: #fff9c4; */
       color: var(--brand);
-      padding: 4px 6px;
+      padding: 2px 4px;
       font-size: .95rem;
       cursor: pointer;
-      border-radius: 6px;
+      border-radius: 5px;
       transition: color .15s ease, background .15s ease;
+      text-decoration: none;
     }
 
     .facet-pill:hover {
       color: #0b56c8;
-      text-decoration: underline;
       background: rgba(15, 111, 255, .05);
     }
 
     .facet-pill.active {
       color: #0b56c8;
       font-weight: 700;
-      text-decoration: underline;
-      background: rgba(15, 111, 255, .12);
+      /* background: #fff9c4; */
     }
 
     .facet-count {
@@ -571,12 +570,9 @@
         padding: 10px 16px;
       }
 
-      .searchbar {
-        width: 100%;
-      }
-
       .filter-panel,
-      .facet-board {
+      .facet-board,
+      .searchbar {
         width: 100%;
         align-items: flex-start;
         gap: 6px;
@@ -838,7 +834,10 @@
       const overlay = document.createElement('div');
       overlay.id = 'avatar-zoom';
       overlay.innerHTML = `<div class="zoom-frame"><img alt="Avatar ampliado" /></div>`;
-      overlay.addEventListener('click', () => overlay.classList.remove('active'));
+      const close = () => {
+        overlay.classList.remove('active');
+      };
+      overlay.addEventListener('click', close);
       document.body.appendChild(overlay);
       const img = overlay.querySelector('img');
       const show = (src, alt = 'Avatar') => {
@@ -847,9 +846,12 @@
         img.alt = alt;
         overlay.classList.add('active');
       };
-      window.addEventListener('keydown', () => {
-        if (overlay.classList.contains('active')) overlay.classList.remove('active');
-      });
+      window.addEventListener('keydown', (ev) => {
+        if (!overlay.classList.contains('active')) return;
+        ev.preventDefault();
+        ev.stopPropagation();
+        close();
+      }, { capture: true });
       return { show };
     })();
 
@@ -1312,11 +1314,16 @@
       COPY_FLASH.set(card, t);
     }
 
-    function zoomFromCard(card) {
+    function zoomFromCard(card, { defer = false } = {}) {
       if (!card) return;
       const img = card.querySelector('.avatar img');
-      if (!img?.src) return;
-      avatarZoom.show(img.src, img.alt || 'Avatar');
+      const src = img?.currentSrc || img?.src || '';
+      if (!src) return;
+      if (defer) {
+        window.setTimeout(() => avatarZoom.show(src, img.alt || 'Avatar'), 0);
+        return;
+      }
+      avatarZoom.show(src, img.alt || 'Avatar');
     }
 
     function mountCards(container, list) {
@@ -1896,7 +1903,8 @@
       facetState.comision = comResolved;
 
       baseSearchText = parsed.freeTokens.join(' ');
-      baseTrailingSpace = parsed.trailingSpace;
+      const hasFacets = facetState.year || facetState.materia || facetState.comision;
+      baseTrailingSpace = parsed.trailingSpace || (hasFacets && !baseSearchText);
 
       lastFacetRemoved = Boolean(
         (prevYear && !facetState.year) ||
@@ -1945,6 +1953,17 @@
       searchInput.focus({ preventScroll: true });
     });
 
+    // Enter zoom si hay tarjeta activa y no estamos editando texto
+    document.addEventListener('keydown', (ev) => {
+      if (ev.key !== 'Enter' && ev.key !== 'NumpadEnter') return;
+      if (isEditableTarget(ev.target)) return;
+      const card = contactsGrid.contains(ACTIVE_CARD) ? ACTIVE_CARD : null;
+      if (!card) return;
+      if (document.activeElement === searchInput) return;
+      ev.preventDefault();
+      zoomFromCard(card, { defer: true });
+    });
+
     // Navegación en grilla de contactos -----------------------------------
     const contactsGrid = document.getElementById('contacts');
     contactsGrid.addEventListener('keydown', (ev) => {
@@ -1971,7 +1990,8 @@
 
       if (key === 'Enter' || key === 'NumpadEnter') {
         ev.preventDefault();
-        zoomFromCard(card);
+        ev.stopPropagation();
+        zoomFromCard(card, { defer: true });
         return;
       }
 
@@ -2188,7 +2208,7 @@
         facetState.comision = null;
       }
       baseSearchText = stripYearTokens(baseSearchText);
-      baseTrailingSpace = /\s$/.test(baseSearchText);
+      baseTrailingSpace = true;
       syncFacetsToSearch();
       searchInput.focus();
       renderFacets();
@@ -2204,7 +2224,7 @@
         facetState.materia = materia;
         facetState.comision = null;
       }
-      baseTrailingSpace = /\s$/.test(baseSearchText);
+      baseTrailingSpace = true;
       syncFacetsToSearch();
       searchInput.focus();
       renderFacets();
@@ -2218,7 +2238,7 @@
       } else {
         facetState.comision = comision;
       }
-      baseTrailingSpace = /\s$/.test(baseSearchText);
+      baseTrailingSpace = true;
       syncFacetsToSearch();
       searchInput.focus();
       renderFacets();

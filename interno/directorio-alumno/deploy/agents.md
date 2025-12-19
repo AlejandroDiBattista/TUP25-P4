@@ -35,7 +35,7 @@ Notas para modificar `index.html` sin perder tiempo.
 ### Navegación por teclado
 - En la grilla de contactos:
   - Flechas mueven el foco entre tarjetas.
-  - Enter/Espacio abren el zoom del avatar.
+  - Enter abre el zoom del avatar (si hay foto); cualquier tecla lo cierra.
   - Ctrl/Cmd+C copia la tarjeta seleccionada (si no hay texto seleccionado).
   - Tab navega secuencial; con typeahead activo recorre solo coincidencias.
 - El foco inicial de la grilla no se marca mientras el usuario está escribiendo en el buscador; se marca al navegar/clickear.
@@ -45,8 +45,9 @@ Notas para modificar `index.html` sin perder tiempo.
 - Scroll seguro: `ensureCardVisible` mueve la ventana evitando que la tarjeta quede bajo el header o el footer (usa sus alturas).
 - Atajos en grilla:
   - Flechas/Tab para moverse; Tab con typeahead salta entre coincidencias.
-  - Space abre zoom de avatar; Ctrl/Cmd+C copia texto del contacto.
+  - Ctrl/Cmd+C copia texto del contacto.
 - Global: Ctrl/Cmd+K lleva al input de búsqueda.
+- Global: Espacio (cuando no estás editando) inserta un espacio en la búsqueda y evita el scroll.
 
 ## Typeahead (búsqueda en caliente)
 - Buffer `typeaheadBuffer` + expiración; al expirar solo marca bandera para reiniciar en la próxima tecla (no borra resaltado).
