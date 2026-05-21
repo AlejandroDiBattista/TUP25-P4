@@ -826,7 +826,8 @@
       const comision = curso.codigo.startsWith('L') ? `-${curso.comision}`.trim() : "";
       const repo = `TUP${Number(curso.año) - 2000}-${curso.codigo}${comision}`;
       const carpeta = encodeURIComponent(curso.carpeta_tp);
-      return `https://github.com/AlejandroDiBattista/${repo}/tree/main/TP/${carpeta}`;
+      const practicos = curso.año == 2026 ? `practicos` : `TP`;
+      return `https://github.com/AlejandroDiBattista/${repo}/tree/main/${practicos}/${carpeta}`;
     }
 
     // Overlay de zoom para avatares ------------------------------------
